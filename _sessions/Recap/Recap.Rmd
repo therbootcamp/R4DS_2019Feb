@@ -1,7 +1,23 @@
 ---
 title: "Recap"
-author: "Introduction to Data Science with R<br/><a href='https://therbootcamp.github.io'>www.therbootcamp.com</a><br/><a href='https://twitter.com/therbootcamp'>@therbootcamp</a>"
-date: "October 2018"
+author: "R for Data Science<br/>
+  <a href='https://therbootcamp.github.io'>
+    Basel R Bootcamp
+  </a> 
+  <br>
+  <a href='https://therbootcamp.github.io/R4DS_2019Feb/'>
+    <i class='fas fa-clock' style='font-size:.9em;'></i>
+  </a>&#8239; 
+  <a href='https://therbootcamp.github.io'>
+    <i class='fas fa-home' style='font-size:.9em;' ></i>
+  </a>&#8239;
+  <a href='mailto:therbootcamp@gmail.com'>
+    <i class='fas fa-envelope' style='font-size: .9em;'></i>
+  </a>&#8239;
+  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
+    <i class='fab fa-linkedin' style='font-size: .9em;'></i>
+  </a>"
+date: "February 2019"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
@@ -15,12 +31,25 @@ output:
 
 layout: true
 
-<div class="my-footer"><span>
-<a href="https://therbootcamp.github.io/"><font color="#7E7E7E">Introduction to Data Science with R, October 2018</font></a>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-<a href="https://therbootcamp.github.io/"><font color="#7E7E7E">www.therbootcamp.com</font></a>
-</span></div> 
+<div class="my-footer">
+  <span style="text-align:center">
+    <span> 
+      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
+    </span>
+    <a href="https://therbootcamp.github.io/">
+      <span style="padding-left:82px"> 
+        <font color="#7E7E7E">
+          www.therbootcamp.com
+        </font>
+      </span>
+    </a>
+    <a href="https://therbootcamp.github.io/">
+      <font color="#7E7E7E">
+       R Bootcamp Bern | February 2019
+      </font>
+    </a>
+    </span>
+  </div> 
 
 
 
@@ -37,8 +66,7 @@ options(width=110)
 options(digits = 4)
 ```
 
-
-# Essentials: The 2<sup>4</sup> Lessons of the R Bootcamp
+# Essentials: 12 basic R lessons
 
 .pull-left4[
 1. Everything is an object
@@ -50,13 +78,9 @@ options(digits = 4)
 7. Functions expect certain object classes
 8. View help files using `?`
 9. Study errors and warnings
-10. Data is stored in data frames
-11. Select variables (vectors) using `$`
-12. Use RStudio and projects
-13. Use editor and shortcuts
-14. First load packages and data
-15. Use auto-complete
-16. Comment and format for readability
+10. Use RStudio and projects
+11. Use editor and auto-complete
+12. Comment and format for readability
 ]
 
 ---
@@ -71,7 +95,7 @@ R has 3 main data objects...
 - Can carry any data, incl. lists
 - Often used for function outputs
 
-<high>`data_frame`</high> - R's spreadsheet
+<high>`tibbles`</high> - R's spreadsheet
 - Specific type of `list`
 - Typical data format
 - For multi-variable data sets
@@ -166,7 +190,7 @@ Raw data can come in many shapes and sizes, but <high>R's got you covered</high>
 
 .pull-right45[
 
-<img src="http://blog.datasift.com/wp-content/uploads/2014/10/ms-files-3.jpg">
+<img src="http://uc3.co/wp-content/uploads/2012/10/cloud-hoskins.jpg">
 
 ]
 ---
@@ -264,10 +288,16 @@ DO_SOMETHING %>% # AND THEN...
 ]
 
 
+---
+
+class: middle, center
+
+<h1><a href="https://dwulff.github.io/Intro2R_Unibe/1_Data/BernRBootcamp_Day2.zip">Downloads</a></h1>
+
 
 ---
 
-.pull-left35[
+.pull-left45[
 <br><br><br><br><br><br><br><br><br>
 
 <p align="center">
@@ -278,9 +308,9 @@ DO_SOMETHING %>% # AND THEN...
 ]
 
 
-.pull-right6[
+.pull-right45[
 
-<img src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/schedule_2018Oct_Intro2DS.png?raw=true" height="580" align="center">
+<img src="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Welcome/image/schedule.png" height="580" align="center">
 
 
 ]
