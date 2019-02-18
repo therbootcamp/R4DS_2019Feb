@@ -290,19 +290,12 @@ DO_SOMETHING %>% # AND THEN...
 
 ---
 
-class: middle, center
-
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe/1_Data/BernRBootcamp_Day2.zip">Downloads</a></h1>
-
-
----
-
 .pull-left45[
 <br><br><br><br><br><br><br><br><br>
 
 <p align="center">
   <font size=8><hfont><high>Questions?</high></hfont></font><br>
-  <font size = 4><a href = "https://therbootcamp.github.io/Intro2DataScience_2018Oct/">Link to schedule</a></font>
+  <font size = 4><a href = "https://therbootcamp.github.io/R4DS_2019Feb/">Link to schedule</a></font>
 </p>
 
 ]

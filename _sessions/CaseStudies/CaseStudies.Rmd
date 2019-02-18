@@ -6,7 +6,7 @@ author: "
     Basel R Bootcamp
   </a>
   <br>
-  <a href='https://dwulff.github.io/Intro2R_Unibe/'>
+  <a href='https://therbootcamp.github.io/R4DS_2019Feb/'>
     <i class='fas fa-clock' style='font-size:.9em;'></i>
   </a>&#8239; 
   <a href='https://therbootcamp.github.io'>
