@@ -1,7 +1,23 @@
 ---
 title: "Plotting"
-author: "Introduction to Data Science with R<br/><a href='https://therbootcamp.github.io'>www.therbootcamp.com</a><br/><a href='https://twitter.com/therbootcamp'>@therbootcamp</a>"
-date: "October 2018"
+author: "R for Data Science<br>
+  <a href='https://therbootcamp.github.io'>
+    Basel R Bootcamp
+  </a>
+  <br>
+  <a href='https://therbootcamp.github.io/R4DS_2019Feb/'>
+    <i class='fas fa-clock' style='font-size:.9em;'></i>
+  </a>&#8239; 
+  <a href='https://therbootcamp.github.io'>
+    <i class='fas fa-home' style='font-size:.9em;' ></i>
+  </a>&#8239;
+  <a href='mailto:therbootcamp@gmail.com'>
+    <i class='fas fa-envelope' style='font-size: .9em;'></i>
+  </a>&#8239;
+  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
+    <i class='fab fa-linkedin' style='font-size: .9em;'></i>
+  </a>"
+date: "February 2019"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
@@ -15,14 +31,25 @@ output:
 
 layout: true
 
-<div class="my-footer"><span>
-<a href="https://therbootcamp.github.io/"><font color="#7E7E7E">Introduction to Data Science with R, October 2018</font></a>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-<a href="https://therbootcamp.github.io/"><font color="#7E7E7E">www.therbootcamp.com</font></a>
-</span></div> 
-
-
+<div class="my-footer">
+  <span style="text-align:center">
+    <span> 
+      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
+    </span>
+    <a href="https://therbootcamp.github.io/">
+      <span style="padding-left:82px"> 
+        <font color="#7E7E7E">
+          www.therbootcamp.com
+        </font>
+      </span>
+    </a>
+    <a href="https://therbootcamp.github.io/">
+      <font color="#7E7E7E">
+       R For Data Science | February 2019
+      </font>
+    </a>
+    </span>
+  </div> 
 
 ---
 
@@ -199,7 +226,7 @@ plot(x = baselers$height,
 
 - Can't store plots as <high>objects</high> to reference and update later<br>
 
-<p align="center"><high>Solution: `ggplot2`</high></p>
+<p align="center"><high>Solution: `ggplot2` </high></p>
 
 ```{r, echo = FALSE, out.width = "45%"}
 knitr::include_graphics("https://www.r-graph-gallery.com/wp-content/uploads/2014/09/ggplot_hex.jpg")
@@ -1110,6 +1137,91 @@ ggplot(data = mpg,
 
 ]
 
+---
+
+# The <mono>gg</mono> object
+
+.pull-left45[
+
+<b>1</b> ggplot returns an object of the class `gg`.<br>
+<b>2</b> You can assign the result of `ggplot` to an <high>object</high>.<br>
+<b>3</b> Evaluating the object will show the plot.<br>
+<b>4</b> You can even edit existing <high>`ggplot` objects</high>.<br>
+
+```{r, fig.width = 8, eval = F}
+# Create myplot
+myplot <- ggplot(data = mpg, 
+       mapping = aes(x = displ,y = hwy, 
+                     col = class)) +
+  geom_point() + 
+  labs(x = "Engine Displacement in ...",
+       y = "Highway miles per gallon",
+       title = "MPG data",
+       subtitle = "Cars with higher ...",
+       caption = "Source: mpg data ...") + 
+  theme_bw()
+```
+
+```{r, fig.width = 8, echo = F}
+# Create myplot
+myplot <- ggplot(data = mpg, 
+       mapping = aes(x = displ,y = hwy, 
+                     col = class)) +
+  geom_point() + 
+  labs(x = "Engine Displacement in Liters",
+       y = "Highway miles per gallon",
+       title = "MPG data",
+       subtitle = "Cars with higher engine displacement tend to have lower highway mpg",
+       caption = "Source: mpg data in ggplot2") + 
+  theme_bw()
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5}
+# Evaluate myplot
+myplot
+```
+
+]
+
+---
+
+# The <mono>gg</mono> object
+
+.pull-left45[
+
+<b>1</b> ggplot returns an object of the class `gg`.<br>
+<b>2</b> You can assign the result of `ggplot` to an <high>object</high>.<br>
+<b>3</b> Evaluating the object will show the plot.<br>
+<b>4</b> You can even edit existing <high>`ggplot` objects</high>.<br>
+
+```{r, fig.width = 8, eval = F}
+# Create myplot
+myplot <- ggplot(data = mpg, 
+       mapping = aes(x = displ,y = hwy, 
+                     col = class)) +
+  geom_point() + 
+  labs(x = "Engine Displacement in ...",
+       y = "Highway miles per gallon",
+       title = "MPG data",
+       subtitle = "Cars with higher ...",
+       caption = "Source: mpg data ...") + 
+  theme_bw()
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5}
+myplot + # add geom
+  geom_smooth(col = "blue", method = "lm") 
+```
+
+]
 
 ---
 
@@ -1119,14 +1231,13 @@ ggplot(data = mpg,
 
 Faceting = <high>same plot for different groups</high>.
 
-To facet plots, use `facet_wrap()`
+To facet plots, use, e.g., `facet_wrap()`.
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE, eval = F}
 # Without faceting
-ggplot(data = mpg, 
-       mapping = aes(x = displ, 
-                     y = hwy)) + 
-  geom_point()
+myplot + 
+  geom_smooth(col = "blue", 
+              method = "lm") 
 ```
 
 ]
@@ -1135,10 +1246,9 @@ ggplot(data = mpg,
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
 # Without faceting
-ggplot(data = mpg, 
-       mapping = aes(x = displ, 
-                     y = hwy)) + 
-  geom_point()
+myplot +
+  geom_smooth(col = "blue", 
+              method = "lm") 
 ```
 
 ]
@@ -1147,18 +1257,17 @@ ggplot(data = mpg,
 
 # `facet_wrap()`
 
-.pull-left4[
+.pull-left45[
 
 Faceting = <high>same plot for different groups</high>.
 
-To facet plots, use `facet_wrap()`
+To facet plots, use, e.g., `facet_wrap()`.
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE, eval = FALSE}
 # With faceting
-ggplot(data = mpg, 
-       mapping = aes(x = displ, 
-                     y = hwy)) + 
-  geom_point()  +
+myplot +
+  geom_smooth(col = "blue", 
+              method = "lm")  +
   facet_wrap(~ class)  # Tilde first
 ```
 
@@ -1169,10 +1278,9 @@ ggplot(data = mpg,
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
 # With faceting
-ggplot(data = mpg, 
-       mapping = aes(x = displ, 
-                     y = hwy)) + 
-  geom_point()  +
+myplot +
+  geom_smooth(col = "blue", 
+              method = "lm")  +
   facet_wrap(~ class)  # Tilde first!
 ```
 
@@ -1180,99 +1288,50 @@ ggplot(data = mpg,
 
 ---
 
-# Assigning a ggplot to an object
-
-.pull-left4[
-
-1) ggplot returns an object of the class `gg`.<br>
-2) You can assign the result of `ggplot` to an <high>object</high>.<br>
-3) Evaluating the object will show the plot.<br>
-4) You can even edit existing <high>`ggplot` objects</high>.<br>
-
-```{r, fig.width = 8}
-# Create myplot
-myplot <- ggplot(data = mpg,
-                 aes(x = displ,
-                     y = hwy)) + 
-              geom_point() + 
-              theme_bw()
-class(myplot)
-```
-
-]
-
-.pull-right45[
-
-```{r, fig.width = 7, fig.height = 5.5}
-myplot # Evaluate myplot
-```
-
-]
-
----
-
-# Assigning a ggplot to an object
-
-.pull-left4[
-
-1) ggplot returns an object of the class `gg`.<br>
-2) You can assign the result of `ggplot` to an object.<br>
-3) Evaluating the object will show the plot.<br>
-4) You can even edit existing <high>`ggplot` objects</high>.<br>
-
-```{r, fig.width = 7, fig.height = 5.5}
-# Create myplot
-myplot <- ggplot(data = mpg,
-                 aes(x = displ,
-                     y = hwy)) + 
-              geom_point() + 
-              theme_bw()
-class(myplot)
-```
-
-]
-
-.pull-right45[
-
-```{r, fig.width = 7, fig.height = 5.5}
-myplot + 
-  geom_smooth() # add geom
-```
-
-]
-
-
----
-
 # `ggsave()`
 
-.pull-left5[
+.pull-left45[
 
-To <high>save plots</high> to a file (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
+To create an <high>image file</high> of a plot (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
 
-`ggsave()` main arguments are...
+<u>Arguments</u>
 
-|Argument| Definition|
-|:-------|:----------|
-|`filename`|File name|
-|`plot`|Plotting object|
-|`device`|File type (e.g.; "pdf", "jpeg", "png")|
-|`path`|File path to save plot|
-|`width`|Plot width (inches)|
-|`height`|Plot height (inches)|
+<table style="width:100%">
+  <tr>
+    <td> <b>Argument</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>filename</mono> </td>
+    <td> Name of the to-be-created file </td>
+  </tr>
+  <tr>
+    <td> <mono>device</mono> </td>
+    <td> File type (e.g.; "pdf", "jpeg", "png") </td>
+  </tr>
+  <tr>
+    <td> <mono>path</mono> </td>
+    <td> Folder to store image in </td>
+  </tr>
+  <tr>
+    <td> <mono>width</mono>, <mono>height</mono>  </td>
+    <td> Plot width, height (e.g., inches) </td>
+  </tr>
+</table>
 
 ]
 
 
-.pull-right45[
+.pull-right5[
 
-Save ggplot object called myplot to a pdf file...<br>
 ```{r, eval = FALSE}
 # Create myplot object
-myplot <- ggplot(...)
+myplot <- myplot +
+  geom_smooth(col = "blue", method = "lm") +
+  facet_wrap(~ class)
 
 # Create "myplot.pdf", from myplot
-ggsave(filename = "myplot.pdf",
+ggsave(filename = "myplot",
        plot = myplot,
        device = "pdf",
        path = "figures",
@@ -1280,19 +1339,70 @@ ggsave(filename = "myplot.pdf",
        height = 4)
 ```
 
+]
 
+---
+
+# `ggsave()`
+
+.pull-left45[
+
+To create an <high>image file</high> of a plot (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
+
+<u>Arguments</u>
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Argument</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>filename</mono> </td>
+    <td> Name of the to-be-created file </td>
+  </tr>
+  <tr>
+    <td> <mono>device</mono> </td>
+    <td> File type (e.g.; "pdf", "jpeg", "png") </td>
+  </tr>
+  <tr>
+    <td> <mono>path</mono> </td>
+    <td> Folder to store image in </td>
+  </tr>
+  <tr>
+    <td> <mono>width</mono>, <mono>height</mono>  </td>
+    <td> Plot width, height (e.g., inches) </td>
+  </tr>
+</table>
 
 ]
 
 
+.pull-right5[
+
+```{r, eval = FALSE}
+# Create myplot object
+myplot <- myplot +
+  geom_smooth(col = "blue", method = "lm") +
+  facet_wrap(~ class)
+
+# Create "myplot.png", from myplot
+ggsave(filename = "myplot",
+       plot = myplot,
+       device = "png",
+       path = "figures",
+       width = 6, 
+       height = 4)
+```
+
+]
+
+
+
 ---
 
+class: middle, center
 
-# Practical
-
-<font size=6><b><a href="https://therbootcamp.github.io/Intro2DataScience_2018Oct/_sessions/Plotting/Plotting_practical.html">Link to practical</a>
-
-
+<h1><a href="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Plotting/Plotting_practical.html">Practical</a></h1>
 
 
 

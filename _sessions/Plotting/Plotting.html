@@ -3,7 +3,7 @@
   <head>
     <title>Plotting</title>
     <meta charset="utf-8">
-    <meta name="author" content="Introduction to Data Science with R www.therbootcamp.com @therbootcamp" />
+    <meta name="author" content="R for Data Science   Basel R Bootcamp" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
   </head>
@@ -12,22 +12,33 @@
 class: center, middle, inverse, title-slide
 
 # Plotting
-### Introduction to Data Science with R<br/><a href='https://therbootcamp.github.io'>www.therbootcamp.com</a><br/><a href='https://twitter.com/therbootcamp'><span class="citation">@therbootcamp</span></a>
-### October 2018
+### R for Data Science<br> <a href='https://therbootcamp.github.io'> Basel R Bootcamp </a> <br> <a href='https://therbootcamp.github.io/R4DS_2019Feb/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+### February 2019
 
 ---
 
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;span&gt;
-&lt;a href="https://therbootcamp.github.io/"&gt;&lt;font color="#7E7E7E"&gt;Introduction to Data Science with R, October 2018&lt;/font&gt;&lt;/a&gt;
-&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
-&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
-&lt;a href="https://therbootcamp.github.io/"&gt;&lt;font color="#7E7E7E"&gt;www.therbootcamp.com&lt;/font&gt;&lt;/a&gt;
-&lt;/span&gt;&lt;/div&gt; 
-
-
+&lt;div class="my-footer"&gt;
+  &lt;span style="text-align:center"&gt;
+    &lt;span&gt; 
+      &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/&gt;
+    &lt;/span&gt;
+    &lt;a href="https://therbootcamp.github.io/"&gt;
+      &lt;span style="padding-left:82px"&gt; 
+        &lt;font color="#7E7E7E"&gt;
+          www.therbootcamp.com
+        &lt;/font&gt;
+      &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="https://therbootcamp.github.io/"&gt;
+      &lt;font color="#7E7E7E"&gt;
+       R For Data Science | February 2019
+      &lt;/font&gt;
+    &lt;/a&gt;
+    &lt;/span&gt;
+  &lt;/div&gt; 
 
 ---
 
@@ -167,7 +178,7 @@ plot(x = baselers$height,
 
 - Can't store plots as &lt;high&gt;objects&lt;/high&gt; to reference and update later&lt;br&gt;
 
-&lt;p align="center"&gt;&lt;high&gt;Solution: `ggplot2`&lt;/high&gt;&lt;/p&gt;
+&lt;p align="center"&gt;&lt;high&gt;Solution: `ggplot2` &lt;/high&gt;&lt;/p&gt;
 
 &lt;img src="https://www.r-graph-gallery.com/wp-content/uploads/2014/09/ggplot_hex.jpg" width="45%" style="display: block; margin: auto;" /&gt;
 
@@ -478,13 +489,13 @@ ggplot(data = mpg,
 
 &lt;p align="center"&gt; `mpg`&lt;/p&gt;
 
-| displ| hwy|class      | year|
-|-----:|---:|:----------|----:|
-|   2.5|  29|subcompact | 2008|
-|   3.0|  25|midsize    | 1999|
-|   3.4|  19|pickup     | 1999|
-|   2.5|  28|subcompact | 2008|
-|   2.4|  29|compact    | 1999|
+| displ| hwy|class   | year|
+|-----:|---:|:-------|----:|
+|   1.8|  26|compact | 1999|
+|   5.0|  17|suv     | 1999|
+|   4.7|  17|suv     | 2008|
+|   2.5|  23|suv     | 2008|
+|   4.0|  20|suv     | 1999|
 
 
 ]
@@ -904,6 +915,87 @@ ggplot(data = mpg,
 
 ]
 
+---
+
+# The &lt;mono&gt;gg&lt;/mono&gt; object
+
+.pull-left45[
+
+&lt;b&gt;1&lt;/b&gt; ggplot returns an object of the class `gg`.&lt;br&gt;
+&lt;b&gt;2&lt;/b&gt; You can assign the result of `ggplot` to an &lt;high&gt;object&lt;/high&gt;.&lt;br&gt;
+&lt;b&gt;3&lt;/b&gt; Evaluating the object will show the plot.&lt;br&gt;
+&lt;b&gt;4&lt;/b&gt; You can even edit existing &lt;high&gt;`ggplot` objects&lt;/high&gt;.&lt;br&gt;
+
+
+```r
+# Create myplot
+myplot &lt;- ggplot(data = mpg, 
+       mapping = aes(x = displ,y = hwy, 
+                     col = class)) +
+  geom_point() + 
+  labs(x = "Engine Displacement in ...",
+       y = "Highway miles per gallon",
+       title = "MPG data",
+       subtitle = "Cars with higher ...",
+       caption = "Source: mpg data ...") + 
+  theme_bw()
+```
+
+
+
+]
+
+.pull-right45[
+
+
+```r
+# Evaluate myplot
+myplot
+```
+
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# The &lt;mono&gt;gg&lt;/mono&gt; object
+
+.pull-left45[
+
+&lt;b&gt;1&lt;/b&gt; ggplot returns an object of the class `gg`.&lt;br&gt;
+&lt;b&gt;2&lt;/b&gt; You can assign the result of `ggplot` to an &lt;high&gt;object&lt;/high&gt;.&lt;br&gt;
+&lt;b&gt;3&lt;/b&gt; Evaluating the object will show the plot.&lt;br&gt;
+&lt;b&gt;4&lt;/b&gt; You can even edit existing &lt;high&gt;`ggplot` objects&lt;/high&gt;.&lt;br&gt;
+
+
+```r
+# Create myplot
+myplot &lt;- ggplot(data = mpg, 
+       mapping = aes(x = displ,y = hwy, 
+                     col = class)) +
+  geom_point() + 
+  labs(x = "Engine Displacement in ...",
+       y = "Highway miles per gallon",
+       title = "MPG data",
+       subtitle = "Cars with higher ...",
+       caption = "Source: mpg data ...") + 
+  theme_bw()
+```
+
+]
+
+.pull-right45[
+
+
+```r
+myplot + # add geom
+  geom_smooth(col = "blue", method = "lm") 
+```
+
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
+
+]
 
 ---
 
@@ -913,22 +1005,21 @@ ggplot(data = mpg,
 
 Faceting = &lt;high&gt;same plot for different groups&lt;/high&gt;.
 
-To facet plots, use `facet_wrap()`
+To facet plots, use, e.g., `facet_wrap()`.
 
 
 ```r
 # Without faceting
-ggplot(data = mpg, 
-       mapping = aes(x = displ, 
-                     y = hwy)) + 
-  geom_point()
+myplot + 
+  geom_smooth(col = "blue", 
+              method = "lm") 
 ```
 
 ]
 
 .pull-right45[
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -936,19 +1027,18 @@ ggplot(data = mpg,
 
 # `facet_wrap()`
 
-.pull-left4[
+.pull-left45[
 
 Faceting = &lt;high&gt;same plot for different groups&lt;/high&gt;.
 
-To facet plots, use `facet_wrap()`
+To facet plots, use, e.g., `facet_wrap()`.
 
 
 ```r
 # With faceting
-ggplot(data = mpg, 
-       mapping = aes(x = displ, 
-                     y = hwy)) + 
-  geom_point()  +
+myplot +
+  geom_smooth(col = "blue", 
+              method = "lm")  +
   facet_wrap(~ class)  # Tilde first
 ```
 
@@ -957,122 +1047,57 @@ ggplot(data = mpg,
 
 .pull-right45[
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-55-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
-
----
-
-# Assigning a ggplot to an object
-
-.pull-left4[
-
-1) ggplot returns an object of the class `gg`.&lt;br&gt;
-2) You can assign the result of `ggplot` to an &lt;high&gt;object&lt;/high&gt;.&lt;br&gt;
-3) Evaluating the object will show the plot.&lt;br&gt;
-4) You can even edit existing &lt;high&gt;`ggplot` objects&lt;/high&gt;.&lt;br&gt;
-
-
-```r
-# Create myplot
-myplot &lt;- ggplot(data = mpg,
-                 aes(x = displ,
-                     y = hwy)) + 
-              geom_point() + 
-              theme_bw()
-class(myplot)
-```
-
-```
-[1] "gg"     "ggplot"
-```
-
-]
-
-.pull-right45[
-
-
-```r
-myplot # Evaluate myplot
-```
-
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-57-1.png" style="display: block; margin: auto;" /&gt;
-
-]
-
----
-
-# Assigning a ggplot to an object
-
-.pull-left4[
-
-1) ggplot returns an object of the class `gg`.&lt;br&gt;
-2) You can assign the result of `ggplot` to an object.&lt;br&gt;
-3) Evaluating the object will show the plot.&lt;br&gt;
-4) You can even edit existing &lt;high&gt;`ggplot` objects&lt;/high&gt;.&lt;br&gt;
-
-
-```r
-# Create myplot
-myplot &lt;- ggplot(data = mpg,
-                 aes(x = displ,
-                     y = hwy)) + 
-              geom_point() + 
-              theme_bw()
-class(myplot)
-```
-
-```
-[1] "gg"     "ggplot"
-```
-
-]
-
-.pull-right45[
-
-
-```r
-myplot + 
-  geom_smooth() # add geom
-```
-
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-59-1.png" style="display: block; margin: auto;" /&gt;
-
-]
-
 
 ---
 
 # `ggsave()`
 
-.pull-left5[
+.pull-left45[
 
-To &lt;high&gt;save plots&lt;/high&gt; to a file (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
+To create an &lt;high&gt;image file&lt;/high&gt; of a plot (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
 
-`ggsave()` main arguments are...
+&lt;u&gt;Arguments&lt;/u&gt;
 
-|Argument| Definition|
-|:-------|:----------|
-|`filename`|File name|
-|`plot`|Plotting object|
-|`device`|File type (e.g.; "pdf", "jpeg", "png")|
-|`path`|File path to save plot|
-|`width`|Plot width (inches)|
-|`height`|Plot height (inches)|
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Argument&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;filename&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Name of the to-be-created file &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;device&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; File type (e.g.; "pdf", "jpeg", "png") &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;path&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Folder to store image in &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;width&lt;/mono&gt;, &lt;mono&gt;height&lt;/mono&gt;  &lt;/td&gt;
+    &lt;td&gt; Plot width, height (e.g., inches) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
 
 ]
 
 
-.pull-right45[
+.pull-right5[
 
-Save ggplot object called myplot to a pdf file...&lt;br&gt;
 
 ```r
 # Create myplot object
-myplot &lt;- ggplot(...)
+myplot &lt;- myplot +
+  geom_smooth(col = "blue", method = "lm") +
+  facet_wrap(~ class)
 
 # Create "myplot.pdf", from myplot
-ggsave(filename = "myplot.pdf",
+ggsave(filename = "myplot",
        plot = myplot,
        device = "pdf",
        path = "figures",
@@ -1080,17 +1105,71 @@ ggsave(filename = "myplot.pdf",
        height = 4)
 ```
 
+]
 
+---
+
+# `ggsave()`
+
+.pull-left45[
+
+To create an &lt;high&gt;image file&lt;/high&gt; of a plot (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
+
+&lt;u&gt;Arguments&lt;/u&gt;
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Argument&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;filename&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Name of the to-be-created file &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;device&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; File type (e.g.; "pdf", "jpeg", "png") &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;path&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Folder to store image in &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;width&lt;/mono&gt;, &lt;mono&gt;height&lt;/mono&gt;  &lt;/td&gt;
+    &lt;td&gt; Plot width, height (e.g., inches) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
 
 ]
 
 
+.pull-right5[
+
+
+```r
+# Create myplot object
+myplot &lt;- myplot +
+  geom_smooth(col = "blue", method = "lm") +
+  facet_wrap(~ class)
+
+# Create "myplot.png", from myplot
+ggsave(filename = "myplot",
+       plot = myplot,
+       device = "png",
+       path = "figures",
+       width = 6, 
+       height = 4)
+```
+
+]
+
+
+
 ---
 
+class: middle, center
 
-# Practical
-
-&lt;font size=6&gt;&lt;b&gt;&lt;a href="https://therbootcamp.github.io/Intro2DataScience_2018Oct/_sessions/Plotting/Plotting_practical.html"&gt;Link to practical&lt;/a&gt;
+&lt;h1&gt;&lt;a href="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Plotting/Plotting_practical.html"&gt;Practical&lt;/a&gt;&lt;/h1&gt;
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

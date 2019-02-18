@@ -794,6 +794,6 @@ data <- jsonlite::read_json(file, ...)
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/R4DS_2019Feb/_sessions/Data/Data_practical.html">Practical</a></h1>
+<h1><a href="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Data/Data_practical.html">Practical</a></h1>
 
 

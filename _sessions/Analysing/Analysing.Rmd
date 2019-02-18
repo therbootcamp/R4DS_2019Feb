@@ -1,5 +1,5 @@
 ---
-title: "Data"
+title: "Analysing"
 author: "R for Data Science<br>
   <a href='https://therbootcamp.github.io'>
     Basel R Bootcamp
@@ -821,4 +821,4 @@ tidy(my_glm)
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/R4DS_2019Feb/_sessions/Analysing/Analysing_practical.html">Practical</a></h1>
+<h1><a href="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Analysing/Analysing_practical.html">Practical</a></h1>
