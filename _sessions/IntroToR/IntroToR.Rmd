@@ -1,11 +1,11 @@
 ---
 title: "Intro to R"
-author: "Introduction to R<br>
+author: "R for Data Science<br>
   <a href='https://therbootcamp.github.io'>
-    Bern R Bootcamp
+    Basel R Bootcamp
   </a>
   <br>
-  <a href='https://dwulff.github.io/Intro2R_Unibe/'>
+  <a href='https://therbootcamp.github.io/R4DS_2019Feb/'>
     <i class='fas fa-clock' style='font-size:.9em;'></i>
   </a>&#8239; 
   <a href='https://therbootcamp.github.io'>
@@ -45,7 +45,7 @@ layout: true
     </a>
     <a href="https://therbootcamp.github.io/">
       <font color="#7E7E7E">
-       Introduction to R | February 2019
+       R For Data Science | February 2019
       </font>
     </a>
     </span>

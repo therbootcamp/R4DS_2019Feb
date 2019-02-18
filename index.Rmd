@@ -1,26 +1,44 @@
 ---
-title: "Introduction to Data Science with R"
-date: "October 2018"
-author: "http://www.therbootcamp.com"
-output: html_document
+title: "R for Data Science"
+subtitle: ""
+author: "
+      <a href='https://therbootcamp.github.io'>
+        <i class='fas fa-home' style='font-size:1em;'></i>
+      </a>
+      <a href='https://therbootcamp.github.io/appliedML_2019Jan/'>
+        <i class='fas fa-clock' style='font-size:1em;' ></i>
+      </a>
+      <a href='mailto:therbootcamp@gmail.com'>
+        <i class='fas fa-envelope' style='font-size: 1em;'></i>
+      </a>
+      <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
+        <i class='fab fa-linkedin' style='font-size: 1em;'></i>
+      </a>
+      <a href='https://therbootcamp.github.io'>
+        <font style='font-style:normal;font-size:20px;padding-left:5px'>Basel R Bootcamp</font>
+      </a>
+      <br>
+      <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style= 'height:16.7px;vertical-align:baseline'/><font style='font-style:normal;font-size:20px;padding-left:9.3px'>February 2019</font>
+      "
+output:
+  html_document:
+    css: index.css
+    self_contained: no
 ---
 
 <br>
 
-## Downloads
 
-#### [**Data sets**](https://raw.githubusercontent.com/therbootcamp/Intro2DataScience_2018Oct/master/_sessions/_data/baselrbootcamp_data.zip)
-#### [**PDFs**](https://raw.githubusercontent.com/therbootcamp/Intro2DataScience_2018Oct/master/_sessions/_pdf/Intro2DataScienceWithR_pdfs.zip)
+### Links
+
+##### Data sets
+#####  PDFs <font style="font-size:12px">(made available later)</font>
+
+
 
 <br>
 
-## Materials
-
-<!---
-#### <a href="https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data.zip">Get datasets</a>
-#### <a href="https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_pdf/Baselrbootcamp_slides_pt1.zip">Get pdfs pt1</a> <font size=2><a href="https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_knit/knit_bootcamp.R">[download code]</a></font>
---->
-
+### Materials
 |  | Day 1<br>Preparation| Day 2<br>Analysis| 
 |:--|:-------------|:-------------|
 |0| Welcome!<br>[slides](_sessions/Welcome/Welcome.html) | Recap<br>[slides](_sessions/Recap/Recap.html)|
@@ -30,7 +48,24 @@ output: html_document
 ||    | Next Steps<br>[slides](_sessions/NextSteps/NextSteps.html) |
 <br>
 
-## Schedule
 
-<p align="center"><br>
-    <a href="https://therbootcamp.github.io/Intro2DataScience_2018Oct/index.html"><img border="0" alt="Oct2018Schedule" src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/schedule_2018Oct_Intro2DS.png?raw=true" style="width:450px"></a><br>
+<!---
+
+|  | Day 1<br>Fundamentals| Day 2<br>Analysis| Day 3<br>Reporting| 
+|:--|:-------------|:-------------|:-------------|
+|0| Welcome!<br>[slides](_sessions/Welcome/Welcome.html) | Recap I<br>[slides](_sessions/Recap/Recap.html)| Recap II<br>[slides](_sessions/RecapII/RecapII.html)|
+|1| Intro to R<br>[slides](_sessions/IntroToR/IntroToR.html), [source](_sessions/IntroToR/IntroToR_interactive.R) | Statistics I <br>[slides](_sessions/StatisticsI/StatisticsI.html), [practical](_sessions/StatisticsI/StatisticsI_practical.html) | Plotting II <br>[slides](_sessions/PlottingII/PlottingII.html), [practical](_sessions/PlottingII/PlottingII.html) |
+|2|  Data <br>[slides](_sessions/Data/Data.html), [practical](_sessions/Data/Data_practical.html)| Statistics II<br>[slides](_sessions/StatisticsII/Statistics.html), [practical](_sessions/StatisticsII/Statistics_practical.html)| Reporting<br>[slides](_sessions/Reporting/Reporting.html), [practical](_sessions/Reporting/Reporting_practical.html)|
+|3|   Wrangling<br>[slides](_sessions/Wrangling/Wrangling.html), [practical](_sessions/Wrangling/Wrangling_practical.html) | Plotting I<br>[slides](_sessions/PlottingI/Plotting.html), [practical](_sessions/PlottingI/Plotting_practical.html) |Case Studies<br>[Intro](_sessions/CaseStudies/CaseStudies.html)<br>[1: Clinical Trial](_sessions/CaseStudies/Clinical_Data_Case_Study.html)<br>[2: Finance ](_sessions/CaseStudies/Financial_Data_Case_Study.html)|
+|4| |  | Next Steps<br> [slides](_sessions/NextSteps/NextSteps.html) |
+<br>
+
+--->
+
+
+### Schedule
+
+
+<p align="left"><br>
+    <img border="0" alt="Feb2019Schedule" src="https://dwulff.github.io/R4DS_2019Feb/_sessions/Welcome/image/schedule.png" style="width:510px">
+</p>
