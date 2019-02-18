@@ -3,7 +3,7 @@
   <head>
     <title>Wrangling</title>
     <meta charset="utf-8">
-    <meta name="author" content="Introduction to Data Science with R www.therbootcamp.com @therbootcamp" />
+    <meta name="author" content="R for Data Science   Basel R Bootcamp" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
   </head>
@@ -12,19 +12,33 @@
 class: center, middle, inverse, title-slide
 
 # Wrangling
-### Introduction to Data Science with R<br/><a href='https://therbootcamp.github.io'>www.therbootcamp.com</a><br/><a href='https://twitter.com/therbootcamp'><span class="citation">@therbootcamp</span></a>
-### October 2018
+### R for Data Science<br> <a href='https://therbootcamp.github.io'> Basel R Bootcamp </a> <br> <a href='https://therbootcamp.github.io/R4DS_2019Feb/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+### February 2019
 
 ---
 
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;span&gt;
-&lt;a href="https://therbootcamp.github.io/"&gt;&lt;font color="#7E7E7E"&gt;Introduction to Data Science with R, October 2018&lt;/font&gt;&lt;/a&gt;
-&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
-&lt;a href="https://therbootcamp.github.io/"&gt;&lt;font color="#7E7E7E"&gt;www.therbootcamp.com&lt;/font&gt;&lt;/a&gt;
-&lt;/span&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;
+  &lt;span style="text-align:center"&gt;
+    &lt;span&gt; 
+      &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/&gt;
+    &lt;/span&gt;
+    &lt;a href="https://therbootcamp.github.io/"&gt;
+      &lt;span style="padding-left:82px"&gt; 
+        &lt;font color="#7E7E7E"&gt;
+          www.therbootcamp.com
+        &lt;/font&gt;
+      &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="https://therbootcamp.github.io/"&gt;
+      &lt;font color="#7E7E7E"&gt;
+       R For Data Science | February 2019
+      &lt;/font&gt;
+    &lt;/a&gt;
+    &lt;/span&gt;
+  &lt;/div&gt; 
 
 ---
   
@@ -82,6 +96,8 @@ table(baslers$sex)  # How many of each sex?
 ]
 
 ---
+
+
 .pull-left45[
 
 # What is wrangling?
@@ -121,38 +137,27 @@ Group data and calculate and summary stats
 
 ---
 
-
-
-.pull-left45[
-
 # `dplyr` &amp; `tidyr`
 
-To wrangle data in R, we will use the `dplyr` and `tidyr` packages.
+.pull-left5[
 
-&lt;br&gt;
+To wrangle data in R, we will use the &lt;high&gt;&lt;mono&gt;dplyr&lt;/mono&gt;&lt;/high&gt; and &lt;high&gt;&lt;mono&gt;tidyr&lt;/mono&gt;&lt;/high&gt; packages, which are part of the &lt;high&gt;&lt;mono&gt;tidyverse&lt;/mono&gt;&lt;/high&gt;.
 
-```r
-# Load packages individually
-
-# install.packages('dplyr')
-# install.packages('tidyr')
-
-library(dplyr)
-library(tidyr)
-
-# Or just use the tidyverse!
-
-# install.packages('tidyverse')
-
-library(tidyverse)
-```
+| Package | Function| Function|
+|:-------------|:----|
+|&lt;b&gt;dplyr&lt;/b&gt; | Transformation | `rename()`, `mutate()`, `case_when()`, `*_join()`  |
+|&lt;b&gt;dplyr&lt;/b&gt; | Organisation | `arrange()`, `slice()`, `filter()`, `select()`  |
+|&lt;b&gt;tidyr&lt;/b&gt; | Organisation | `gather()`, `spread()` |
+|&lt;b&gt;dplyr&lt;/b&gt; | Aggregation | `group_by()`, `summarise()` |
 
 ]
  
-.pull-right5[
+.pull-right4[
 
-&lt;br&gt;&lt;br&gt;&lt;br&gt;
-&lt;img src="https://raw.githubusercontent.com/therbootcamp/Erfurt_2018June/master/_sessions/_image/dplyr_tidyr_hex.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;p align = "center"&gt;
+&lt;img src="image/packages.png" height=320px&gt;
+&lt;/p&gt;
+
 
 ]
 
@@ -199,18 +204,19 @@ DO_SOMETHING %&gt;% # AND THEN...
 
 .pull-left4[
 
-Task: Calculate the mean of a vector of `scores`
-
 
 ```r
-# Create a vector score
+#  Vector of `scores`
 score &lt;- c(8, 4, 6, 3, 7, 3)
+score
 ```
 
-Base-R method
-
+```
+## [1] 8 4 6 3 7 3
+```
 
 ```r
+# Mean: Base-R-way
 mean(x = score)
 ```
 
@@ -218,10 +224,8 @@ mean(x = score)
 ## [1] 5.167
 ```
 
-Pipe &lt;high&gt;%&gt;%&lt;/high&gt; method
-
-
 ```r
+# Mean: Tidyverse-style (with %&gt;%)
 score %&gt;%  # AND THEN 
   mean()  
 ```
@@ -236,7 +240,7 @@ score %&gt;%  # AND THEN
 .pull-right55[
 
 &lt;p align="center"&gt;
-  &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/pipe_explanation_kn.png" height = "400px"&gt;
+  &lt;img src="image/pipe.png" height = "400px"&gt;
 &lt;/p&gt;
 
 ]
@@ -247,31 +251,30 @@ score %&gt;%  # AND THEN
 
 .pull-left4[
 
-Task: Calculate the mean of a vector of `scores` and round to 1 digit.
-
 
 ```r
-# Create a vector score
+#  Vector of `scores`
 score &lt;- c(8, 4, 6, 3, 7, 3)
+score
 ```
 
-Base-R method
-
+```
+## [1] 8 4 6 3 7 3
+```
 
 ```r
-round(x = mean(score), digits = 1)
+# Mean: Base-R-way
+round(mean(x = score), digits = 1)
 ```
 
 ```
 ## [1] 5.2
 ```
 
-Pipe &lt;high&gt;%&gt;%&lt;/high&gt; method
-
-
 ```r
-score %&gt;%        # AND THEN
-  mean() %&gt;%       # AND THEN
+# Mean: Tidyverse-style (with %&gt;%)
+score %&gt;%     # AND THEN
+  mean() %&gt;%  # AND THEN
   round(digits = 1)
 ```
 
@@ -284,9 +287,8 @@ score %&gt;%        # AND THEN
 .pull-right55[
 
 &lt;p align="center"&gt;
-  &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/pipe_explanation_kn.png" height = "400px"&gt;
+  &lt;img src="image/pipe.png" height = "400px"&gt;
 &lt;/p&gt;
-
 
 ]
 
@@ -324,7 +326,7 @@ For an overview, check out &lt;a href='http://dplyr.tidyverse.org/'&gt;dplyr.tid
 
 
 
-# Transformation Functions
+# Transformation 
 
 .pull-left4[
 
@@ -530,7 +532,7 @@ patients_df %&gt;%
 # Joining data
  
 &lt;p align="center"&gt;
-  &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/joining_data.png" height="450px"&gt;
+  &lt;img src="image/joining_data.png" height="450px"&gt;
 &lt;/p&gt; 
 
 
@@ -846,7 +848,7 @@ baselers &lt;- baselers %&gt;%
 
 ---
 
-# Organisation Functions
+# Organisation
 
 .pull-left35[
 
@@ -1609,54 +1611,11 @@ stock_l %&gt;%
 
 ]
 
-
 ---
 
-.pull-left4[
+class: middle, center
 
-# Summary
-
-
-1 - Start by assigning your result to a new object to save it!
-
-2 - "Keep the pipe &lt;high&gt;%&gt;%&lt;/high&gt; going" to continue working with your data frame.
-
-3 - The output of dplyr functions will (almost) always be a &lt;high&gt;tibble&lt;/high&gt;.
-
-4 - You can almost always include &lt;high&gt;multiple operations&lt;/high&gt; within each function.
-
-]
-
-.pull-right55[
-&lt;br&gt;&lt;br&gt;&lt;br&gt;
-
-```r
-# Assign result to baslers_agg
-
-baslers_agg &lt;- baselers %&gt;% 
-  
-  # Change column names with rename()
-  rename(age_years = age,
-         weight_kg = weight)  %&gt;% # PIPE!
-
-  # Select specific rows with filter()
-  filter(age_years &lt; 40)  %&gt;% # PIPE!
-  
-  # Create new columns witb mutate()
-  mutate(debt_ratio = debt / income)
-```
-
-]
-
----
-
-# Practical
-
-&lt;p&gt;
-  &lt;font size=6&gt;
-    &lt;a href="https://therbootcamp.github.io/Intro2DataScience_2018Oct/_sessions/Wrangling/Wrangling_practical.html"&gt;&lt;b&gt;Link to practical&lt;b&gt;&lt;/a&gt;
-  &lt;/font&gt;
-&lt;/p&gt;
+&lt;h1&gt;&lt;a href="https://dwulff.github.io/R4DS_2019Feb/_sessions/Data/Data_practical.html"&gt;Practical&lt;/a&gt;&lt;/h1&gt;
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

@@ -1,8 +1,23 @@
 ---
-title: "Analysing"
-subtitle: ""
-author: "Introduction to Data Science with R<br/><a href='https://therbootcamp.github.io'>www.therbootcamp.com</a><br/><a href='https://twitter.com/therbootcamp'>@therbootcamp</a>"
-date: "October 2018"
+title: "Data"
+author: "R for Data Science<br>
+  <a href='https://therbootcamp.github.io'>
+    Basel R Bootcamp
+  </a>
+  <br>
+  <a href='https://therbootcamp.github.io/R4DS_2019Feb/'>
+    <i class='fas fa-clock' style='font-size:.9em;'></i>
+  </a>&#8239; 
+  <a href='https://therbootcamp.github.io'>
+    <i class='fas fa-home' style='font-size:.9em;' ></i>
+  </a>&#8239;
+  <a href='mailto:therbootcamp@gmail.com'>
+    <i class='fas fa-envelope' style='font-size: .9em;'></i>
+  </a>&#8239;
+  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
+    <i class='fab fa-linkedin' style='font-size: .9em;'></i>
+  </a>"
+date: "February 2019"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
@@ -12,16 +27,29 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: '16:9'
-
 ---
 
 layout: true
 
-<div class="my-footer"><span>
-<a href="https://therbootcamp.github.io/"><font color="#7E7E7E">Introduction to Data Science with R, October 2018</font></a>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-<a href="https://therbootcamp.github.io/"><font color="#7E7E7E">www.therbootcamp.com</font></a>
-</span></div> 
+<div class="my-footer">
+  <span style="text-align:center">
+    <span> 
+      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
+    </span>
+    <a href="https://therbootcamp.github.io/">
+      <span style="padding-left:82px"> 
+        <font color="#7E7E7E">
+          www.therbootcamp.com
+        </font>
+      </span>
+    </a>
+    <a href="https://therbootcamp.github.io/">
+      <font color="#7E7E7E">
+       R For Data Science | February 2019
+      </font>
+    </a>
+    </span>
+  </div> 
 
 ---
   
@@ -39,63 +67,7 @@ library(tidyverse)
 library(baselers)
 ```
 
-.pull-left4[
 
-# Where you're at...
-
-1 - Loaded packages (like `tidyverse`) with `library()`<br>
-
-2 - Loaded external files as a new dataframe<br>
-
-3 - Explore dataframes
-
-4 - Calculate descriptive statistics on specific columns<br>
-
-5 - Wrangle
-    - Change column names
-    - Add new columns
-    - Filter
-    - Join multiple dataframes
-    - Change data format (wide v. long)
-
-What's next?... <high>Analysing!</high>
-
-]
-
-.pull-right55[
-
-```{r, eval = FALSE}
-# Load libraries
-
-library(tidyverse)
-
-# Read external file
-
-baslers <- read_csv(file = "data/baslers.txt")
-
-# Explore data
-
-View(baslers)   # Open in new window
-dim(baslers)    # Show number of rows and columns
-names(baslers)  # Show names
-
-# Calculate descriptives on named colums
-
-mean(baslers$age)   # What is the mean age?
-table(baslers$sex)  # How many of each sex?
-
-# Wrangle
-
-baselers <- baselers %>%
-  rename(age_y = age,          # New names
-         salary = income) %>%
-  mutate(age_m = age * 12) %>% # Create new column
-  filter(sex == "male")        # filter rows...
-```
-
-]
-
----
 .pull-left45[
 
 # What is analysing?
@@ -845,59 +817,8 @@ tidy(my_glm)
 
 ]
 
-
 ---
 
-# Summary
+class: middle, center
 
-.pull-left4[
-
-1 - To calculate summary statistics across all rows, use `summarise()`.
-
-2 - To calculate grouped summary statistics, use `group_by()` and then `summarise()`.
-
-3 - "Keep the pipe <high>%>%</high> going" to continue working with your data frame.
-
-4 - You can always do wrangling operations (`filter()`, `rename()`) before (or after!) aggregating.
-
-5 - Statistical functions (like `glm()`, `t.test()`) require `data` and `formula` arguments
-
-]
-
-.pull-right55[
-
-```{r, eval = FALSE}
-# Assign result to baslers_agg
-
-baslers_agg <- baselers %>% 
-  
-  # Change column names with rename()
-  rename(age_years = age,
-         weight_kg = weight)  %>% # PIPE!
-
-  # Select specific rows with filter()
-  filter(age_years < 40)  %>% # PIPE!
-  
-  # Create new columns witb mutate()
-  mutate(debt_ratio = debt / income)  %>% # PIPE!
-  
-  # Group data with group_by()
-  group_by(sex) %>% # PIPE!
-  
-  # Calculate summary statistics with summarise()
-  summarise(income_mean = mean(income),
-            debt_mean = mean(debt),
-            dr_mean = mean(dr))
-```
-
-]
-
----
-
-# Practical
-
-<p>
-  <font size=6>
-    <a href="https://therbootcamp.github.io/Intro2DataScience_2018Oct/_sessions/Analysing/Analysing_practical.html"><b>Link to practical<b></a>
-  </font>
-</p>
+<h1><a href="https://dwulff.github.io/R4DS_2019Feb/_sessions/Analysing/Analysing_practical.html">Practical</a></h1>

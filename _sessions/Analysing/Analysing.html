@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Analysing</title>
+    <title>Data</title>
     <meta charset="utf-8">
-    <meta name="author" content="Introduction to Data Science with R www.therbootcamp.com @therbootcamp" />
+    <meta name="author" content="R for Data Science   Basel R Bootcamp" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
   </head>
@@ -11,20 +11,34 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Analysing
-### Introduction to Data Science with R<br/><a href='https://therbootcamp.github.io'>www.therbootcamp.com</a><br/><a href='https://twitter.com/therbootcamp'><span class="citation">@therbootcamp</span></a>
-### October 2018
+# Data
+### R for Data Science<br> <a href='https://therbootcamp.github.io'> Basel R Bootcamp </a> <br> <a href='https://therbootcamp.github.io/R4DS_2019Feb/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+### February 2019
 
 ---
 
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;span&gt;
-&lt;a href="https://therbootcamp.github.io/"&gt;&lt;font color="#7E7E7E"&gt;Introduction to Data Science with R, October 2018&lt;/font&gt;&lt;/a&gt;
-&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
-&lt;a href="https://therbootcamp.github.io/"&gt;&lt;font color="#7E7E7E"&gt;www.therbootcamp.com&lt;/font&gt;&lt;/a&gt;
-&lt;/span&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;
+  &lt;span style="text-align:center"&gt;
+    &lt;span&gt; 
+      &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/&gt;
+    &lt;/span&gt;
+    &lt;a href="https://therbootcamp.github.io/"&gt;
+      &lt;span style="padding-left:82px"&gt; 
+        &lt;font color="#7E7E7E"&gt;
+          www.therbootcamp.com
+        &lt;/font&gt;
+      &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="https://therbootcamp.github.io/"&gt;
+      &lt;font color="#7E7E7E"&gt;
+       R For Data Science | February 2019
+      &lt;/font&gt;
+    &lt;/a&gt;
+    &lt;/span&gt;
+  &lt;/div&gt; 
 
 ---
   
@@ -32,64 +46,7 @@ layout: true
 
 
 
-.pull-left4[
 
-# Where you're at...
-
-1 - Loaded packages (like `tidyverse`) with `library()`&lt;br&gt;
-
-2 - Loaded external files as a new dataframe&lt;br&gt;
-
-3 - Explore dataframes
-
-4 - Calculate descriptive statistics on specific columns&lt;br&gt;
-
-5 - Wrangle
-    - Change column names
-    - Add new columns
-    - Filter
-    - Join multiple dataframes
-    - Change data format (wide v. long)
-
-What's next?... &lt;high&gt;Analysing!&lt;/high&gt;
-
-]
-
-.pull-right55[
-
-
-```r
-# Load libraries
-
-library(tidyverse)
-
-# Read external file
-
-baslers &lt;- read_csv(file = "data/baslers.txt")
-
-# Explore data
-
-View(baslers)   # Open in new window
-dim(baslers)    # Show number of rows and columns
-names(baslers)  # Show names
-
-# Calculate descriptives on named colums
-
-mean(baslers$age)   # What is the mean age?
-table(baslers$sex)  # How many of each sex?
-
-# Wrangle
-
-baselers &lt;- baselers %&gt;%
-  rename(age_y = age,          # New names
-         salary = income) %&gt;%
-  mutate(age_m = age * 12) %&gt;% # Create new column
-  filter(sex == "male")        # filter rows...
-```
-
-]
-
----
 .pull-left45[
 
 # What is analysing?
@@ -1076,63 +1033,11 @@ tidy(my_glm)
 
 ]
 
-
 ---
 
-# Summary
+class: middle, center
 
-.pull-left4[
-
-1 - To calculate summary statistics across all rows, use `summarise()`.
-
-2 - To calculate grouped summary statistics, use `group_by()` and then `summarise()`.
-
-3 - "Keep the pipe &lt;high&gt;%&gt;%&lt;/high&gt; going" to continue working with your data frame.
-
-4 - You can always do wrangling operations (`filter()`, `rename()`) before (or after!) aggregating.
-
-5 - Statistical functions (like `glm()`, `t.test()`) require `data` and `formula` arguments
-
-]
-
-.pull-right55[
-
-
-```r
-# Assign result to baslers_agg
-
-baslers_agg &lt;- baselers %&gt;% 
-  
-  # Change column names with rename()
-  rename(age_years = age,
-         weight_kg = weight)  %&gt;% # PIPE!
-
-  # Select specific rows with filter()
-  filter(age_years &lt; 40)  %&gt;% # PIPE!
-  
-  # Create new columns witb mutate()
-  mutate(debt_ratio = debt / income)  %&gt;% # PIPE!
-  
-  # Group data with group_by()
-  group_by(sex) %&gt;% # PIPE!
-  
-  # Calculate summary statistics with summarise()
-  summarise(income_mean = mean(income),
-            debt_mean = mean(debt),
-            dr_mean = mean(dr))
-```
-
-]
-
----
-
-# Practical
-
-&lt;p&gt;
-  &lt;font size=6&gt;
-    &lt;a href="https://therbootcamp.github.io/Intro2DataScience_2018Oct/_sessions/Analysing/Analysing_practical.html"&gt;&lt;b&gt;Link to practical&lt;b&gt;&lt;/a&gt;
-  &lt;/font&gt;
-&lt;/p&gt;
+&lt;h1&gt;&lt;a href="https://dwulff.github.io/R4DS_2019Feb/_sessions/Analysing/Analysing_practical.html"&gt;Practical&lt;/a&gt;&lt;/h1&gt;
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
@@ -1151,12 +1056,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   d.head.appendChild(s);
 })();</script>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
   }
-});
+})();
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

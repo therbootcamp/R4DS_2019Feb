@@ -1,7 +1,23 @@
 ---
 title: "Data"
-author: "Introduction to Data Science with R<br/><a href='https://therbootcamp.github.io'>www.therbootcamp.com</a><br/><a href='https://twitter.com/therbootcamp'>@therbootcamp</a>"
-date: "October 2018"
+author: "R for Data Science<br>
+  <a href='https://therbootcamp.github.io'>
+    Basel R Bootcamp
+  </a>
+  <br>
+  <a href='https://therbootcamp.github.io/R4DS_2019Feb/'>
+    <i class='fas fa-clock' style='font-size:.9em;'></i>
+  </a>&#8239; 
+  <a href='https://therbootcamp.github.io'>
+    <i class='fas fa-home' style='font-size:.9em;' ></i>
+  </a>&#8239;
+  <a href='mailto:therbootcamp@gmail.com'>
+    <i class='fas fa-envelope' style='font-size: .9em;'></i>
+  </a>&#8239;
+  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
+    <i class='fab fa-linkedin' style='font-size: .9em;'></i>
+  </a>"
+date: "February 2019"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
@@ -15,13 +31,25 @@ output:
 
 layout: true
 
-<div class="my-footer"><span>
-<a href="https://therbootcamp.github.io/"><font color="#7E7E7E">Introduction to Data Science with R, October 2018</font></a>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-<a href="https://therbootcamp.github.io/"><font color="#7E7E7E">www.therbootcamp.com</font></a>
-</span></div> 
-
+<div class="my-footer">
+  <span style="text-align:center">
+    <span> 
+      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
+    </span>
+    <a href="https://therbootcamp.github.io/">
+      <span style="padding-left:82px"> 
+        <font color="#7E7E7E">
+          www.therbootcamp.com
+        </font>
+      </span>
+    </a>
+    <a href="https://therbootcamp.github.io/">
+      <font color="#7E7E7E">
+       R For Data Science | February 2019
+      </font>
+    </a>
+    </span>
+  </div> 
 
 ---
 
@@ -42,6 +70,7 @@ baselers = readr::read_csv('../_data/baselers.csv')
 # Data
 
 .pull-left45[
+<br2>
 <font size=5>
 In this session you will get to know...
 <ul>
@@ -54,10 +83,12 @@ In this session you will get to know...
 
 .pull-right45[
 
-<img src="http://blog.datasift.com/wp-content/uploads/2014/10/ms-files-3.jpg">
+<p align = "center">
+<img src="image/bigdata.jpg" height=440px><br>
+<font style="font-size:10px">from <a href="https://cloudtweaks.com/">cloudtweaks.com</a></font>
+</p>
 
 ]
-
 ---
 
 # 3 Object types for data
@@ -279,31 +310,6 @@ baselers
   <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/data_frame.png"></img>
   ]
 
-
----
-
-.pull-left45[
-
-# Tidy data
-
-1 - Each variable you measure should be in one column.
-
-2 - Each different observation of that variable should be in a different row.
-
-3 - There should be one table for each "kind" of variable.
-
-4 - If you have multiple tables, they should include a column in the table that allows them to be linked.
-
-<br><br>
-see <a href="http://worldpece.org/sites/default/files/datastyle.pdf">The Elements of Data Analytic Style</a> by Jeff Leek
-
-]
-
-.pull-right45[
-  <br><br><br>
-  <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/data_frame.png"></img>
-  ]
-
 ---
 
 # `vector`
@@ -493,78 +499,14 @@ baselers$age[1:9] < 300
   <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/vector_types.png"></img>
   ]
 
-
-
 ---
 
-.pull-left45[
+<div class="center_text">
+  <span>
+  Data I/O
+  </span>
+</div> 
 
-# Object Classes
-
-<br><br>
-1 - R's objects have <high>content and attributes</high>.
-<br><br>
-2 - Attributes include always <high>names</high>, <high>dimensions</high>, and the <high>class</high> (or type) of the object. 
-<br2>
-3 - <high>Classes</high> are critical because they determine <high>when and how they can be used in functions</high>!
-
-]
-.pull-right45[
-  <br><br><br>
-  <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/object_class.png"></img>
-]
-
----
-
-.pull-left4[
-
-# Functions
-
-Functions have 3 elements:
-
-1 - <high>Name</high>: Used to refer to the function and call (execute) it.
-
-2 - <high>Arguments</high>: Used to provide (data) inputs and to control what the function does. Arguments with default values (e.g., `use = "everything"`) need not be specified. Arguments without default values (e.g., `x`) need be specified. <high>Inputs must have the appropriate class!</high>
-
-3 - <high>Body</high>: The code that uses the inputs (arguments) to produce the desired output. The code of the functions body is based <high>copies of the inputs</high>, which are named according to the arguments names. 
-
-]
-
-.pull-right55[
-  <br><br>
-  <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/function.png"></img>
-]
-
-
----
-
-# Documentation
-
-.pull-left5[
-
-R documentation (<high>help files</high> and <high>vignettes</high>) will become very easy to use once you are familiar with the basic R vocabulary. 
-
-Pay attention to...
-
-<high>Usage</high> - shows how to use function, its arguments and their defaults.<br><high>Arguments</high> - describes arguments, and their `class`.<br><high>Value</high> - describes what the function returns.<br><high>Examples</high> - provide working R code.
-
-```{r, eval = F}
-# To access help files
-?name_of_function
-
-# search help files
-??name_of_function
-
-```
-
-]
-
-.pull-right5[
-```{r}
-?cor
-```
-<p align="center"><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/help_cor.png" width="500"></p>
-]
 
 ---
 
@@ -847,27 +789,11 @@ data <- jsonlite::read_json(file, ...)
 ```
 ]
 
----
-
-# Remote databases
-
-R provides <high>all necessary tools to pull data from or directly work with</high> remote databases such as, e.g., a `SQL` database. Find out more at:
-
-<br><br>
-<div class="center_text_2">
-  <span>
-  <a href="https://db.rstudio.com/">db.rstudio.com</a>
-  </span>
-</div> 
-
 
 ---
 
-# Practical
+class: middle, center
 
-<p>
-  <font size=6>
-    <a href="https://therbootcamp.github.io/Intro2DataScience_2018Oct/_sessions/Data/Data_practical.html"><b>Link to practical<b></a>
-  </font>
-</p>
+<h1><a href="https://dwulff.github.io/R4DS_2019Feb/_sessions/Data/Data_practical.html">Practical</a></h1>
+
 
