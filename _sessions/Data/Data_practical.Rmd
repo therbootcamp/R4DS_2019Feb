@@ -353,7 +353,7 @@ write_csv(x = XX, path = "XX")
 write_csv(x = diamonds, "1_Data/diamonds_clean.csv")
 ```
 
-12. Read `diamonds_clean.csv` back into R as a new object called `diamonds_clean`. Then, print the object and verify that this time the types been correctly identified from the start.
+12. Read `diamonds_clean.csv` back into R as a new object called `diamonds_clean`. Then, print the object and verify that this time the types have been correctly identified from the start.
 
 ```{r}
 # read clean diamonds data from disc
