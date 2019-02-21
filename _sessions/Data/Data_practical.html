@@ -97,6 +97,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -104,14 +107,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -331,7 +394,7 @@ diamonds &lt;- type_convert(diamonds)</code></pre>
 <pre class="r"><code># write clean diamonds data to disc
 write_csv(x = XX, path = &quot;XX&quot;)</code></pre>
 <ol start="12" style="list-style-type: decimal">
-<li><p>Read <code>diamonds_clean.csv</code> back into R as a new object called <code>diamonds_clean</code>. Then, print the object and verify that this time the types been correctly identified from the start.</p></li>
+<li><p>Read <code>diamonds_clean.csv</code> back into R as a new object called <code>diamonds_clean</code>. Then, print the object and verify that this time the types have been correctly identified from the start.</p></li>
 <li><p>The data is now ready for analysis. Explore it a bit by calculating a few statistics. For instance, what is the average <code>carat</code> or <code>price</code> (use <code>mean()</code>)? What <code>cut</code> and <code>clarity</code> levels exist and how often do they occur (use <code>table()</code> on both variables)? You can learn more about the variable values from the help file <code>?diamonds</code>.</p></li>
 </ol>
 </div>

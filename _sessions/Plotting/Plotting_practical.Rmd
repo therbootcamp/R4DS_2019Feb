@@ -378,9 +378,7 @@ ggplot(mcdonalds, aes(x = Cholesterol,
 
 3. Change the colors by including the additional argument ` + scale_colour_gradient(low = "blue", high = "red")`.
 
-4. Use a gray color palette by using `scale_color_grey()` instead of `scale_colour_gradient()`.
-
-5. Customize! Look at all of the named colors in R by running `colors()`. Then, use two new colors in your plot.
+4. Customize! Look at all of the named colors in R by running `colors()`. Then, use two new colors in your plot.
  
 
 ### F - Summary statistics
@@ -552,7 +550,7 @@ ggplot(agg,
         panel.grid.minor.x = element_blank())
 ```
 
-### X - Challenges: Interactive with `plotly::ggplotly()`
+### Y - Bonus: Interactive with `plotly::ggplotly()`
 
 1. With the `ggplotly()`-function from the `plotly` package, you can turn any `ggplot` object into an interactive plot like the one below! Run the following code to see it in action.
 
@@ -571,6 +569,8 @@ ggplotly(MyPlot)
 2. Play around with your plot! See what happens when you hover over the points with your mouse. You can even zoom in by dragging your mouse.
 
 3. Try turning one of your favorite previous plots into an interactive `plotly` plot using the `ggplotly()` function!
+
+## Examples
 
 ```{r, eval = FALSE, echo = TRUE}
 # -----------------------------------------------
