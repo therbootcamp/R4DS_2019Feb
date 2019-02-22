@@ -77,7 +77,7 @@ library(baselers)
 Group data by certain variables
 
 - For all males (`sex == "male"`)
-- For all people in placebo conditoin (`condition == "placebo"`)
+- For all people in placebo condition (`condition == "placebo"`)
 
 <font size = 5><high>Calculate summaries</high></font>
 
@@ -800,10 +800,44 @@ library(broom)
 
 <br><br>
 
+`my_glm` is a long list with many kinds of outputs and an ugly printout
+
 ```{r}
-# Original printout
+# Print (raw glm)
 my_glm
+
+# Class (raw glm)
+class(my_glm)
 ```
+
+
+]
+
+
+---
+
+.pull-left4[
+
+# `tidy()`
+
+The `tidy()` function from the `broom` package <high>converts</high> the most important results of many statistical object like "glm" to a <high>data frame</high>.
+
+```{r, eval = FALSE}
+# install and load broom
+install.packages('broom')
+library(broom)
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/therbootcamp/Erfurt_2018June/master/_sessions/_image/broom_hex.png" height="200px" vspace="10">
+</p>
+
+
+]
+
+.pull-right55[
+
+<br><br>
 
 ```{r, echo = FALSE, message=F,warning=F}
 # Tidy printout
@@ -811,8 +845,11 @@ require(broom)
 ```
 
 ```{r}
-# Tidy printout
+# Print (tidy glm)
 tidy(my_glm)
+
+# Class (tidy glm)
+class(tidy(my_glm))
 ```
 
 ]
