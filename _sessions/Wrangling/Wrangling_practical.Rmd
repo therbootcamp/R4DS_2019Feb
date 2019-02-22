@@ -1,7 +1,6 @@
 ---
 title: "Wrangling"
-author: "
-<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
+author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
       <font style='font-style:normal'>R for Data Science</font><br>
@@ -24,8 +23,7 @@ author: "
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
       <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
     </td>
-  </tr>
-</table>"
+  </tr></table>"
 output:
   html_document:
     css: practical.css
@@ -58,7 +56,7 @@ knitr::include_graphics("")
 
 ## Overview
 
-In this practical you'll practice "data wrangling" with the `dplyr` and `tidyr` packages (part of the `tidyverse collection of packages).
+In this practical you'll practice "data wrangling" with the `dplyr` and `tidyr` packages (part of the `tidyverse` collection of packages).
 
 By the end of this practical you will know how to:
 
@@ -67,7 +65,6 @@ By the end of this practical you will know how to:
 3. Filter rows of data based on multiple criteria
 4. Combine (aka, 'join') multiple data sets through key columns
 5. Convert data between wide and long formats
-
 
 ## Tasks
 
@@ -91,19 +88,22 @@ By the end of this practical you will know how to:
 library(tidyverse)
 ```
 
-4. For this practical, we'll use the `trial_act` data, this is the result of a randomized clinical trial comparing the effects of different medications on adults infected with the human immunodeficiency virus (You can learn more about the trial [here](https://www.nejm.org/doi/full/10.1056/NEJM199610103351501)). Using the following template, load the data into R and store it as a new object called `trial_act`.
+For this practical, we'll use the `trial_act` data, this is the result of a randomized clinical trial comparing the effects of different medications on adults infected with the human immunodeficiency virus (You can learn more about the trial [here](https://www.nejm.org/doi/full/10.1056/NEJM199610103351501)).
+
+4. Using the following template, load the `trial_act.csv` data into R and store it as a new object called `trial_act` (Hint: Don't type the path directly! Use the "tab" completion!).
 
 ```{r, echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE}
-# Load trial_act.csv from the data folder in your working directory
+# Load trial_act.csv from the data folder in your working directory as a new
+#  object called trial_act
 
-trial_act <- read_csv(file = "XX")
+trial_act <- read_csv(file = "XX/XX")
 ```
 
 ```{r, eval = FALSE}
 trial_act <- read_csv(file = "1_Data/trial_act.csv")
 ```
 
-5. Using the same code structure, load the `trial_act_demo_fake.csv` data as a new dataframe called `trial_act_demo`
+5. Using the same code structure, load the `trial_act_demo_fake.csv` data as a new dataframe called `trial_act_demo`.
 
 ```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
 trial_act <- read_csv(file = "https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv")
@@ -133,6 +133,14 @@ summary(trial_act)
 summary(trial_act_demo)
 ```
 
+8. Use the `View()` function to view the entire dataframes in new windows
+
+```{r, echo = TRUE, eval = FALSE}
+View(trial_act)
+View(trial_act_demo)
+```
+
+
 ### B - Change column names with rename()
 
 1. Print the names of the `trial_act` data with `names(XXX)`
@@ -145,7 +153,7 @@ names(XXX)
 names(trial_act)
 ```
 
-2. Using `rename()`, change the column name `wtkg` in the `trial_act` dataframe to `weight_kg`. Be sure to assign the result back to `trial_act` to change it!
+2. One of the columns is currently called `wtkg`. Using `rename()`, change the name of this column to `weight_kg`. Be sure to assign the result back to `trial_act` to change it!
 
 ```{r, echo = TRUE, eval = FALSE}
 # Change the name to weight_kg from wtkg
@@ -159,13 +167,13 @@ trial_act <- trial_act %>%
   rename(weight_kg = wtkg)
 ```
 
-3. Look at the names of your `trial_act` dataframe again, do you now see the column `weight_kg`?
+3. Look at the names of your `trial_act` dataframe again using `names()`, do you now see the column `weight_kg`?
 
 ```{r}
 names(trial_act)
 ```
 
-4. Change the column name `age` to `age_y` (to specify that age is in years).
+4. One of the columns is called `age`, change it to `age_y` (to specify that age is in years).
 
 ```{r}
 trial_act <- trial_act %>%
@@ -188,7 +196,19 @@ trial_act %>%
 
 2. Using `select()` select the columns `pidnum`, `age_y`, `gender`, and `weight_kg` (but don't assign the result to anything)
 
-3. Now it's time to create a new dataframe! Select the columns `pidnum`, `arms`, `cd40`, `cd420`, and `cd496` *and* assign the result to a new object called `CD4_wide`. The `cd40`, `cd420`, and `cd496` columns show patient's CD4 T cell counts at baseline, 20 weeks, and 96 weeks. After you create `CD4_wide`, print it to make sure it worked!
+```{r}
+trial_act %>% 
+  select(pidnum, age_y, gender, weight_kg)
+```
+
+3. Imagine that a colleague of yours wants an anonymised dataframe called `trial_act_anon_` that does *not* contain the columns `pidnum` and `age`. Create this dataframe by selecting all columns in `trial_act` *except* `pidnum` and `age` (hint: use the notation `select(-XXX, -XXX))` to select everything *except* specified columns). Assign the result to a new object called `trial_act_anon`
+
+```{r, echo = TRUE, eval = FALSE}
+XX <- XX %>%
+  select(-XX, -XX)
+```
+
+4. Create a new dataframe called `CD4_wide` which contains the following columns: `pidnum`, `arms`, `cd40`, `cd420`, and `cd496`. The `cd40`, `cd420`, and `cd496` columns show patient's CD4 T cell counts at baseline, 20 weeks, and 96 weeks. After you create `CD4_wide`, print it to make sure it worked!
 
 ```{r, echo = TRUE, eval = FALSE}
 XX <- trial_act %>% 
@@ -197,10 +217,10 @@ XX <- trial_act %>%
 
 ```{r}
 CD4_wide <- trial_act %>%
-  select(`pidnum`, `arms`, `cd40`, `cd420`, `cd496`)
+  select(pidnum, arms, cd40, cd420, cd496)
 ```
 
-4. Did you know you can easily select all columns that start with specific characters using `starts_with()`? Try adapting the following code to get the same result you got before.
+5. Did you know you can easily select all columns that start with specific characters using `starts_with()`? Try adapting the following code to get the same result you got before.
 
 ```{r, echo = TRUE, eval = FALSE}
 CD4_wide <- trial_act %>% 
@@ -210,12 +230,6 @@ CD4_wide <- trial_act %>%
 ```{r}
 CD4_wide <- trial_act %>% 
   select(pidnum, arms, starts_with("cd"))
-```
-
-5. A colleague wants an anonymised dataframe that does *not* contain the columns `pidnum` and `age`. Create this dataframe by selecting all columns *except* `pidnum` and `age` (hint: use the notation `select(-XXX, -XXX))` to select everything *except* specified columns
-
-```{r}
-
 ```
 
 ### D - Add new columns with mutate()
@@ -255,7 +269,7 @@ trial_act <- trial_act %>%
 3. If you look at the `gender` column, you will see that it is numeric (0s and 1s). Using the `mutate()` and `case_when()` functions, create a new column called `gender_char` which shows the gender as a string, where 0 = "female" and 1 = "male":
     
 ```{r, echo = TRUE, eval = FALSE}
-# Create gender_char which shows gender as a stringh
+# Create gender_char which shows gender as a string
 trial_act <- trial_act %>%
   mutate(
   gender_char = case_when(
@@ -307,7 +321,7 @@ trial_act <- trial_act %>%
 ```{r}
 trial_act <- trial_act %>%
   mutate(
-    agem = age_y * 12,
+    age_m = age_y * 12,
     weight_lb = weight_kg * 2.2,
     cd_change_20 = cd420 - cd40,
     cd_change_960 = cd496 - cd40,
@@ -339,7 +353,12 @@ trial_act <- trial_act %>%
 trial_act
 ```
 
-2. Now arrange the data in *descending* order of `age_y` (from highest to lowest). After, look the data to make sure it worked. To arrange data in descending order, just include `desc()` around the variable. E.g.; `data %>% arrrange(desc(height))`
+2. Now arrange the data in *descending* order of `age_y` (from highest to lowest). After, look the data to make sure it worked. To arrange data in descending order, just include `desc()` around the variable
+
+```{r, echo = TRUE, eval = FALSE}
+trial_act <- trial_act %>% 
+ arrange(desc(XXX))
+```
 
 ```{r}
 trial_act <- trial_act %>% 
@@ -364,7 +383,7 @@ trial_act
 
 ### F - Filter specific rows with `filter()`
 
-1. Using the `filter()` function, filter only the rows from males (Hint: `gender_char == "male"`)
+1. Using the `filter()` function, filter only the rows from males but don't save the result (Hint: `gender_char == "male"`)
 
 ```{r, echo = TRUE, eval = FALSE}
 trial_act %>%
@@ -376,7 +395,7 @@ trial_act %>%
   filter(gender_char == "male")
 ```
 
-2. Create a new dataframe called `trial_act_male` that only contains rows from males (hint: just assign what you did in the previous question to a new object!). After you create `trial_act_male`, print it to make sure it only contains data from males!
+2. Create a new dataframe called `trial_act_male` that only contains rows from males (hint: just assign what you did in the previous question to a new object!). After you create the object, print it to make sure it looks right.
 
 ```{r}
 trial_act_male <- trial_act %>%
@@ -385,23 +404,24 @@ trial_act_male <- trial_act %>%
 trial_act_male
 ```
 
-3. Filter only rows for patients under the age of 60.
+3. Filter only rows for patients under the age of 60 and save the result to `trial_act_young`. After you create it, print the object to make sure it looks right.
 
 ```{r}
-trial_act %>%
+trial_act_young <- trial_act %>%
   filter(age_y < 60)
+
+trial_act_young
 ```
 
-
-4. A colleague of yours named Tracy wants a datafame only containing data from females over the age of 40. Create this dataframe with `filter()` and call it `trial_act_Tracy`. After you create the dataframe, print it to make sure it looks correct!
+4. A colleague of yours named Tracy wants a dataframe only containing data from females over the age of 40. Create this dataframe with `filter()` and call it `trial_act_tracy`. After you create the object, print it to make sure it looks right.
 
 ```{r, echo = TRUE, eval = FALSE}
-trial_act_Tracy <- XXX %>%
+trial_act_tracy <- XXX %>%
   filter(XXX > XXX & XXX == XXX)
 ```
 
 ```{r}
-trial_act_Tracy <- trial_act %>%
+trial_act_tracy <- trial_act %>%
   filter(age_y > 40 & gender_char == "female")
 ```
 
@@ -485,7 +505,7 @@ CD4_long <- CD4_wide %>%
 CD4_long
 ```
 
-3. Now use the `spread()` function to convert the long data bring the data *back* into the wide format! To do this, make the first argument `time`, and the second argument `value`
+3. Now use the `spread()` function to convert the long data bring the data *back* into the wide format! To do this, make the first argument `time`, and the second argument `value` (you don't need to save the object)
 
 ```{r, echo = TRUE, eval = FALSE}
 CD4_long %>%
@@ -502,8 +522,8 @@ CD4_long %>%
 
 1. Create a new dataframe called `trial_A` from `trial_act` with the following restrictions:
 
-- Only patients who take intraveneous drugs (`drugs == 1`)
-- Only patients younger than 60
+- Only patients who take intravenous drugs (`drugs == 1`) *and*...
+- Only patients younger than 60 *and*...
 - Only patients whose baseline CD4 T cell counts `cd40` were greater than 250 *and* less than 400.
 
 ```{r}
