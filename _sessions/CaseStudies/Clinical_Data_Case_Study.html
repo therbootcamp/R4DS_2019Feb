@@ -11,7 +11,7 @@
 
 
 
-<title>Clinical_Data_Case_Study.utf8</title>
+<title>Case study: Clinical</title>
 
 <script src="Clinical_Data_Case_Study_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -184,6 +184,19 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">Case study: Clinical</h1>
+<h4 class="author"><em><table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'>
+<col width='10%'>
+<col width='10%'>
+<tr style="border:none">
+<td style="display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none" nowrap>
+<font style='font-style:normal'>R for Data Science</font><br> <a href='https://therbootcamp.github.io/R4DS_2019Feb'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>Basel R Bootcamp</font> </a>
+</td>
+<td style="width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none">
+<img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
+</td>
+</tr>
+</table></em></h4>
 
 </div>
 
@@ -217,19 +230,21 @@ $(document).ready(function () {
 <h3>A - Getting Setup</h3>
 <ol style="list-style-type: decimal">
 <li><p>Open your <code>BaselRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>.</p></li>
-<li><p>Open a new R script and save it as a new file in your <code>R</code> folder called <code>dimarta_casestudy.R</code>. At the top of the script, using comments, write your name and the date. Then, load the <code>tidyverse</code> package. Here’s how the top of your script should look:</p></li>
+<li><p>Open a new R script and save it as a new file in your <code>R</code> folder called <code>dimarta_casestudy.R</code>. At the top of the script, using comments, write your name and the date. Then, load the <code>tidyverse</code> and <code>broom</code> packages. Here’s how the top of your script should look:</p></li>
 </ol>
 <pre class="r"><code>## My Name
 ## The Date
 ## Dimarta - Case Study
 
-library(tidyverse)</code></pre>
+library(tidyverse)
+library(broom)</code></pre>
 </div>
 <div id="b---data-io" class="section level3">
 <h3>B - Data I/O</h3>
-<ol start="2" style="list-style-type: decimal">
+<ol style="list-style-type: decimal">
 <li><p>Using <code>read_csv()</code>, load the <code>dimarta_trial.csv</code>, <code>dimarta_demographics.csv</code>, and <code>dimarta_biomarker.csv</code> datasets as <em>three</em> new objects called <code>trial_df</code>, <code>demographics_df</code>, and <code>biomarker_df</code>.</p></li>
 <li><p>Get a first impression of the objects you just created by exploring them with a mixture of the <code>View()</code>, <code>head()</code>, <code>names()</code>, and <code>summary()</code> functions. Were they all loaded correctly?</p></li>
+<li><p>Look at the variable descriptions in the <em>Datasets</em> tab above to understand what each of the variables mean.</p></li>
 </ol>
 </div>
 <div id="c---data-wrangling" class="section level3">

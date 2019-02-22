@@ -11,7 +11,7 @@
 
 
 
-<title>Case study: Clinical</title>
+<title>Case study: Financial</title>
 
 <script src="Financial_Data_Case_Study_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -97,6 +97,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -104,9 +107,70 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
@@ -116,12 +180,11 @@ $(document).ready(function () {
 
 
 
-
 <div class="fluid-row" id="header">
 
 
 
-<h1 class="title toc-ignore">Case study: Clinical</h1>
+<h1 class="title toc-ignore">Case study: Financial</h1>
 <h4 class="author"><em><table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'>
 <col width='10%'>
 <col width='10%'>
@@ -145,7 +208,7 @@ $(document).ready(function () {
 <h1></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>In this case study, you will analyse historic data of three major stock indices, the <strong>Dow Jones</strong>, the <strong>DAX</strong>, and the <strong>Nikkei</strong>, and the exchange rates between the <strong>US dollar</strong>, the <strong>Euro</strong>, and the <strong>Yen</strong>. Using this data, you will address several questions.</p>
+<p>In this case study, you will analyse historic data of three major stock indices, the <strong>Dow Jones</strong>, the <strong>DAX</strong>, and the <strong>Nikkei</strong>, in relation to the exchange rates between the <strong>US dollar</strong>, the <strong>Euro</strong>, and the <strong>Yen</strong>. Using this data, you will address several questions.</p>
 <ol style="list-style-type: decimal">
 <li>How large was the impact of the recent financial crisis on the respective stock markets?</li>
 <li>How correlated is the development between the stock markets?</li>
@@ -171,12 +234,32 @@ library(tidyverse)</code></pre>
 <div id="b---data" class="section level3">
 <h3>B - Data</h3>
 <ol style="list-style-type: decimal">
-<li><p>In this practical, you will load three external data sets <code>\^DJI.csv</code>, <code>\^GDAXI.csv</code>, and <code>\^N225.csv</code>. However, two of these data files are not yet tidy. Specifically, <code>\^GDAXI.csv</code> and <code>\^N225.csv</code> include a specific character string to represent missings in the data and is not identify by R as such. To identify the <code>NA</code>-character string in the data open one of them in a text viewer, (via RStudio or via, e.g., <em>textedit</em>). Do you see the string value that indicates missing data?</p></li>
+<li><p>In this practical, you will load three external data sets <code>\^DJI.csv</code>, <code>\^GDAXI.csv</code>, and <code>\^N225.csv</code>. Unfortunately, two of these data files are not yet tidy. Specifically, <code>\^GDAXI.csv</code> and <code>\^N225.csv</code> include a specific character string to represent missings in the data and is not identify by R as such. To identify the <code>NA</code>-character string in the data open one of them in a text viewer, (via RStudio or a word processor such as <em>textedit</em>). Do you see the string value that indicates missing data?</p></li>
 <li><p>Once you have identified the character string for missing data, us the <code>read_csv()</code> function to load in the stock index data sets, “^DJI.csv”, “^GDAXI.csv”, and “^N225.csv”, from your <code>1_Data</code> folder. In so doing, set an explicit <code>na</code>-argument to account for the fact that “^GDAXI.csv” “^N225.csv” use a specific character string to represent missings in the data.</p></li>
+<li><p>Look at each dataset using the <code>View()</code> function, were the data loaded correctly and are the missing values represented appropriately?</p></li>
 <li><p>Load in the exchange rate data sets, <code>euro-dollar.txt</code> and <code>yen-dollar.txt</code>, from the <code>1_Data</code> folder as two new objects called <code>eur_usd</code> and <code>yen_usd</code>. To do this, use the <code>read_delim()</code>-function and <code>\t</code> as the <code>delim</code>-argument, telling R that the data is tab-delimited.</p></li>
+</ol>
+<pre class="r"><code># Load data
+eur_usd &lt;- read_delim(file = &#39;XX/XX&#39;, 
+                      delim = &#39;XX&#39;)
+
+yen_usd &lt;- read_delim(file = &#39;XX/XX&#39;, 
+                      delim = &#39;XX&#39;)</code></pre>
+<ol start="5" style="list-style-type: decimal">
 <li><p>Print the <code>eur_usd</code> and <code>yen_usd</code> objects. Are all the data types and variable names correct? Not quite, right?</p></li>
-<li><p>To fix the data, first load the data again and use the <code>col_names</code>-argument to explicitly assign the column names to be <code>Date</code> and <code>Rate</code>. This will prevent R to take names from the first row of the data.</p></li>
-<li><p>Now, change the variable <code>Date</code> to type <code>date</code>. Fix this using the <code>parse_date()</code> function with <code>format = '%d %b %Y'</code>. This specifies the exact format the dates are formatted in. Overwrite the existing <code>Date</code>-variable.</p></li>
+<li><p>To fix the data sp that they have appropriate variable names, load the data again and use the <code>col_names</code>-argument to explicitly assign the column names to be <code>Date</code> and <code>Rate</code>. This will prevent R to take names from the first row of the data.</p></li>
+</ol>
+<pre class="r"><code># Load data again, but specifying the column names explicitly
+eur_usd &lt;- read_delim(file = &#39;XX/XX&#39;, 
+                      delim = &#39;XX&#39;,
+                      col_names = c(&#39;XX&#39;, &#39;XXX&#39;))
+
+yen_usd &lt;- read_delim(file = &#39;XX/XX&#39;, 
+                      delim = &#39;XX&#39;,
+                      col_names = c(&#39;XX&#39;, &#39;XX&#39;))</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Print your <code>eur_usd</code> and <code>yen_usd</code> objects. Do they look ok? Do you now see the column names you specified?</p></li>
+<li><p>Look closely at the print out of your objects: what class is your <code>Date</code> column represented as?</p></li>
 </ol>
 <pre class="r"><code># change Date to date type in both datasets
 eur_usd &lt;- eur_usd %&gt;%
@@ -184,14 +267,14 @@ eur_usd &lt;- eur_usd %&gt;%
 
 yen_usd &lt;- yen_usd %&gt;%
   mutate(Date = parse_date(Date, format = &#39;%d %b %Y&#39;))</code></pre>
-<ol start="7" style="list-style-type: decimal">
-<li>Now you should have tidier data! Go ahead an explore the data a bit. What data do they contain? Consider using <code>summary</code> or <code>skimr::skim()</code>.</li>
+<ol start="8" style="list-style-type: decimal">
+<li>Print your <code>eur_usd</code> and <code>yen_usd</code> objects again, how do they look? Do they have the correct names and column classes?</li>
 </ol>
 </div>
 <div id="c---wrangling" class="section level3">
 <h3>C - Wrangling</h3>
 <ol style="list-style-type: decimal">
-<li>Before we can begin the analysis of the data, we to join the individual data frames into a single data frame called <code>financial_data</code> that contains only the dates variable (<code>Date</code>), the stock index (unadjusted) closing prices (<code>Close</code>), as well as the exchange rates. Begin by joining <code>dow</code> and <code>dax</code> using <code>inner_join()</code>, selecting only the <code>Date</code> and <code>Close</code> variables of each data frame. See code below.</li>
+<li>Before we can begin the analysis of the data, we to join the individual data frames into a single data frame called <code>financial_data</code> that contains only the dates variable (<code>Date</code>), the stock index (unadjusted) closing prices (<code>Close</code>), as well as the exchange rates. Begin by joining <code>dow</code> and <code>dax</code> using <code>inner_join()</code>, selecting only the <code>Date</code> and <code>Close</code> variables of each data frame. See the code below to help you do this.</li>
 </ol>
 <pre class="r"><code># create single data frame
 financial &lt;- dow %&gt;% 
@@ -207,9 +290,11 @@ financial &lt;- dow %&gt;%
   inner_join(dax %&gt;% select(Date, Close),
             by = &#39;Date&#39;,
              suffix = c(&#39;_dow&#39;,&#39;_dax&#39;))
+
+# Print the result
 financial</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Looks better now? OK, now that you know how to join two data sets repeat the steps until all five data sets are included in <code>financial</code>. Remember, we only want the dates variable (<code>Date</code>), the stock index (unadjusted) closing prices (<code>Close</code>). Note if you have trouble fixing all variables names using the <code>suffix</code>-argument you can also take of this at the end using <code>rename()</code>.</p></li>
+<li><p>Ok the data should look better now! Now that you know how to join two data sets, repeat the steps until all five data sets are included in <code>financial</code>. Remember, we only want the dates variable (<code>Date</code>), the stock index (unadjusted) closing prices (<code>Close</code>). Note if you have trouble fixing all variables names using the <code>suffix</code>-argument you can also take of this at the end using <code>rename()</code>.</p></li>
 <li><p>Alright, now let’s create <code>change</code> variables that show how the exchange rates and stock indices have moved. Use the <code>mutate</code>- and the <code>diff()</code>-function. The <code>diff</code> computes the differences between every adjacent pair of entries in a vector. As this results in one fewer differences than there values in the vector add an <code>NA</code> at the first position of the change variable à la <code>c(NA, diff(my_variable))</code>.</p></li>
 <li><p>We will be mainly interested in how stock prices and exchange rates change over the course of a year. To create a variable that codes the year <code>mutate()</code> and <code>lubridate::year(Date)</code>, which will extract from <code>Date</code> the year information.</p></li>
 <li><p>Finally, we want the data in the “long”, instead of the current “wide” format. Call this dataset <code>financial_long</code>. In long formats variables occupy different rows rather than columns. To this using the <code>gather()</code>-function. Hint: The first two arguments to the <code>gather</code>-function specify the names of the new variables, the third and fourth specify the names of the variables whose format you would like to change (minus in front is intentional). Check out the example in the <code>?gather</code>-help file.</p></li>
@@ -221,14 +306,14 @@ financial_long &lt;- financial %&gt;%
                        -XXX, 
                        -XXX)</code></pre>
 <ol start="7" style="list-style-type: decimal">
-<li>Now your data is tidy proper (at least with regard to the analyses required here)! Go ahead an explore the data a bit. What data do they contain? Consider using <code>summary</code> or <code>skimr::skim()</code>.</li>
+<li>Now your data is tidy proper (at least with regard to the analyses required here)! Go ahead an explore the data a bit by printing it and/or using <code>View()</code></li>
 </ol>
 </div>
 <div id="d---analysing-and-plotting" class="section level3">
 <h3>D - Analysing and Plotting</h3>
 <ol style="list-style-type: decimal">
 <li><p>Plot the development of each of the stock indices over the available time periods. First, select rows corresponding to the stock index prices. Then use the <code>ggplot()</code>-function to start a plot. Then, Map <code>Date</code> to <code>x</code> and <code>value</code> to <code>y</code> in the <code>aes()</code>-function. And, finally, add a <code>geom_line()</code>. Does the plot look right?</p></li>
-<li><p>Looked like the values of the three stock indices were somehow overlayering each other. Use <code>+ facet_grid(~variable)</code> to teas them apart. Also give it a slightly nicer appearance using <code>+ theme_light()</code> What does the plot tell you? Has there been a particular drop in any year?</p></li>
+<li><p>It looks like the values of the three stock indices were somehow overlayering each other. Use <code>+ facet_grid(~variable)</code> to show them in different plotting facets. Also give it a slightly nicer appearance using <code>+ theme_light()</code> What does the plot tell you? Has there been a particular drop in any year?</p></li>
 <li><p>Calculate the overall stock index price change per year. To do this, use <code>group_by()</code> and <code>summarise()</code> on the stock index change variables. Use the basic <code>sum()</code>-function inside <code>summarise()</code> to compute the overall change in the year. In doing this, don’t forget there were <code>NA</code>’s in two of the stock index price variables. Check out the result! When was the biggest drop in stock index prices?</p></li>
 <li><p>The results up to now suggest that modern financial markets are closely intertwined, to the extent that a change in one market can bring about a change in the markets. Evaluate this aspect of financial markets by calculating all correlations between the three stock index change variables using the <code>cor()</code>-function. <code>cor()</code> can take a data frame as an argument to produce the full correlation matrix among all variables in the data frame. This requires, however, that the data is stored in a “wide” format. Reactivate the old, wide <code>financial</code> data set and use it inside <code>cor()</code>. Before that select the variables you are interest in. Again, don’t forget about the <code>NA</code>s - there is an argument for <code>cor()</code> to deal with them. How closely are the stock indices related and which ones are most closely related?</p></li>
 <li><p>Evaluate the stability of the relationships between financial markets by calculating pair-wise correlations for each year using <code>group_by</code> and <code>summarise()</code>. Note that here you have to specify each pairwise correlation separately inside <code>summarise()</code>.</p></li>
@@ -371,6 +456,7 @@ financial_long &lt;- financial %&gt;%
 </div>
 <div id="resources" class="section level2">
 <h2>Resources</h2>
+<p>Here are some articles relevant to the current case-study:</p>
 <ul>
 <li><p><a href="https://www.weforum.org/agenda/2015/07/whats-the-relationship-between-stock-returns-and-exchange-rates/">weforum.org “What’s the relationship between stock returns and exchange rates?”</a></p></li>
 <li><p><a href="http://www.faz.net/aktuell/finanzen/aktien/eine-geschichte-des-dax-die-wichtigsten-ereignisse-12970011.html">faz.net</a></p></li>

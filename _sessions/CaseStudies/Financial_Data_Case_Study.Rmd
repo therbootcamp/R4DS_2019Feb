@@ -1,7 +1,6 @@
 ---
-title: "Case study: Clinical"
-author: "
-<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
+title: "Case study: Financial"
+author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
       <font style='font-style:normal'>R for Data Science</font><br>
@@ -24,8 +23,7 @@ author: "
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
       <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
     </td>
-  </tr>
-</table>"
+  </tr></table>"
 output:
   html_document:
     css: practical.css
@@ -58,7 +56,7 @@ library(tidyverse)
 
 ## Overview
 
-In this case study, you will analyse historic data of three major stock indices, the **Dow Jones**, the **DAX**, and the **Nikkei**, and the exchange rates between the **US dollar**, the **Euro**, and the **Yen**. Using this data, you will address several questions. 
+In this case study, you will analyse historic data of three major stock indices, the **Dow Jones**, the **DAX**, and the **Nikkei**, in relation to the exchange rates between the **US dollar**, the **Euro**, and the **Yen**. Using this data, you will address several questions. 
 
 1. How large was the impact of the recent financial crisis on the respective stock markets? 
 2. How correlated is the development between the stock markets? 
@@ -87,7 +85,7 @@ library(tidyverse)
 
 ### B - Data
 
-1. In this practical, you will load three external data sets `\^DJI.csv`, `\^GDAXI.csv`, and `\^N225.csv`. However, two of these data files are not yet tidy. Specifically, `\^GDAXI.csv` and `\^N225.csv` include a specific character string to represent missings in the data and is not identify by R as such. To identify the `NA`-character string in the data open one of them in a text viewer, (via RStudio or via, e.g., *textedit*). Do you see the string value that indicates missing data? 
+1. In this practical, you will load three external data sets `\^DJI.csv`, `\^GDAXI.csv`, and `\^N225.csv`. Unfortunately, two of these data files are not yet tidy. Specifically, `\^GDAXI.csv` and `\^N225.csv` include a specific character string to represent missings in the data and is not identify by R as such. To identify the `NA`-character string in the data open one of them in a text viewer, (via RStudio or a word processor such as *textedit*). Do you see the string value that indicates missing data? 
 
 2. Once you have identified the character string for missing data, us the `read_csv()` function to load in the stock index data sets, "\^DJI.csv", "\^GDAXI.csv", and "\^N225.csv", from your `1_Data` folder. In so doing, set an explicit `na`-argument to account for the fact that "\^GDAXI.csv" "\^N225.csv" use a specific character string to represent missings in the data.  
 
@@ -105,7 +103,21 @@ dax <- read_csv(file = '1_Data/^GDAXI.csv', na = 'null')
 nik <- read_csv(file = '1_Data/^N225.csv', na = 'null')
 ```
 
-3. Load in the exchange rate data sets, `euro-dollar.txt` and `yen-dollar.txt`, from the `1_Data` folder as two new objects called `eur_usd` and `yen_usd`. To do this, use the `read_delim()`-function and `\t` as the `delim`-argument, telling R that the data is tab-delimited. 
+3. Look at each dataset using the `View()` function, were the data loaded correctly and are the missing values represented appropriately?
+
+4. Load in the exchange rate data sets, `euro-dollar.txt` and `yen-dollar.txt`, from the `1_Data` folder as two new objects called `eur_usd` and `yen_usd`. To do this, use the `read_delim()`-function and `\t` as the `delim`-argument, telling R that the data is tab-delimited. 
+
+
+```{r, echo = TRUE, eval = FALSE}
+# Load data
+eur_usd <- read_delim(file = 'XX/XX', 
+                      delim = 'XX')
+
+yen_usd <- read_delim(file = 'XX/XX', 
+                      delim = 'XX')
+``` 
+
+
 
 ```{r}
 # Load exchange rate data from local data folder 
@@ -113,7 +125,7 @@ eur_usd <- read_delim(file = '1_Data/euro-dollar.txt', delim = '\t')
 yen_usd <- read_delim(file = '1_Data/yen-dollar.txt', delim = '\t')
 ```
 
-4. Print the `eur_usd` and `yen_usd` objects. Are all the data types and variable names correct? Not quite, right?
+5. Print the `eur_usd` and `yen_usd` objects. Are all the data types and variable names correct? Not quite, right?
 
 ```{r}
 # print exchange rate data sets
@@ -121,7 +133,19 @@ eur_usd
 yen_usd
 ```
 
-5. To fix the data, first load the data again and use the `col_names`-argument to explicitly assign the column names to be `Date` and `Rate`. This will prevent R to take names from the first row of the data.
+5. To fix the data sp that they have appropriate variable names, load the data again and use the `col_names`-argument to explicitly assign the column names to be `Date` and `Rate`. This will prevent R to take names from the first row of the data.
+
+```{r, echo = TRUE, eval = FALSE}
+# Load data again, but specifying the column names explicitly
+eur_usd <- read_delim(file = 'XX/XX', 
+                      delim = 'XX',
+                      col_names = c('XX', 'XXX'))
+
+yen_usd <- read_delim(file = 'XX/XX', 
+                      delim = 'XX',
+                      col_names = c('XX', 'XX'))
+``` 
+
 
 ```{r}
 # load data specifying col_names
@@ -134,8 +158,10 @@ yen_usd <- read_delim(file = '1_Data/yen-dollar.txt',
                       col_names = c('Date', 'Rate'))
 ``` 
 
+6. Print your `eur_usd` and `yen_usd` objects. Do they look ok? Do you now see the column names you specified?
 
-6. Now, change the variable `Date` to type `date`. Fix this using the `parse_date()` function with `format = '%d %b %Y'`. This specifies the exact format the dates are formatted in. Overwrite the existing `Date`-variable.
+7. Look closely at the print out of your objects: what class is your `Date` column represented as?
+
 
 ```{r, echo = TRUE}
 # change Date to date type in both datasets
@@ -146,12 +172,11 @@ yen_usd <- yen_usd %>%
   mutate(Date = parse_date(Date, format = '%d %b %Y'))
 ```
 
-
-7. Now you should have tidier data! Go ahead an explore the data a bit. What data do they contain? Consider using `summary` or `skimr::skim()`.
+8. Print your `eur_usd` and `yen_usd` objects again, how do they look? Do they have the correct names and column classes?
 
 ### C - Wrangling
 
-1. Before we can begin the analysis of the data, we to join the individual data frames into a single data frame called `financial_data` that contains only the dates variable (`Date`), the stock index (unadjusted) closing prices (`Close`), as well as the exchange rates. Begin by joining `dow` and `dax` using `inner_join()`, selecting only the `Date` and `Close` variables of each data frame. See code below.
+1. Before we can begin the analysis of the data, we to join the individual data frames into a single data frame called `financial_data` that contains only the dates variable (`Date`), the stock index (unadjusted) closing prices (`Close`), as well as the exchange rates. Begin by joining `dow` and `dax` using `inner_join()`, selecting only the `Date` and `Close` variables of each data frame. See the code below to help you do this.
 
 ```{r, echo = TRUE}
 # create single data frame
@@ -161,7 +186,7 @@ financial <- dow %>%
 financial
 ```
 
-2. Inspect the data! What has R done with the names of the two `Close` variables? Run the code again, this time using the `suffix`-argument to give both variables suffixes preserve the origin of these variables, e.g., `suffix = c(_dow','_dax')`.  
+2. Inspect the data! What has R done with the names of the two `Close` variables? Run the code again, this time using the `suffix`-argument to give both variables suffixes preserve the origin of these variables, e.g., `suffix = c(_dow','_dax')`. 
 
 ```{r, echo = TRUE}
 # create single data frame
@@ -170,11 +195,12 @@ financial <- dow %>%
   inner_join(dax %>% select(Date, Close),
             by = 'Date',
              suffix = c('_dow','_dax'))
+
+# Print the result
 financial
 ```
 
-3. Looks better now? OK, now that you know how to join two data sets repeat the steps until all five data sets are included in `financial`. Remember, we only want the dates variable (`Date`), the stock index (unadjusted) closing prices (`Close`). Note if you have trouble fixing all variables names using the `suffix`-argument you can also take of this at the end using `rename()`.
-
+3. Ok the data should look better now! Now that you know how to join two data sets, repeat the steps until all five data sets are included in `financial`. Remember, we only want the dates variable (`Date`), the stock index (unadjusted) closing prices (`Close`). Note if you have trouble fixing all variables names using the `suffix`-argument you can also take of this at the end using `rename()`.
 
 ```{r}
 financial <- financial %>%
@@ -183,7 +209,6 @@ financial <- financial %>%
   inner_join(yen_usd, by = 'Date', suffix = c('_eur', '_yen')) %>%
   rename(Close_nik = Close)
 ```
-
 
 4. Alright, now let's create `change` variables that show how the exchange rates and stock indices have moved. Use the `mutate`- and the `diff()`-function. The `diff` computes the differences between every adjacent pair of entries in a vector. As this results in one fewer differences than there values in the vector add an `NA` at the first position of the change variable à la `c(NA, diff(my_variable))`. 
 
@@ -197,7 +222,6 @@ financial <- financial %>%
   Rate_eur_change = c(NA, diff(Rate_eur)),
   Rate_yen_change = c(NA, diff(Rate_yen))
 )
-
 ```
 
 5. We will be mainly interested in how stock prices and exchange rates change over the course of a year. To create a variable that codes the year `mutate()` and `lubridate::year(Date)`, which will extract from `Date` the year information.
@@ -232,7 +256,7 @@ financial_long <- financial %>%
 financial_long
 ```
 
-7. Now your data is tidy proper (at least with regard to the analyses required here)! Go ahead an explore the data a bit. What data do they contain? Consider using `summary` or `skimr::skim()`.
+7. Now your data is tidy proper (at least with regard to the analyses required here)! Go ahead an explore the data a bit by printing it and/or using `View()`
 
 
 ### D - Analysing and Plotting
@@ -247,7 +271,7 @@ ggplot(mapping = aes(x = Date, y = value)) +
   geom_line()
 ```
 
-2. Looked like the values of the three stock indices were somehow overlayering each other. Use `+ facet_grid(~variable)` to teas them apart. Also give it a slightly nicer appearance using `+ theme_light()` What does the plot tell you? Has there been a particular drop in any year?
+2. It looks like the values of the three stock indices were somehow overlayering each other. Use `+ facet_grid(~variable)` to show them in different plotting facets. Also give it a slightly nicer appearance using `+ theme_light()` What does the plot tell you? Has there been a particular drop in any year?
 
 ```{r}
 # create long version of data frame
@@ -272,7 +296,6 @@ aggregate_change <- financial %>%
     mean_nik_change = sum(Close_nik_change, na.rm = TRUE)
 )
 aggregate_change
-
 ```
 
 4. The results up to now suggest that modern financial markets are closely intertwined, to the extent that a change in one market can bring about a change in the markets. Evaluate this aspect of financial markets by calculating all correlations between the three stock index change variables using the `cor()`-function. `cor()` can take a data frame as an argument to produce the full correlation matrix among all variables in the data frame. This requires, however, that the data is stored in a "wide" format. Reactivate the old, wide `financial` data set and use it inside `cor()`. Before that select the variables you are interest in. Again, don't forget about the `NA`s - there is an argument for `cor()` to deal with them. How closely are the stock indices related and which ones are most closely related?  
@@ -364,6 +387,8 @@ financial %>%
 |`haven`|`install.packages("haven")`|
 
 ## Resources
+
+Here are some articles relevant to the current case-study:
 
 - [weforum.org "What's the relationship between stock returns and exchange rates?"](https://www.weforum.org/agenda/2015/07/whats-the-relationship-between-stock-returns-and-exchange-rates/)
 

@@ -1,7 +1,6 @@
 ---
 title: "Case study: Clinical"
-author: "
-<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
+author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
       <font style='font-style:normal'>R for Data Science</font><br>
@@ -24,8 +23,7 @@ author: "
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
       <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
     </td>
-  </tr>
-</table>"
+  </tr></table>"
 output:
   html_document:
     css: practical.css
@@ -146,7 +144,7 @@ In addition to exploring the effects of the three medications, the researchers a
 
 1. Open your `BaselRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`.
 
-2. Open a new R script and save it as a new file in your `R` folder called `dimarta_casestudy.R`. At the top of the script, using comments, write your name and the date. Then, load the `tidyverse` package. Here's how the top of your script should look:
+2. Open a new R script and save it as a new file in your `R` folder called `dimarta_casestudy.R`. At the top of the script, using comments, write your name and the date. Then, load the `tidyverse` and `broom` packages. Here's how the top of your script should look:
 
 ```{r, echo = TRUE}
 ## My Name
@@ -154,11 +152,12 @@ In addition to exploring the effects of the three medications, the researchers a
 ## Dimarta - Case Study
 
 library(tidyverse)
+library(broom)
 ```
 
 ### B - Data I/O
 
-2. Using `read_csv()`, load the `dimarta_trial.csv`, `dimarta_demographics.csv`, and `dimarta_biomarker.csv` datasets as *three* new objects called `trial_df`, `demographics_df`, and `biomarker_df`.
+1. Using `read_csv()`, load the `dimarta_trial.csv`, `dimarta_demographics.csv`, and `dimarta_biomarker.csv` datasets as *three* new objects called `trial_df`, `demographics_df`, and `biomarker_df`.
 
 ```{r, echo = FALSE, eval = FALSE}
 ## read in datasets
@@ -175,14 +174,15 @@ demographics_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_demographics.c
 biomarker_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_biomarker.csv")
 ```
 
-
-3. Get a first impression of the objects you just created by exploring them with a mixture of the `View()`, `head()`, `names()`, and `summary()` functions. Were they all loaded correctly?
+2. Get a first impression of the objects you just created by exploring them with a mixture of the `View()`, `head()`, `names()`, and `summary()` functions. Were they all loaded correctly?
 
 ```{r}
 trial_df
 demographics_df
 biomarker_df
 ```
+
+3. Look at the variable descriptions in the *Datasets* tab above to understand what each of the variables mean.
 
 ### C - Data Wrangling
 
