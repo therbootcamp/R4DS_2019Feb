@@ -67,5 +67,5 @@ output:
 
 
 <p align="left"><br>
-    <img border="0" alt="Feb2019Schedule" src="https://dwulff.github.io/R4DS_2019Feb/_sessions/Welcome/image/schedule.png" style="width:510px">
+    <img border="0" alt="Feb2019Schedule" src="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Welcome/image/schedule.png" style="width:410px">
 </p>
