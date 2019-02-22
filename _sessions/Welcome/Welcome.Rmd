@@ -152,7 +152,8 @@ We have an <high>ambitious schedule</high>!
 
 .pull-right4[
 
-<img src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/schedule_2018Oct_Intro2DS.png?raw=true" height="550" align="center">
+<img src="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Welcome/image/schedule.png" height="550" align="center">
+
 
 ]
 
@@ -380,7 +381,7 @@ At any time, you can <high>request a 15 minute 1-1 intensive</high> coaching ses
 
 .pull-right6[
 
-<img src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/schedule_2018Oct_Intro2DS.png?raw=true" height="580" align="center">
+<img src="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Welcome/image/schedule.png" height="580" align="center">
 
 
 ]

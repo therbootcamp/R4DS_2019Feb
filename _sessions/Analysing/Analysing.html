@@ -56,7 +56,7 @@ layout: true
 Group data by certain variables
 
 - For all males (`sex == "male"`)
-- For all people in placebo conditoin (`condition == "placebo"`)
+- For all people in placebo condition (`condition == "placebo"`)
 
 &lt;font size = 5&gt;&lt;high&gt;Calculate summaries&lt;/high&gt;&lt;/font&gt;
 
@@ -316,12 +316,12 @@ baselers %&gt;%
 ## # A tibble: 6 x 4
 ##   confession               N age_mean income_median
 ##   &lt;chr&gt;                &lt;int&gt;    &lt;dbl&gt;         &lt;dbl&gt;
-## 1 catholic              1401     44.0          7100
-## 2 confessionless        1125     43.8          7100
-## 3 evangelical-reformed   925     43.9          7200
-## 4 muslim                 155     41.5          6800
-## 5 other                  247     44.0          6900
-## 6 &lt;NA&gt;                   703     43.5          7000
+## 1 &lt;NA&gt;                   703     43.5          7000
+## 2 catholic              1401     44.0          7100
+## 3 confessionless        1125     43.8          7100
+## 4 evangelical-reformed   925     43.9          7200
+## 5 muslim                 155     41.5          6800
+## 6 other                  247     44.0          6900
 ```
 
 ]
@@ -466,7 +466,7 @@ How do I calculate the following table?
 
 ```
 ## # A tibble: 4 x 5
-## # Groups:   fasnacht [?]
+## # Groups:   fasnacht [2]
 ##   fasnacht sex        N age_mean income_mean
 ##   &lt;chr&gt;    &lt;chr&gt;  &lt;int&gt;    &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 no       female  4886     45.4       7646.
@@ -526,7 +526,7 @@ baselers %&gt;%
 
 ```
 ## # A tibble: 4 x 5
-## # Groups:   fasnacht [?]
+## # Groups:   fasnacht [2]
 ##   fasnacht sex        N age_mean income_mean
 ##   &lt;chr&gt;    &lt;chr&gt;  &lt;int&gt;    &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 no       female  4886     45.4       7646.
@@ -575,7 +575,7 @@ How do I calculate the following table?
 
 ```
 ## # A tibble: 2 x 5
-## # Groups:   fasnacht [?]
+## # Groups:   fasnacht [2]
 ##   fasnacht sex       N age_mean income_mean
 ##   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;    &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 no       male   4820     43.8       7407.
@@ -634,7 +634,7 @@ baselers %&gt;%
 
 ```
 ## # A tibble: 2 x 5
-## # Groups:   fasnacht [?]
+## # Groups:   fasnacht [2]
 ##   fasnacht sex       N age_mean income_mean
 ##   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;    &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 no       male   4820     43.8       7407.
@@ -994,9 +994,11 @@ library(broom)
 
 &lt;br&gt;&lt;br&gt;
 
+`my_glm` is a long list with many kinds of outputs and an ugly printout
+
 
 ```r
-# Original printout
+# Print (raw glm)
 my_glm
 ```
 
@@ -1014,11 +1016,50 @@ my_glm
 ## Residual Deviance: 1.28e+10 	AIC: 145000
 ```
 
+```r
+# Class (raw glm)
+class(my_glm)
+```
+
+```
+## [1] "glm" "lm"
+```
+
+
+]
+
+
+---
+
+.pull-left4[
+
+# `tidy()`
+
+The `tidy()` function from the `broom` package &lt;high&gt;converts&lt;/high&gt; the most important results of many statistical object like "glm" to a &lt;high&gt;data frame&lt;/high&gt;.
+
+
+```r
+# install and load broom
+install.packages('broom')
+library(broom)
+```
+
+&lt;p align="center"&gt;
+  &lt;img src="https://raw.githubusercontent.com/therbootcamp/Erfurt_2018June/master/_sessions/_image/broom_hex.png" height="200px" vspace="10"&gt;
+&lt;/p&gt;
+
+
+]
+
+.pull-right55[
+
+&lt;br&gt;&lt;br&gt;
+
 
 
 
 ```r
-# Tidy printout
+# Print (tidy glm)
 tidy(my_glm)
 ```
 
@@ -1029,6 +1070,15 @@ tidy(my_glm)
 ## 1 (Intercept)    1575.    94.4       16.7  1.33e-61
 ## 2 happiness      -100.    12.5       -8.02 1.18e-15
 ## 3 age             149.     0.815    183.   0.
+```
+
+```r
+# Class (tidy glm)
+class(tidy(my_glm))
+```
+
+```
+## [1] "tbl_df"     "tbl"        "data.frame"
 ```
 
 ]
@@ -1056,23 +1106,12 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   d.head.appendChild(s);
 })();</script>
 
-<script>
-(function() {
-  var i, text, code, codes = document.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
-          /^\$\$(.|\s)+\$\$$/.test(text) ||
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
-    }
-    i++;
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
   }
-})();
+});
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
