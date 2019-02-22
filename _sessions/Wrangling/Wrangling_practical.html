@@ -209,7 +209,7 @@ $(document).ready(function () {
 <h1></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>In this practical you’ll practice “data wrangling” with the <code>dplyr</code> and <code>tidyr</code> packages (part of the `tidyverse collection of packages).</p>
+<p>In this practical you’ll practice “data wrangling” with the <code>dplyr</code> and <code>tidyr</code> packages (part of the <code>tidyverse</code> collection of packages).</p>
 <p>By the end of this practical you will know how to:</p>
 <ol style="list-style-type: decimal">
 <li>Change column names, select specific columns</li>
@@ -227,20 +227,27 @@ $(document).ready(function () {
 <li><p>Open your <code>BaselRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder</p></li>
 <li><p>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>wrangling_practical.R</code> in the <code>2_Code</code> folder.</p></li>
 <li><p>Using <code>library()</code> load the set of packages for this practical listed in the packages section above.</p></li>
-<li><p>For this practical, we’ll use the <code>trial_act</code> data, this is the result of a randomized clinical trial comparing the effects of different medications on adults infected with the human immunodeficiency virus (You can learn more about the trial <a href="https://www.nejm.org/doi/full/10.1056/NEJM199610103351501">here</a>). Using the following template, load the data into R and store it as a new object called <code>trial_act</code>.</p></li>
 </ol>
-<pre class="r"><code># Load trial_act.csv from the data folder in your working directory
+<p>For this practical, we’ll use the <code>trial_act</code> data, this is the result of a randomized clinical trial comparing the effects of different medications on adults infected with the human immunodeficiency virus (You can learn more about the trial <a href="https://www.nejm.org/doi/full/10.1056/NEJM199610103351501">here</a>).</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Using the following template, load the <code>trial_act.csv</code> data into R and store it as a new object called <code>trial_act</code> (Hint: Don’t type the path directly! Use the “tab” completion!).</li>
+</ol>
+<pre class="r"><code># Load trial_act.csv from the data folder in your working directory as a new
+#  object called trial_act
 
-trial_act &lt;- read_csv(file = &quot;XX&quot;)</code></pre>
+trial_act &lt;- read_csv(file = &quot;XX/XX&quot;)</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Using the same code structure, load the <code>trial_act_demo_fake.csv</code> data as a new dataframe called <code>trial_act_demo</code></p></li>
+<li><p>Using the same code structure, load the <code>trial_act_demo_fake.csv</code> data as a new dataframe called <code>trial_act_demo</code>.</p></li>
 <li><p>Take a look at the first few rows of the datasets by printing them to the console.</p></li>
 </ol>
 <pre class="r"><code># Print trial_act object
 trial_act</code></pre>
 <ol start="7" style="list-style-type: decimal">
-<li>Use the the <code>summary()</code> function to print more details on the columns of the datasets.</li>
+<li><p>Use the the <code>summary()</code> function to print more details on the columns of the datasets.</p></li>
+<li><p>Use the <code>View()</code> function to view the entire dataframes in new windows</p></li>
 </ol>
+<pre class="r"><code>View(trial_act)
+View(trial_act_demo)</code></pre>
 </div>
 <div id="b---change-column-names-with-rename" class="section level3">
 <h3>B - Change column names with rename()</h3>
@@ -249,15 +256,15 @@ trial_act</code></pre>
 </ol>
 <pre class="r"><code>names(XXX)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Using <code>rename()</code>, change the column name <code>wtkg</code> in the <code>trial_act</code> dataframe to <code>weight_kg</code>. Be sure to assign the result back to <code>trial_act</code> to change it!</li>
+<li>One of the columns is currently called <code>wtkg</code>. Using <code>rename()</code>, change the name of this column to <code>weight_kg</code>. Be sure to assign the result back to <code>trial_act</code> to change it!</li>
 </ol>
 <pre class="r"><code># Change the name to weight_kg from wtkg
 
 trial_act &lt;- trial_act %&gt;%
   rename(XX = XX)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Look at the names of your <code>trial_act</code> dataframe again, do you now see the column <code>weight_kg</code>?</p></li>
-<li><p>Change the column name <code>age</code> to <code>age_y</code> (to specify that age is in years).</p></li>
+<li><p>Look at the names of your <code>trial_act</code> dataframe again using <code>names()</code>, do you now see the column <code>weight_kg</code>?</p></li>
+<li><p>One of the columns is called <code>age</code>, change it to <code>age_y</code> (to specify that age is in years).</p></li>
 </ol>
 </div>
 <div id="c---select-columns-with-select" class="section level3">
@@ -269,18 +276,20 @@ trial_act &lt;- trial_act %&gt;%
   select(XXX)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Using <code>select()</code> select the columns <code>pidnum</code>, <code>age_y</code>, <code>gender</code>, and <code>weight_kg</code> (but don’t assign the result to anything)</p></li>
-<li><p>Now it’s time to create a new dataframe! Select the columns <code>pidnum</code>, <code>arms</code>, <code>cd40</code>, <code>cd420</code>, and <code>cd496</code> <em>and</em> assign the result to a new object called <code>CD4_wide</code>. The <code>cd40</code>, <code>cd420</code>, and <code>cd496</code> columns show patient’s CD4 T cell counts at baseline, 20 weeks, and 96 weeks. After you create <code>CD4_wide</code>, print it to make sure it worked!</p></li>
+<li><p>Imagine that a colleague of yours wants an anonymised dataframe called <code>trial_act_anon_</code> that does <em>not</em> contain the columns <code>pidnum</code> and <code>age</code>. Create this dataframe by selecting all columns in <code>trial_act</code> <em>except</em> <code>pidnum</code> and <code>age</code> (hint: use the notation <code>select(-XXX, -XXX))</code> to select everything <em>except</em> specified columns). Assign the result to a new object called <code>trial_act_anon</code></p></li>
+</ol>
+<pre class="r"><code>XX &lt;- XX %&gt;%
+  select(-XX, -XX)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Create a new dataframe called <code>CD4_wide</code> which contains the following columns: <code>pidnum</code>, <code>arms</code>, <code>cd40</code>, <code>cd420</code>, and <code>cd496</code>. The <code>cd40</code>, <code>cd420</code>, and <code>cd496</code> columns show patient’s CD4 T cell counts at baseline, 20 weeks, and 96 weeks. After you create <code>CD4_wide</code>, print it to make sure it worked!</li>
 </ol>
 <pre class="r"><code>XX &lt;- trial_act %&gt;% 
   select(XX, XX, XX, XX, ...)</code></pre>
-<ol start="4" style="list-style-type: decimal">
+<ol start="5" style="list-style-type: decimal">
 <li>Did you know you can easily select all columns that start with specific characters using <code>starts_with()</code>? Try adapting the following code to get the same result you got before.</li>
 </ol>
 <pre class="r"><code>CD4_wide &lt;- trial_act %&gt;% 
   select(pidnum, arms, starts_with(&quot;XXX&quot;))</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li>A colleague wants an anonymised dataframe that does <em>not</em> contain the columns <code>pidnum</code> and <code>age</code>. Create this dataframe by selecting all columns <em>except</em> <code>pidnum</code> and <code>age</code> (hint: use the notation <code>select(-XXX, -XXX))</code> to select everything <em>except</em> specified columns</li>
-</ol>
 </div>
 <div id="d---add-new-columns-with-mutate" class="section level3">
 <h3>D - Add new columns with mutate()</h3>
@@ -304,7 +313,7 @@ trial_act &lt;- trial_act %&gt;%
 <ol start="3" style="list-style-type: decimal">
 <li>If you look at the <code>gender</code> column, you will see that it is numeric (0s and 1s). Using the <code>mutate()</code> and <code>case_when()</code> functions, create a new column called <code>gender_char</code> which shows the gender as a string, where 0 = “female” and 1 = “male”:</li>
 </ol>
-<pre class="r"><code># Create gender_char which shows gender as a stringh
+<pre class="r"><code># Create gender_char which shows gender as a string
 trial_act &lt;- trial_act %&gt;%
   mutate(
   gender_char = case_when(
@@ -360,8 +369,12 @@ trial_act &lt;- trial_act %&gt;%
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;% 
  arrange(XXX)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Now arrange the data in <em>descending</em> order of <code>age_y</code> (from highest to lowest). After, look the data to make sure it worked. To arrange data in descending order, just include <code>desc()</code> around the variable. E.g.; <code>data %&gt;% arrrange(desc(height))</code></p></li>
-<li><p>You can sort the rows of dataframes with multiple columns by including many arguments to <code>arrange()</code>. Now sort the data by arms (<code>arms</code>) and then age_y (<code>age_y</code>). Print the result to make sure it looks right!</p></li>
+<li>Now arrange the data in <em>descending</em> order of <code>age_y</code> (from highest to lowest). After, look the data to make sure it worked. To arrange data in descending order, just include <code>desc()</code> around the variable</li>
+</ol>
+<pre class="r"><code>trial_act &lt;- trial_act %&gt;% 
+ arrange(desc(XXX))</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>You can sort the rows of dataframes with multiple columns by including many arguments to <code>arrange()</code>. Now sort the data by arms (<code>arms</code>) and then age_y (<code>age_y</code>). Print the result to make sure it looks right!</li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;% 
  arrange(XXX, XXX)</code></pre>
@@ -369,16 +382,16 @@ trial_act &lt;- trial_act %&gt;%
 <div id="f---filter-specific-rows-with-filter" class="section level3">
 <h3>F - Filter specific rows with <code>filter()</code></h3>
 <ol style="list-style-type: decimal">
-<li>Using the <code>filter()</code> function, filter only the rows from males (Hint: <code>gender_char == &quot;male&quot;</code>)</li>
+<li>Using the <code>filter()</code> function, filter only the rows from males but don’t save the result (Hint: <code>gender_char == &quot;male&quot;</code>)</li>
 </ol>
 <pre class="r"><code>trial_act %&gt;%
   filter(XXX == &quot;XXX&quot;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Create a new dataframe called <code>trial_act_male</code> that only contains rows from males (hint: just assign what you did in the previous question to a new object!). After you create <code>trial_act_male</code>, print it to make sure it only contains data from males!</p></li>
-<li><p>Filter only rows for patients under the age of 60.</p></li>
-<li><p>A colleague of yours named Tracy wants a datafame only containing data from females over the age of 40. Create this dataframe with <code>filter()</code> and call it <code>trial_act_Tracy</code>. After you create the dataframe, print it to make sure it looks correct!</p></li>
+<li><p>Create a new dataframe called <code>trial_act_male</code> that only contains rows from males (hint: just assign what you did in the previous question to a new object!). After you create the object, print it to make sure it looks right.</p></li>
+<li><p>Filter only rows for patients under the age of 60 and save the result to <code>trial_act_young</code>. After you create it, print the object to make sure it looks right.</p></li>
+<li><p>A colleague of yours named Tracy wants a dataframe only containing data from females over the age of 40. Create this dataframe with <code>filter()</code> and call it <code>trial_act_tracy</code>. After you create the object, print it to make sure it looks right.</p></li>
 </ol>
-<pre class="r"><code>trial_act_Tracy &lt;- XXX %&gt;%
+<pre class="r"><code>trial_act_tracy &lt;- XXX %&gt;%
   filter(XXX &gt; XXX &amp; XXX == XXX)</code></pre>
 </div>
 <div id="g---combine-dataframes-with-left_join" class="section level3">
@@ -439,7 +452,7 @@ CD4_long</code></pre>
          -pidnum, -arms)  # Names of columns to replicate</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Print your <code>CD4_long</code> dataframe! Do you now see that each row is a specific observation for a patient?</p></li>
-<li><p>Now use the <code>spread()</code> function to convert the long data bring the data <em>back</em> into the wide format! To do this, make the first argument <code>time</code>, and the second argument <code>value</code></p></li>
+<li><p>Now use the <code>spread()</code> function to convert the long data bring the data <em>back</em> into the wide format! To do this, make the first argument <code>time</code>, and the second argument <code>value</code> (you don’t need to save the object)</p></li>
 </ol>
 <pre class="r"><code>CD4_long %&gt;%
   spread(XX,   # Grouping column
@@ -451,8 +464,8 @@ CD4_long</code></pre>
 <li>Create a new dataframe called <code>trial_A</code> from <code>trial_act</code> with the following restrictions:</li>
 </ol>
 <ul>
-<li>Only patients who take intraveneous drugs (<code>drugs == 1</code>)</li>
-<li>Only patients younger than 60</li>
+<li>Only patients who take intravenous drugs (<code>drugs == 1</code>) <em>and</em>…</li>
+<li>Only patients younger than 60 <em>and</em>…</li>
 <li>Only patients whose baseline CD4 T cell counts <code>cd40</code> were greater than 250 <em>and</em> less than 400.</li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
