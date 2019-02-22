@@ -226,9 +226,9 @@ We have an <high>ambitious schedule</high>!
 .pull-right5[
 <br>
 
-  <iframe src="https://therbootcamp.github.io/Intro2DataScience_2018Oct/_sessions/Data/Data_practical.html" height="480px" width = "500px"></iframe>
+  <iframe src="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Data/Data_practical.html" height="480px" width = "500px"></iframe>
 
-  Example practical:<a href="https://therbootcamp.github.io/Intro2DataScience_2018Oct/_sessions/Data/Data_practical.html"> Data </a>
+  Example practical:<a href="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/Data/Data_practical.html"> Data </a>
 
 ]
 
@@ -372,7 +372,7 @@ At any time, you can <high>request a 15 minute 1-1 intensive</high> coaching ses
 
 <p align="center">
   <font size=8><hfont><high>Questions?</high></hfont></font><br>
-  <font size = 4><a href = "https://therbootcamp.github.io/Intro2DataScience_2018Oct/">Link to schedule</a></font>
+  <font size = 4><a href = "https://therbootcamp.github.io/R4DS_2019Feb/">Link to schedule</a></font>
 </p>
 
 ]
