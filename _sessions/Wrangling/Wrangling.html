@@ -1283,7 +1283,7 @@ baselers %&gt;%
 ```
 ## # A tibble: 5 x 4
 ##      id sex      age height
-##   &lt;int&gt; &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     1 male      44   174.
 ## 2     2 male      65   180.
 ## 3     3 female    31   168.
@@ -1303,7 +1303,7 @@ How do I calculate the following table of the top 5 tallest Baselers?
 ```
 ## # A tibble: 5 x 3
 ##      id height sex  
-##   &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
 ## 1  9676   219. male 
 ## 2  5623   213. male 
 ## 3  7214   213. male 
@@ -1333,7 +1333,7 @@ baselers %&gt;%
 ```
 ## # A tibble: 5 x 4
 ##      id sex      age height
-##   &lt;int&gt; &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     1 male      44   174.
 ## 2     2 male      65   180.
 ## 3     3 female    31   168.
@@ -1360,7 +1360,7 @@ baselers %&gt;%
 ```
 ## # A tibble: 5 x 3
 ##      id height sex  
-##   &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
 ## 1  9676   219. male 
 ## 2  5623   213. male 
 ## 3  7214   213. male 
@@ -1391,7 +1391,7 @@ baselers %&gt;%
 ```
 ## # A tibble: 5 x 4
 ##      id sex      age height
-##   &lt;int&gt; &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     1 male      44   174.
 ## 2     2 male      65   180.
 ## 3     3 female    31   168.
@@ -1411,7 +1411,7 @@ How do I calculate the following table of the top 5 tallest *female* Baselers?
 ```
 ## # A tibble: 5 x 3
 ##      id height sex   
-##   &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt; 
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
 ## 1  6936   198. female
 ## 2  8450   196. female
 ## 3   385   196. female
@@ -1439,7 +1439,7 @@ baselers %&gt;%
 ```
 ## # A tibble: 5 x 4
 ##      id sex      age height
-##   &lt;int&gt; &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     1 male      44   174.
 ## 2     2 male      65   180.
 ## 3     3 female    31   168.
@@ -1467,7 +1467,7 @@ baselers %&gt;%
 ```
 ## # A tibble: 5 x 3
 ##      id height sex   
-##   &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt; 
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
 ## 1  6936   198. female
 ## 2  8450   196. female
 ## 3   385   196. female
@@ -1634,23 +1634,12 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   d.head.appendChild(s);
 })();</script>
 
-<script>
-(function() {
-  var i, text, code, codes = document.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
-          /^\$\$(.|\s)+\$\$$/.test(text) ||
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
-    }
-    i++;
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
   }
-})();
+});
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
