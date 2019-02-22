@@ -60,8 +60,7 @@ In this practical, you'll practice grouping and analysing data with the `dplyr` 
 By the end of this practical you will know how to:
 
 1. Group data and calculate summary statistics
-2. Run simple statistical analyses.
-
+2. Run statistical analyses with the generalised linear model.
 
 ## Tasks
 
@@ -74,24 +73,27 @@ By the end of this practical you will know how to:
 ```
 
 2. Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called `analysing_practical.R` in the `2_Code` folder.  
-3. Using `library()` load the set of packages for this practical listed in the packages section above.
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, eval = TRUE}
+3. Using `library()` load the packages `tidyverse` and `broom` which you'll use in this practical
+
+```{r, message = FALSE, warning = FALSE, echo = TRUE, eval = TRUE}
 library(tidyverse)
+library(broom)
 ```
 
 3. For this practical, we'll use the `kc_house.csv` data. This dataset contains house sale prices for King County, Washington. It includes homes sold between May 2014 and May 2015. Using the following template, load the data into R and store it as a new object called `kc_house`.
 
 ```{r, echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE}
-kc_house <- read_csv(file = "XX")
+kc_house <- read_csv(file = "XX/XX")
 ```
 
-4. Using `print()`, `summary()`, and `head()`, explore the data to make sure it was loaded correctly.
+4. Using `print()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly.
 
 ```{r}
 kc_house
 summary(kc_house)
 head(kc_house)
+# View(kc_house)
 ```
 
 ### B - Recap
@@ -508,7 +510,7 @@ kc_house %>%
 
 ### X - Challenges
 
-1. Which zipcode has the highest percentage of houses on the waterfront? (Hint: group by zipcode, calculate the percentage of houses on the waterfront using `mean()`, then sort the data in descending order) with `arrange()`, then select the first row with `slice()`. Once you find it, try searching for that zipcode on Google Maps and see if it's location makes sense!
+1. Which zipcode has the highest percentage of houses on the waterfront? (Hint: group by zipcode, calculate the percentage of houses on the waterfront using `mean()`, then sort the data in descending order) with `arrange()`, then select the first row with `slice()`. Once you find it, try searching for that zipcode on Google Maps and see if its location makes sense!
 
 ```{r}
 kc_house %>%
@@ -695,6 +697,15 @@ rsq(price_glm)
 
 ## Functions
 
+### Packages
+
+|Package| Installation|Description|
+|:------|:------|:------|
+|`tidyverse`|`install.packages("tidyverse")`|A collection of packages for data science, including `dplyr`, `ggplot2` and others|
+|`broom`|`install.packages("broom")`|Provides 'tidy' outputs from statistical objects.
+
+### Functions
+
 *Wrangling*
 
 | Function| Package | Description |
@@ -712,20 +723,26 @@ rsq(price_glm)
 
 *Statistical Tests*
 
-| Function| Hypothesis Test|
-|:------|:-------------------|
-|     `t.test()`|    One and two sample t-test|
-|     `wilcox.test()`| Wilcoxon test|
-|     `cor.test()`|    Correlation test|
-|     `chisq.test`|    Chi-square tests for frequency tables|
-|     `glm()`, `lm()`|    Generalized linear model and linear model|
+| Function| Package | Hypothesis Test|
+|:------|:-------|:-------------------|
+|     `glm()`, `lm()`|`base`|    Generalized linear model and linear model|
+|     `t.test()`|`base`|    One and two sample t-test|
+|     `wilcox.test()`|`base`| Wilcoxon test|
+|     `cor.test()`|`base`|    Correlation test|
+|     `chisq.test`|`base`|    Chi-square tests for frequency tables|
+
+*Other*
+
+| Function| Package | Description|
+|:------|:-------|:-------------------|
+|     `tidy()`|`broom`| Converts statistical objects to 'tidy' dataframes of key results|
 
 
 ## Resources
 
 ### `dplyr` vignette
 
-See [https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) for the full dplyr vignette with lots of wrangling tips and tricks.
+See the full [dplyr vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) with lots of wrangling tips and tricks.
 
 ### Cheatsheets
 

@@ -212,7 +212,7 @@ $(document).ready(function () {
 <p>By the end of this practical you will know how to:</p>
 <ol style="list-style-type: decimal">
 <li>Group data and calculate summary statistics</li>
-<li>Run simple statistical analyses.</li>
+<li>Run statistical analyses with the generalised linear model.</li>
 </ol>
 </div>
 <div id="tasks" class="section level2">
@@ -221,14 +221,17 @@ $(document).ready(function () {
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
 <li><p>Open your <code>BaselRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder.</p></li>
-<li>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>analysing_practical.R</code> in the <code>2_Code</code> folder.<br />
-</li>
-<li><p>Using <code>library()</code> load the set of packages for this practical listed in the packages section above.</p></li>
-<li><p>For this practical, we’ll use the <code>kc_house.csv</code> data. This dataset contains house sale prices for King County, Washington. It includes homes sold between May 2014 and May 2015. Using the following template, load the data into R and store it as a new object called <code>kc_house</code>.</p></li>
+<li><p>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>analysing_practical.R</code> in the <code>2_Code</code> folder.</p></li>
+<li><p>Using <code>library()</code> load the packages <code>tidyverse</code> and <code>broom</code> which you’ll use in this practical</p></li>
 </ol>
-<pre class="r"><code>kc_house &lt;- read_csv(file = &quot;XX&quot;)</code></pre>
+<pre class="r"><code>library(tidyverse)
+library(broom)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>For this practical, we’ll use the <code>kc_house.csv</code> data. This dataset contains house sale prices for King County, Washington. It includes homes sold between May 2014 and May 2015. Using the following template, load the data into R and store it as a new object called <code>kc_house</code>.</li>
+</ol>
+<pre class="r"><code>kc_house &lt;- read_csv(file = &quot;XX/XX&quot;)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Using <code>print()</code>, <code>summary()</code>, and <code>head()</code>, explore the data to make sure it was loaded correctly.</li>
+<li>Using <code>print()</code>, <code>summary()</code>, <code>head()</code>, and <code>View()</code>, explore the data to make sure it was loaded correctly.</li>
 </ol>
 </div>
 <div id="b---recap" class="section level3">
@@ -426,7 +429,7 @@ kc_house</code></pre>
 <div id="x---challenges" class="section level3">
 <h3>X - Challenges</h3>
 <ol style="list-style-type: decimal">
-<li><p>Which zipcode has the highest percentage of houses on the waterfront? (Hint: group by zipcode, calculate the percentage of houses on the waterfront using <code>mean()</code>, then sort the data in descending order) with <code>arrange()</code>, then select the first row with <code>slice()</code>. Once you find it, try searching for that zipcode on Google Maps and see if it’s location makes sense!</p></li>
+<li><p>Which zipcode has the highest percentage of houses on the waterfront? (Hint: group by zipcode, calculate the percentage of houses on the waterfront using <code>mean()</code>, then sort the data in descending order) with <code>arrange()</code>, then select the first row with <code>slice()</code>. Once you find it, try searching for that zipcode on Google Maps and see if its location makes sense!</p></li>
 <li><p>Which house had the highest price to living space ratio? To answer this, create a new variable called <code>price_to_living</code> that takes <code>price / living_sqm</code>. Then, sort the data in descending order of this variable, and select the first row with <code>slice()</code>! What id value do you get?</p></li>
 <li><p>Which are the top 10 zip codes in terms of mean housing prices? To answer this, group the data by zipcode, calculate the mean price, arrange the dataset in descending order of mean price, then select the top 10 rows!</p></li>
 <li><p>Create the following dataframe <em>exactly</em> as it appears.</p></li>
@@ -629,6 +632,37 @@ rsq(price_glm)</code></pre>
 </div>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
+<div id="packages" class="section level3">
+<h3>Packages</h3>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Package</th>
+<th align="left">Installation</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>tidyverse</code></td>
+<td align="left"><code>install.packages(&quot;tidyverse&quot;)</code></td>
+<td align="left">A collection of packages for data science, including <code>dplyr</code>, <code>ggplot2</code> and others</td>
+</tr>
+<tr class="even">
+<td align="left"><code>broom</code></td>
+<td align="left"><code>install.packages(&quot;broom&quot;)</code></td>
+<td align="left">Provides ‘tidy’ outputs from statistical objects.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="functions-1" class="section level3">
+<h3>Functions</h3>
 <p><em>Wrangling</em></p>
 <table>
 <colgroup>
@@ -701,38 +735,67 @@ rsq(price_glm)</code></pre>
 <thead>
 <tr class="header">
 <th align="left">Function</th>
+<th align="left">Package</th>
 <th align="left">Hypothesis Test</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left"><code>glm()</code>, <code>lm()</code></td>
+<td align="left"><code>base</code></td>
+<td align="left">Generalized linear model and linear model</td>
+</tr>
+<tr class="even">
 <td align="left"><code>t.test()</code></td>
+<td align="left"><code>base</code></td>
 <td align="left">One and two sample t-test</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>wilcox.test()</code></td>
+<td align="left"><code>base</code></td>
 <td align="left">Wilcoxon test</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>cor.test()</code></td>
+<td align="left"><code>base</code></td>
 <td align="left">Correlation test</td>
 </tr>
-<tr class="even">
-<td align="left"><code>chisq.test</code></td>
-<td align="left">Chi-square tests for frequency tables</td>
-</tr>
 <tr class="odd">
-<td align="left"><code>glm()</code>, <code>lm()</code></td>
-<td align="left">Generalized linear model and linear model</td>
+<td align="left"><code>chisq.test</code></td>
+<td align="left"><code>base</code></td>
+<td align="left">Chi-square tests for frequency tables</td>
 </tr>
 </tbody>
 </table>
+<p><em>Other</em></p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="22%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Package</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>tidy()</code></td>
+<td align="left"><code>broom</code></td>
+<td align="left">Converts statistical objects to ‘tidy’ dataframes of key results</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="resources" class="section level2">
 <h2>Resources</h2>
 <div id="dplyr-vignette" class="section level3">
 <h3><code>dplyr</code> vignette</h3>
-<p>See <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a> for the full dplyr vignette with lots of wrangling tips and tricks.</p>
+<p>See the full <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">dplyr vignette</a> with lots of wrangling tips and tricks.</p>
 </div>
 <div id="cheatsheets" class="section level3">
 <h3>Cheatsheets</h3>

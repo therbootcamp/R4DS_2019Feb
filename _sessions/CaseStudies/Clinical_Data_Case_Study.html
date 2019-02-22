@@ -11,7 +11,7 @@
 
 
 
-<title>Case study: Clinical</title>
+<title>Clinical_Data_Case_Study.utf8</title>
 
 <script src="Clinical_Data_Case_Study_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -97,6 +97,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -104,9 +107,70 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
@@ -116,24 +180,10 @@ $(document).ready(function () {
 
 
 
-
 <div class="fluid-row" id="header">
 
 
 
-<h1 class="title toc-ignore">Case study: Clinical</h1>
-<h4 class="author"><em><table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'>
-<col width='10%'>
-<col width='10%'>
-<tr style="border:none">
-<td style="display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none" nowrap>
-<font style='font-style:normal'>R for Data Science</font><br> <a href='https://therbootcamp.github.io/R4DS_2019Feb'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>Basel R Bootcamp</font> </a>
-</td>
-<td style="width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none">
-<img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
-</td>
-</tr>
-</table></em></h4>
 
 </div>
 
@@ -145,7 +195,20 @@ $(document).ready(function () {
 <h1></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>In this case study, we will look at the results of a clinical trial exploring the effectiveness of a new medication called dimarta on reducing histamine in patients with a disease that leads to chronically high histamine levels. In the study, 300 patients were assigned to one of three different treatment arms. One arm was given a placebo. The other arm was given adiclax – the standard of care for the disease. Finally, the third arm was given dimarta. There were two main measures of interest in the trial: patient’s changes in histamine from the beginning to the end of the trial, and their change in quality of life (measured by self report).</p>
+<p>In this case study, we will look at the results of a clinical trial exploring the effectiveness of a new medication called <em>dimarta</em> from the company Aligen which seeks to reduce histamine in patients with a disease that leads to chronically high histamine levels. In the study, 300 patients were assigned to one of the following three different treatment arms:</p>
+<p><em>Treatment Arms</em></p>
+<ul>
+<li>placebo: An inert substance</li>
+<li>adiclax: The standard of care for reducing histamine</li>
+<li>dimarta: Aligen’s experimental drug</li>
+</ul>
+<p><em>Outcomes</em></p>
+<p>There were two main outcomes of interest in the trial:</p>
+<ul>
+<li>Changes in histamine from the beginning to the end of the trial</li>
+<li>Change in quality of life (measured by self report).</li>
+</ul>
+<p><em>Biomarkers</em></p>
 <p>In addition to exploring the effects of the three medications, the researchers are interested in the extent to which three different biomarkers, dw, ms, and np, are correlated with therapeutic outcomes. In other words, to patients that express one or more of these biomarkers have better, or worse, outcomes that those that do not express these biomarkers?</p>
 </div>
 <div id="tasks" class="section level2">
@@ -166,7 +229,7 @@ library(tidyverse)</code></pre>
 <h3>B - Data I/O</h3>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Using <code>read_csv()</code>, load the <code>dimarta_trial.csv</code>, <code>dimarta_demographics.csv</code>, and <code>dimarta_biomarker.csv</code> datasets as <em>three</em> new objects called <code>trial_df</code>, <code>demographics_df</code>, and <code>biomarker_df</code>.</p></li>
-<li><p>Get a first impression of the objects you just created by exploring them with a mixture of the <code>View()</code>, <code>head()</code>, <code>names()</code>, and <code>str()</code> functions. Were they all loaded correctly?</p></li>
+<li><p>Get a first impression of the objects you just created by exploring them with a mixture of the <code>View()</code>, <code>head()</code>, <code>names()</code>, and <code>summary()</code> functions. Were they all loaded correctly?</p></li>
 </ol>
 </div>
 <div id="c---data-wrangling" class="section level3">
@@ -199,7 +262,7 @@ library(tidyverse)</code></pre>
 <li><p>Try using <code>geom_jitter()</code> to add the raw points to the plot</p></li>
 <li><p>Create the same plot as above, but instead of analysing study arm, try analysing gender. (Tip! convert gender to a factor with <code>factor(gender)</code>) What do you find? Did one gender have better histamine improvements than the other?</p></li>
 <li><p>Now create the same plot but show both gender and study arm in the same plot. One way to do this would be to color the points by gender!</p></li>
-<li><p>Is there a correlation between patient’s starting and ending histamiine levels? Create a scatterplot with a regression line to find out!</p></li>
+<li><p>Is there a correlation between patient’s starting and ending histamine levels? Create a scatterplot with a regression line to find out!</p></li>
 </ol>
 <pre class="r"><code>ggplot(data = XXX,
        aes(x = XXX, y = XXX)) +
@@ -229,12 +292,12 @@ library(tidyverse)</code></pre>
 </div>
 <div id="datasets" class="section level2">
 <h2>Datasets</h2>
-<table style="width:89%;">
+<table>
 <colgroup>
 <col width="8%" />
-<col width="9%" />
+<col width="10%" />
 <col width="11%" />
-<col width="59%" />
+<col width="70%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -368,20 +431,92 @@ library(tidyverse)</code></pre>
 <div id="packages" class="section level3">
 <h3>Packages</h3>
 <table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Package</th>
 <th align="left">Installation</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left"><code>tidyverse</code></td>
 <td align="left"><code>install.packages(&quot;tidyverse&quot;)</code></td>
+<td align="left">A collection of packages for data science, including <code>dplyr</code>, <code>ggplot2</code> and others</td>
 </tr>
 <tr class="even">
-<td align="left"><code>haven</code></td>
-<td align="left"><code>install.packages(&quot;haven&quot;)</code></td>
+<td align="left"><code>broom</code></td>
+<td align="left"><code>install.packages(&quot;broom&quot;)</code></td>
+<td align="left">Provides ‘tidy’ outputs from statistical objects.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="functions-1" class="section level3">
+<h3>Functions</h3>
+<p><em>Plotting</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Package</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>geom_boxplot()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Add boxplots to a ggplot object</td>
+</tr>
+<tr class="even">
+<td align="left"><code>geom_jitter()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Add jittered points to a ggplot object</td>
+</tr>
+</tbody>
+</table>
+<p><em>Statistical Tests</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Package</th>
+<th align="left">Hypothesis Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>glm()</code>, <code>lm()</code></td>
+<td align="left"><code>base</code></td>
+<td align="left">Generalized linear model and linear model</td>
+</tr>
+</tbody>
+</table>
+<p><em>Other</em></p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="22%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Package</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>tidy()</code></td>
+<td align="left"><code>broom</code></td>
+<td align="left">Converts statistical objects to ‘tidy’ dataframes of key results</td>
 </tr>
 </tbody>
 </table>

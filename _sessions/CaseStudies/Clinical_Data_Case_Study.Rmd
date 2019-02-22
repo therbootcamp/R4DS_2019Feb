@@ -121,10 +121,24 @@ trial_df$qol_end <- trial_df$qol_start + round(rnorm(n = 300, mean = 0, sd = 1),
 
 ## Overview
 
-In this case study, we will look at the results of a clinical trial exploring the effectiveness of a new medication called dimarta on reducing histamine in patients with a disease that leads to chronically high histamine levels. In the study, 300 patients were assigned to one of three different treatment arms. One arm was given a placebo. The other arm was given adiclax -- the standard of care for the disease. Finally, the third arm was given dimarta. There were two main measures of interest in the trial: patient's changes in histamine from the beginning to the end of the trial, and their change in quality of life (measured by self report). 
+In this case study, we will look at the results of a clinical trial exploring the effectiveness of a new medication called *dimarta* from the company Aligen which seeks to reduce histamine in patients with a disease that leads to chronically high histamine levels. In the study, 300 patients were assigned to one of the following three different treatment arms: 
+
+*Treatment Arms*
+
+- placebo: An inert substance
+- adiclax: The standard of care for reducing histamine
+- dimarta: Aligen's experimental drug 
+
+*Outcomes*
+
+There were two main outcomes of interest in the trial:
+
+- Changes in histamine from the beginning to the end of the trial
+- Change in quality of life (measured by self report). 
+
+*Biomarkers*
 
 In addition to exploring the effects of the three medications, the researchers are interested in the extent to which three different biomarkers, dw, ms, and np, are correlated with therapeutic outcomes. In other words, to patients that express one or more of these biomarkers have better, or worse, outcomes that those that do not express these biomarkers?
-
 
 ## Tasks
 
@@ -156,13 +170,13 @@ biomarker_df <- read_csv("XXX/XXX")
 
 ```{r, echo = FALSE, eval = TRUE, message = FALSE}
 ## read in datasets
-trial_df <- read_csv("1_Data/dimarta_trial.csv")
-demographics_df <- read_csv("1_Data/dimarta_demographics.csv")
-biomarker_df <- read_csv("1_Data/dimarta_biomarker.csv")
+trial_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_trial.csv")
+demographics_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_demographics.csv")
+biomarker_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_biomarker.csv")
 ```
 
 
-3. Get a first impression of the objects you just created by exploring them with a mixture of the `View()`, `head()`, `names()`, and `str()` functions. Were they all loaded correctly?
+3. Get a first impression of the objects you just created by exploring them with a mixture of the `View()`, `head()`, `names()`, and `summary()` functions. Were they all loaded correctly?
 
 ```{r}
 trial_df
@@ -466,7 +480,7 @@ ggplot(data = dimarta_df,
        x = "Gender")
 ```
 
-5. Is there a correlation between patient's starting and ending histamiine levels? Create a scatterplot with a regression line to find out!
+5. Is there a correlation between patient's starting and ending histamine levels? Create a scatterplot with a regression line to find out!
 
 ```{r, echo = TRUE, eval = FALSE}
 ggplot(data = XXX,
@@ -637,8 +651,30 @@ Table: Table3. `dimarta_biomarker.csv` variable description:
 
 ### Packages
 
-|Package| Installation|
-|:------|:------|
-|`tidyverse`|`install.packages("tidyverse")`|
-|`haven`|`install.packages("haven")`|
+|Package| Installation|Description|
+|:------|:------|:------|
+|`tidyverse`|`install.packages("tidyverse")`|A collection of packages for data science, including `dplyr`, `ggplot2` and others|
+|`broom`|`install.packages("broom")`|Provides 'tidy' outputs from statistical objects.
+
+
+### Functions
+
+*Plotting*
+
+| Function| Package | Description |
+|:---|:------|:---------------------------------------------|
+|     `geom_boxplot()`|`ggplot2`|    Add boxplots to a ggplot object| 
+|     `geom_jitter()`|`ggplot2`|    Add jittered points to a ggplot object|
+
+*Statistical Tests*
+
+| Function| Package | Hypothesis Test|
+|:------|:-------|:-------------------|
+|     `glm()`, `lm()`|`base`|    Generalized linear model and linear model|
+
+*Other*
+
+| Function| Package | Description|
+|:------|:-------|:-------------------|
+|     `tidy()`|`broom`| Converts statistical objects to 'tidy' dataframes of key results|
 
