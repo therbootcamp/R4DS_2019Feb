@@ -70,7 +70,7 @@ knitr::opts_chunk$set(fig.align = 'center')
 
 .pull-right6[
 <br><br>
-<p align="center"><img src="https://therbootcamp.github.io/assets/img/640px-Middle_Bridge,_Basel,_Switzerland.jpeg" width="500"  height="400"><br>
+<p align="center"><img src="https://img.myswitzerland.com/mys/n64497/images/buehne/basel_winter.jpg" width="500"  height="400"><br>
 <font style="font-size:10px">from <a href="">Wikipedia</a></font>
 </p>
 ]
@@ -325,6 +325,16 @@ At any time, you can <high>request a 15 minute 1-1 intensive</high> coaching ses
 </p>
 
 ]
+
+
+
+---
+
+# Photography
+
+```{r, fig.align="center", echo = FALSE, out.width = "90%"}
+knitr::include_graphics("https://amp.businessinsider.com/images/5af9eea4965f4c30008b4acb-750-375.jpg")
+```
 
 
 
