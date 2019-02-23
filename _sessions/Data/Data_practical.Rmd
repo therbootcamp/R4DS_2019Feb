@@ -218,7 +218,7 @@ length(weight)
 
 ### C - Functions
 
-1. Using the `table()` function, find out how many males and females are in the data. You should find `r sum(data$sex == "m")` males and `r sum(data$sex == "f")` females!
+1. Using the `table()` function, find out how many males and females are in your `sex` object. You should find `r sum(data$sex == "m")` males and `r sum(data$sex == "f")` females!
 
 ```{r}
 # Count types in sex
