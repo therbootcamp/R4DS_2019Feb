@@ -580,7 +580,7 @@ trial_B
 
 1. Read the `appointments.csv` and the `weather.csv` files into two objects called `appointments` and `weather`, respectively, using the code below. The `appointments` dataset contains data on medical appointment no shows in Brazil including a set of other variables. The `weather` dataset contains data on the weather of the location (same for all cases) of the appointment.
 
-```{r, echo = TRUE, eval = TRUE, message = FALSE}
+```{r, echo = TRUE, eval = TRUE}
 # read new data sets
 appointments <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/appointments.csv')
 
