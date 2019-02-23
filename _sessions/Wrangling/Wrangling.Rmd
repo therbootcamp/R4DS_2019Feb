@@ -255,7 +255,7 @@ score %>%     # AND THEN
 <b>4</b> <i>Sort</i> - <high>Sort</high> tibble by age. <br><br>
 <b>5</b> <i>Filter</i> - Select relevant <high>cases</high>. <br><br>
 <b>6</b> <i>Select</i> - Select relevant <high>variables</high>.<br><br>
-<b>7</b> <i>Spread</i> - Change to <high>wide format</high>.<br><br>
+<b>7</b> <i>Gather</i> - Change to <high>long format</high>.<br><br>
 
 
 ]
