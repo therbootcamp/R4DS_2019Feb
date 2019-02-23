@@ -529,7 +529,7 @@ baselers$age[1:9] < 30
 
 <high>`==`</high> - is equal to<br>
 <high>`<`</high>, <high>`>`</high> - smaller/greater than<br>
-<high>`≤`</high>, <high>`≥`</high> - smaller/greater than or equal<br>
+<high>`<=`</high>, <high>`>=`</high> - smaller/greater than or equal<br>
 <high>`&`</high>, <high>`&&`</high> - logical AND<br>
 <high>`|`</high>, <high>`||`</high> - logical OR<br>
 
