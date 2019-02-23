@@ -319,8 +319,7 @@ ggmap(get_map(c(7.588576, 47.559601),zoom=16))
 
 .pull-right45[
 
-<p align="center"><br><br><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdGYg5kPpINYoHJ9ronAr8eEE6w8Y9SG0r-oqGv-tw_sWh-UQ/viewform?embedded=true" width="430" height="550">Wird geladen...</iframe></p>
-
+<p align="center"><br><br><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdl2divjs5egmJ0QJ5wlG4G7-gVHZSeCJB4lVmsiensskkJHA/viewform?embedded=true" width="430" height="550">Wird geladen...</iframe></p>
 
 ]
 
