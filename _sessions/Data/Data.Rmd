@@ -243,9 +243,8 @@ baselers
 # Inspect content
 
 ```{r, eval = F}
-# inspect baselers via print
+# View dataframe in a new window
 View(baselers)
-
 ```
 
 <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/view.png"></img>
@@ -263,22 +262,22 @@ View(baselers)
 # Select via <high>`$`</high>
 
 ```{r, eval = F}
-# select age variable
+# Access age column from baselers
 baselers$age
 ```
 
 ```{r, echo = F}
-# select age variable
+# Access age column from baselers
 baselers$age[1:20]
 ```
 
 ```{r, eval = F}
-# select age variable
+# Access education column from baselers
 baselers$education
 ```
 
 ```{r, echo = F}
-# select age variable
+# Access education column from baselers
 baselers$education[1:10]
 ```
 
@@ -296,8 +295,8 @@ baselers$education[1:10]
 # Change/Add via <high>`$`</high>
 
 ```{r, eval = T}
-# compute age in months
-baselers$age <- baselers$age * 2
+# Divide income by 1000
+baselers$income <- baselers$income / 1000
 
 # inspect baselers
 baselers
@@ -341,7 +340,6 @@ baselers
 
 .pull-left45[
 
-
 ```{r, eval = F}
 # extract vector containing age
 age <- baselers$age
@@ -361,13 +359,13 @@ age[2]
 
 ```{r, eval = F}
 # change value
-age[2] <- 2
+age[2] <- 100
 age
 ```
 
 ```{r, echo = F}
 # change value
-age[2] <- 2
+age[2] <- 100
 age[1:9]
 ```
 
@@ -399,8 +397,10 @@ baselers$age[1:9]
 ```
 
 ```{r}
-# evaluate type
-typeof(baselers$age)
+# evaluate class
+class(baselers$age)
+
+# is age numeric?
 is.numeric(baselers$age)
 ```
 
@@ -417,7 +417,9 @@ is.numeric(baselers$age)
 
 .pull-left45[
 
-`character` vector are used to store data represented by <high>letters and symbols, and all other data</high>. 
+`character` vectors are used to store data represented by <high>letters and symbols, and all other data</high>. 
+
+You can always recognise character vectors by <high>quotation marks " "</high> 
 
 ```{r, eval = F}
 baselers$sex
@@ -429,12 +431,48 @@ baselers$sex[1:8]
 ```
 
 ```{r, eval = F}
-# evaluate type
+baselers$education
+```
+
+```{r, echo = F}
+# extract a numeric vectors
+baselers$education[1:8]
+```
+
+
+]
+
+.pull-right4[
+  <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/vector_types.png"></img>
+  ]
+
+
+---
+
+# Data types: `character`
+
+.pull-left45[
+
+`character` vectors are used to store data represented by <high>letters and symbols, and all other data</high>. 
+
+You can always recognise character vectors by <high>quotation marks " "</high> 
+
+```{r, eval = F}
+baselers$age
+```
+
+```{r, echo = F}
+# extract a numeric vectors
+baselers$age[1:8]
+```
+
+```{r, eval = F}
+# convert age to character
 as.character(baselers$age)
 ```
 
 ```{r, echo = F}
-# evaluate type
+# convert age to character
 as.character(baselers$age[1:9])
 ```
 
@@ -443,6 +481,7 @@ as.character(baselers$age[1:9])
 .pull-right4[
   <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/vector_types.png"></img>
   ]
+
 
 ---
 
@@ -453,22 +492,23 @@ as.character(baselers$age[1:9])
 `logical` vector are used to <high>*slice* data</high> aka to select elements or rows. `logical` are typically created from other vectors via <high>logical comparisons</high>. 
 
 ```{r, eval = F}
+# which sex values are male?
 baselers$sex == "male"
 ```
 
 ```{r, echo = F}
-# extract a numeric vectors
+# which sex values are male?
 baselers$sex[1:8] == "male"
 ```
 
 ```{r, eval = F}
-# evaluate type
+# which ages are less than 30?
 baselers$age < 30
 ```
 
 ```{r, echo = F}
-# evaluate type
-baselers$age[1:9] < 300
+# which ages are less than 30?
+baselers$age[1:9] < 30
 ```
 
 ]

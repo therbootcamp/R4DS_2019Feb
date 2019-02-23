@@ -1,11 +1,10 @@
 ---
 title: "Data"
 subtitle: ""
-author: "
-<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
+author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
-      <font style='font-style:normal'>Introduction to R</font><br>
+      <font style='font-style:normal'>R for Data Science</font><br>
       <a href='https://therbootcamp.github.io/R4DS_2019Feb/'>
         <i class='fas fa-clock' style='font-size:.9em;' ></i>
       </a>
@@ -25,13 +24,11 @@ author: "
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
       <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
     </td>
-  </tr>
-</table>"
+  </tr></table>"
 output:
   html_document:
     css: practical.css
     self_contained: no
-
 ---
 
 ```{r setup, include = FALSE}
@@ -266,7 +263,7 @@ diamonds_path <- ""
 diamonds_path <- "1_Data/diamonds.csv"
 ```
 
-2. Now use the Using `diamonds_path` insdide the `read_csv()` function to read in the `diamonds.csv` dataset. Store it as a new object called `diamonds`.
+2. Now use the Using `diamonds_path` inside the `read_csv()` function to read in the `diamonds.csv` dataset. Store it as a new object called `diamonds`.
 
 ```{r, eval = F, echo = T}
 # read diamonds data
@@ -315,7 +312,7 @@ diamonds
 diamonds$carat
 ```
 
-8. Change the incorrectly formated entry in `carat` by replacing `XX` with the index of the incorrect value (i.e., the correct number between 10 and 20) and `YY` with the correct entry with a period (`.`) instead of a comma (`,`) in the code below.  
+8. Change the incorrectly formatted entry in `carat` by replacing `XX` with the index of the incorrect value (i.e., the correct number between 10 and 20) and `YY` with the correct entry with a period (`.`) instead of a comma (`,`) in the code below.  
 
 ```{r, eval = F, echo = T}
 # Change the value at position XX to YY
@@ -437,7 +434,7 @@ mean(diamonds$carat > 1)
 knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Microsoft_Excel_2013_logo.svg/2000px-Microsoft_Excel_2013_logo.svg.png")
 ```
 
-1. Using `read_excel()`, read in the `titanic.xls` dataset as a new object called `titanic` (Make sure you have alredy loaded the `readxl` package at the beginning of your script).
+1. Using `read_excel()`, read in the `titanic.xls` dataset as a new object called `titanic` (Make sure you have already loaded the `readxl` package at the beginning of your script).
 
 ```{r, eval = F, echo = T}
 titanic <- read_excel(path = "XX")

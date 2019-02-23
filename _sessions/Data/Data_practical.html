@@ -190,7 +190,7 @@ $(document).ready(function () {
 <col width='10%'>
 <tr style="border:none">
 <td style="display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none" nowrap>
-<font style='font-style:normal'>Introduction to R</font><br> <a href='https://therbootcamp.github.io/R4DS_2019Feb/'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>Basel R Bootcamp</font> </a>
+<font style='font-style:normal'>R for Data Science</font><br> <a href='https://therbootcamp.github.io/R4DS_2019Feb/'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>Basel R Bootcamp</font> </a>
 </td>
 <td style="width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none">
 <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
@@ -332,7 +332,7 @@ class(XX)</code></pre>
 <pre class="r"><code># Show the length of the id vector
 length(XX)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Create a character vector called <code>sex</code> that shows the sex values. Make sure to use quotation marks “” to enclose each element to tell R that the data are of type <code>&quot;character&quot;</code>! When you finish, print the object to see it!</li>
+<li>Create a character vector called <code>sex</code> that shows the sex values. Make sure to use quotation marks &quot;&quot; to enclose each element to tell R that the data are of type <code>&quot;character&quot;</code>! When you finish, print the object to see it!</li>
 </ol>
 <pre class="r"><code># Create a character vector sex
 XX &lt;- c(&quot;XX&quot;, &quot;XX&quot;, &quot;...&quot;)</code></pre>
@@ -363,7 +363,7 @@ XX &lt;- c(&quot;XX&quot;, &quot;XX&quot;, &quot;...&quot;)</code></pre>
 <pre class="r"><code># place cursor in-between &quot;&quot; and hit tab
 diamonds_path &lt;- &quot;&quot;</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Now use the Using <code>diamonds_path</code> insdide the <code>read_csv()</code> function to read in the <code>diamonds.csv</code> dataset. Store it as a new object called <code>diamonds</code>.</li>
+<li>Now use the Using <code>diamonds_path</code> inside the <code>read_csv()</code> function to read in the <code>diamonds.csv</code> dataset. Store it as a new object called <code>diamonds</code>.</li>
 </ol>
 <pre class="r"><code># read diamonds data
 diamonds &lt;- read_csv(file = XX)</code></pre>
@@ -378,7 +378,7 @@ diamonds &lt;- read_csv(file = &quot;XX&quot;,
 <li><p>Re-inspect the header by printing the data. Has the header been fixed?</p></li>
 <li><p>Now pay attention to the classes of the individuals columns (variables). Have all classes been identified correctly? What about the <code>carat</code> column? It should be <code>numeric</code>, right?</p></li>
 <li><p>Let’s see what went wrong. Select and print the <code>carat</code> variable to identify the one entry that caused the variable to become a <code>character</code> vector (Hint: look for a comma between entry 10 and 20).</p></li>
-<li><p>Change the incorrectly formated entry in <code>carat</code> by replacing <code>XX</code> with the index of the incorrect value (i.e., the correct number between 10 and 20) and <code>YY</code> with the correct entry with a period (<code>.</code>) instead of a comma (<code>,</code>) in the code below.</p></li>
+<li><p>Change the incorrectly formatted entry in <code>carat</code> by replacing <code>XX</code> with the index of the incorrect value (i.e., the correct number between 10 and 20) and <code>YY</code> with the correct entry with a period (<code>.</code>) instead of a comma (<code>,</code>) in the code below.</p></li>
 </ol>
 <pre class="r"><code># Change the value at position XX to YY
 diamonds$carat[XX] &lt;- YY</code></pre>
@@ -425,7 +425,7 @@ XX$YY &lt;- ZZ</code></pre>
 <h4>Excel</h4>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Microsoft_Excel_2013_logo.svg/2000px-Microsoft_Excel_2013_logo.svg.png" width="8%" style="display: block; margin: auto auto auto 0;" /></p>
 <ol style="list-style-type: decimal">
-<li>Using <code>read_excel()</code>, read in the <code>titanic.xls</code> dataset as a new object called <code>titanic</code> (Make sure you have alredy loaded the <code>readxl</code> package at the beginning of your script).</li>
+<li>Using <code>read_excel()</code>, read in the <code>titanic.xls</code> dataset as a new object called <code>titanic</code> (Make sure you have already loaded the <code>readxl</code> package at the beginning of your script).</li>
 </ol>
 <pre class="r"><code>titanic &lt;- read_excel(path = &quot;XX&quot;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
@@ -590,12 +590,12 @@ chickens &lt;- read_sas(&quot;1_Data/chickens.sas7bdat&quot;)</code></pre>
 </div>
 <div id="datasets" class="section level2">
 <h2>Datasets</h2>
-<table style="width:89%;">
+<table>
 <colgroup>
 <col width="8%" />
-<col width="9%" />
+<col width="10%" />
 <col width="11%" />
-<col width="59%" />
+<col width="70%" />
 </colgroup>
 <thead>
 <tr class="header">

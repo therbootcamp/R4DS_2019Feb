@@ -82,9 +82,10 @@ By the end of this practical you will know how to:
 # Done!
 ```
 
-3. Using `library()` load the set of packages for this practical listed in the packages section above.
+3. Using `library()` load the `tidyverse` package (if you don't have it, you'll need to install it with `install.packages()`)!
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, eval = TRUE}
+```{r, message = FALSE, warning = FALSE, echo = TRUE, eval = TRUE}
+# Load packages necessary for this script
 library(tidyverse)
 ```
 
@@ -93,8 +94,8 @@ For this practical, we'll use the `trial_act` data, this is the result of a rand
 4. Using the following template, load the `trial_act.csv` data into R and store it as a new object called `trial_act` (Hint: Don't type the path directly! Use the "tab" completion!).
 
 ```{r, echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE}
-# Load trial_act.csv from the data folder in your working directory as a new
-#  object called trial_act
+# Load trial_act.csv from the data folder in your 
+#  working directory as a new object called trial_act
 
 trial_act <- read_csv(file = "XX/XX")
 ```
@@ -104,6 +105,13 @@ trial_act <- read_csv(file = "1_Data/trial_act.csv")
 ```
 
 5. Using the same code structure, load the `trial_act_demo_fake.csv` data as a new dataframe called `trial_act_demo`.
+
+```{r, echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE}
+# Load trial_act_demo_fake.csv from the data folder in your 
+#  working directory as a new object called trial_act_demo
+
+XX <- XX(XX = "XX/XX")
+```
 
 ```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
 trial_act <- read_csv(file = "https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv")
@@ -159,7 +167,7 @@ names(trial_act)
 # Change the name to weight_kg from wtkg
 
 trial_act <- trial_act %>%
-  rename(XX = XX)
+  rename(XX = XX)   # NEW = OLD
 ```
 
 ```{r}
@@ -185,8 +193,8 @@ trial_act <- trial_act %>%
 1. Using the `select()` function, select only the column `age_y` and print the result (but don't assign it to anything). Do you see only the `age_y` column now?
 
 ```{r, echo = TRUE, eval = FALSE}
-XXX %>%
-  select(XXX)
+XX %>%
+  select(XX)
 ```
 
 ```{r}
@@ -195,6 +203,11 @@ trial_act %>%
 ```
 
 2. Using `select()` select the columns `pidnum`, `age_y`, `gender`, and `weight_kg` (but don't assign the result to anything)
+
+```{r, echo = TRUE, eval = FALSE}
+XX %>%
+  select(XX, XX, XX, XX)
+```
 
 ```{r}
 trial_act %>% 
@@ -212,7 +225,7 @@ XX <- XX %>%
 
 ```{r, echo = TRUE, eval = FALSE}
 XX <- trial_act %>% 
-  select(XX, XX, XX, XX, ...)
+  select(XX, XX, XX, XX, XX)
 ```
 
 ```{r}

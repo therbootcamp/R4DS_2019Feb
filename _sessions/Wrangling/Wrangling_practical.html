@@ -226,19 +226,27 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li><p>Open your <code>BaselRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder</p></li>
 <li><p>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>wrangling_practical.R</code> in the <code>2_Code</code> folder.</p></li>
-<li><p>Using <code>library()</code> load the set of packages for this practical listed in the packages section above.</p></li>
+<li><p>Using <code>library()</code> load the <code>tidyverse</code> package (if you don’t have it, you’ll need to install it with <code>install.packages()</code>)!</p></li>
 </ol>
+<pre class="r"><code># Load packages necessary for this script
+library(tidyverse)</code></pre>
 <p>For this practical, we’ll use the <code>trial_act</code> data, this is the result of a randomized clinical trial comparing the effects of different medications on adults infected with the human immunodeficiency virus (You can learn more about the trial <a href="https://www.nejm.org/doi/full/10.1056/NEJM199610103351501">here</a>).</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Using the following template, load the <code>trial_act.csv</code> data into R and store it as a new object called <code>trial_act</code> (Hint: Don’t type the path directly! Use the “tab” completion!).</li>
 </ol>
-<pre class="r"><code># Load trial_act.csv from the data folder in your working directory as a new
-#  object called trial_act
+<pre class="r"><code># Load trial_act.csv from the data folder in your 
+#  working directory as a new object called trial_act
 
 trial_act &lt;- read_csv(file = &quot;XX/XX&quot;)</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Using the same code structure, load the <code>trial_act_demo_fake.csv</code> data as a new dataframe called <code>trial_act_demo</code>.</p></li>
-<li><p>Take a look at the first few rows of the datasets by printing them to the console.</p></li>
+<li>Using the same code structure, load the <code>trial_act_demo_fake.csv</code> data as a new dataframe called <code>trial_act_demo</code>.</li>
+</ol>
+<pre class="r"><code># Load trial_act_demo_fake.csv from the data folder in your 
+#  working directory as a new object called trial_act_demo
+
+XX &lt;- XX(XX = &quot;XX/XX&quot;)</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Take a look at the first few rows of the datasets by printing them to the console.</li>
 </ol>
 <pre class="r"><code># Print trial_act object
 trial_act</code></pre>
@@ -261,7 +269,7 @@ View(trial_act_demo)</code></pre>
 <pre class="r"><code># Change the name to weight_kg from wtkg
 
 trial_act &lt;- trial_act %&gt;%
-  rename(XX = XX)</code></pre>
+  rename(XX = XX)   # NEW = OLD</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Look at the names of your <code>trial_act</code> dataframe again using <code>names()</code>, do you now see the column <code>weight_kg</code>?</p></li>
 <li><p>One of the columns is called <code>age</code>, change it to <code>age_y</code> (to specify that age is in years).</p></li>
@@ -272,11 +280,15 @@ trial_act &lt;- trial_act %&gt;%
 <ol style="list-style-type: decimal">
 <li>Using the <code>select()</code> function, select only the column <code>age_y</code> and print the result (but don’t assign it to anything). Do you see only the <code>age_y</code> column now?</li>
 </ol>
-<pre class="r"><code>XXX %&gt;%
-  select(XXX)</code></pre>
+<pre class="r"><code>XX %&gt;%
+  select(XX)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Using <code>select()</code> select the columns <code>pidnum</code>, <code>age_y</code>, <code>gender</code>, and <code>weight_kg</code> (but don’t assign the result to anything)</p></li>
-<li><p>Imagine that a colleague of yours wants an anonymised dataframe called <code>trial_act_anon_</code> that does <em>not</em> contain the columns <code>pidnum</code> and <code>age</code>. Create this dataframe by selecting all columns in <code>trial_act</code> <em>except</em> <code>pidnum</code> and <code>age</code> (hint: use the notation <code>select(-XXX, -XXX))</code> to select everything <em>except</em> specified columns). Assign the result to a new object called <code>trial_act_anon</code></p></li>
+<li>Using <code>select()</code> select the columns <code>pidnum</code>, <code>age_y</code>, <code>gender</code>, and <code>weight_kg</code> (but don’t assign the result to anything)</li>
+</ol>
+<pre class="r"><code>XX %&gt;%
+  select(XX, XX, XX, XX)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Imagine that a colleague of yours wants an anonymised dataframe called <code>trial_act_anon_</code> that does <em>not</em> contain the columns <code>pidnum</code> and <code>age</code>. Create this dataframe by selecting all columns in <code>trial_act</code> <em>except</em> <code>pidnum</code> and <code>age</code> (hint: use the notation <code>select(-XXX, -XXX))</code> to select everything <em>except</em> specified columns). Assign the result to a new object called <code>trial_act_anon</code></li>
 </ol>
 <pre class="r"><code>XX &lt;- XX %&gt;%
   select(-XX, -XX)</code></pre>
@@ -284,7 +296,7 @@ trial_act &lt;- trial_act %&gt;%
 <li>Create a new dataframe called <code>CD4_wide</code> which contains the following columns: <code>pidnum</code>, <code>arms</code>, <code>cd40</code>, <code>cd420</code>, and <code>cd496</code>. The <code>cd40</code>, <code>cd420</code>, and <code>cd496</code> columns show patient’s CD4 T cell counts at baseline, 20 weeks, and 96 weeks. After you create <code>CD4_wide</code>, print it to make sure it worked!</li>
 </ol>
 <pre class="r"><code>XX &lt;- trial_act %&gt;% 
-  select(XX, XX, XX, XX, ...)</code></pre>
+  select(XX, XX, XX, XX, XX)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Did you know you can easily select all columns that start with specific characters using <code>starts_with()</code>? Try adapting the following code to get the same result you got before.</li>
 </ol>
