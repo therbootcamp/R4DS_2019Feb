@@ -235,6 +235,7 @@ library(readxl)</code></pre>
 <div id="b---creating-vectors" class="section level3">
 <h3>B - Creating vectors</h3>
 <p>The table below shows results from a (fictional) survey of 10 Baselers. In the first part of this practical, you will convert this table to R objects and then analyse them!</p>
+<p><em>10 Baselers Table</em></p>
 <table>
 <thead>
 <tr class="header">
@@ -248,70 +249,70 @@ library(readxl)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">male</td>
+<td align="left">m</td>
 <td align="left">44</td>
 <td align="left">174</td>
 <td align="left">113</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="left">male</td>
+<td align="left">m</td>
 <td align="left">65</td>
 <td align="left">180</td>
 <td align="left">75</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="left">female</td>
+<td align="left">f</td>
 <td align="left">31</td>
 <td align="left">168</td>
 <td align="left">56</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="left">male</td>
+<td align="left">m</td>
 <td align="left">27</td>
 <td align="left">209</td>
 <td align="left">94</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="left">male</td>
+<td align="left">m</td>
 <td align="left">24</td>
 <td align="left">177</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="left">male</td>
+<td align="left">m</td>
 <td align="left">63</td>
 <td align="left">187</td>
 <td align="left">67</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
-<td align="left">male</td>
+<td align="left">m</td>
 <td align="left">71</td>
 <td align="left">152</td>
 <td align="left">83</td>
 </tr>
 <tr class="even">
 <td align="left">8</td>
-<td align="left">female</td>
+<td align="left">f</td>
 <td align="left">41</td>
 <td align="left">156</td>
 <td align="left">68</td>
 </tr>
 <tr class="odd">
 <td align="left">9</td>
-<td align="left">male</td>
+<td align="left">m</td>
 <td align="left">43</td>
 <td align="left">176</td>
 <td align="left">69</td>
 </tr>
 <tr class="even">
 <td align="left">10</td>
-<td align="left">female</td>
+<td align="left">f</td>
 <td align="left">31</td>
 <td align="left">166</td>
 <td align="left">66</td>
@@ -319,7 +320,7 @@ library(readxl)</code></pre>
 </tbody>
 </table>
 <ol style="list-style-type: decimal">
-<li>Create a numeric vector called <code>id</code> that shows the id values. When you finish, print the vector object to see it!</li>
+<li>Create a numeric vector called <code>id</code> that shows the id values from the 10 Baselers table. When you finish, print the vector object to see it!</li>
 </ol>
 <pre class="r"><code># Create a vector id
 XX &lt;- c(XX, XX, ...)
@@ -337,15 +338,15 @@ class(XX)</code></pre>
 <pre class="r"><code># Show the length of the id vector
 length(XX)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Create a character vector called <code>sex</code> that shows the sex values. Make sure to use quotation marks &quot;&quot; to enclose each element to tell R that the data are of type <code>&quot;character&quot;</code>! When you finish, print the object to see it!</li>
+<li>Create a character vector called <code>sex</code> that shows the sex values from the 10 Baselers table. Make sure to use quotation marks &quot;&quot; to enclose each element to tell R that the data are of type <code>&quot;character&quot;</code>! When you finish, print the object to see it!</li>
 </ol>
 <pre class="r"><code># Create a character vector sex
 XX &lt;- c(&quot;XX&quot;, &quot;XX&quot;, &quot;...&quot;)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Using the <code>class()</code> function, check the class of your <code>sex</code> vector. Is it <code>&quot;character&quot;</code>?</p></li>
 <li><p>Using the <code>length()</code> function, find out the length of your <code>sex</code> object. Does it have length 10? If not, make sure you defined it correctly!</p></li>
-<li><p>Using the same steps as before, create a <code>age</code> and <code>height</code> vector.</p></li>
-<li><p>Look at the weight data, you’ll notice it contains an missing value. Create a vector called <code>weight</code> containing these data, following the same steps as before, making sure to specify the missing value as <code>NA</code> (no quotation marks).</p></li>
+<li><p>Using the same steps as before, create <code>age</code> and <code>height</code> vectors from the 10 Baselers table.</p></li>
+<li><p>Look at the weight column in the 10 Baselers table, you’ll notice it contains an missing value. Create a vector called <code>weight</code> containing these data, following the same steps as before, making sure to specify the missing value as <code>NA</code> (no quotation marks).</p></li>
 </ol>
 </div>
 <div id="c---functions" class="section level3">
@@ -406,7 +407,7 @@ write_csv(x = XX, path = &quot;XX&quot;)</code></pre>
 <div id="e---logical-vectors-and" class="section level3">
 <h3>E - Logical Vectors and <code>$</code></h3>
 <ol style="list-style-type: decimal">
-<li>Logical vectors contain as values only <code>TRUE</code> and <code>FALSE</code> (and <code>NA</code>s). Create a new logical vector called <code>expensive</code> indicating which diamonds are more expensive than $10000. To do this, select the <code>price</code> variable from the data frame using <code>$</code> use the <code>&gt;</code> (greater than) operator á la <code>vector &gt; value</code>.</li>
+<li>Logical vectors contain as values only <code>TRUE</code> and <code>FALSE</code> (and <code>NA</code>s). Create a new logical vector called <code>expensive</code> indicating which diamonds are more expensive than $10,000. To do this, select the <code>price</code> variable from the data frame using <code>$</code> use the <code>&gt;</code> (greater than) operator á la <code>vector &gt; value</code>.</li>
 </ol>
 <pre class="r"><code># Create a logical vector expensive indicating
 # which dimaonds cost more than 10,000
