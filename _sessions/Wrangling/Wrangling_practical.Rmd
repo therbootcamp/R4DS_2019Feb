@@ -745,14 +745,14 @@ infected with the human immunodeficiency virus type I whose CD4 T cell counts we
 |:--------|:-----------------------------|
 |LON  |Longitude|
 |LAT  |Latitude|
-|YEAR  |Year| 
-|MM    |Month|
-|DD   |Day|
-|DOY |Day of Year|
-|YYYYMMDD|Date|    
+|YEAR  | Year| 
+|MM    | Month|
+|DD   | Day|
+|DOY | Day of Year|
+|YYYYMMDD | Date|    
 |RH2M   |Relative Humidity at 2 Meters|
-|T2M |Temperature at 2 Meters|
-|PRECTOT|Precipitation|
+|T2M | Temperature at 2 Meters|
+|PRECTOT | Precipitation|
 
 
 
