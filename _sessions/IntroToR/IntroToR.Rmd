@@ -321,7 +321,6 @@ some_name <- some_name + 2
 
 # print object
 some_name
-
 ```
 ]
 
@@ -349,18 +348,19 @@ some_name
 .pull-right5[
 ```{r, echo=F,message=F,warning=F}
 require(tibble)
+library(baselers)
+
 ```
 
 ```{r}
-# an object called some_name
+# What is the class of some_name
 class(x = some_name)
-typeof(x = some_name)
 
 # an object called some_name
 class(x = list())
 
 # an object called some_name
-class(x = tibble())
+class(x = baselers)
 ```
 ]
 
