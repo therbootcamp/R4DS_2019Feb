@@ -288,7 +288,7 @@ trial_act &lt;- trial_act %&gt;%
 <pre class="r"><code>XX %&gt;%
   select(XX, XX, XX, XX)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Imagine that a colleague of yours wants an anonymised dataframe called <code>trial_act_anon_</code> that does <em>not</em> contain the columns <code>pidnum</code> and <code>age</code>. Create this dataframe by selecting all columns in <code>trial_act</code> <em>except</em> <code>pidnum</code> and <code>age</code> (hint: use the notation <code>select(-XXX, -XXX))</code> to select everything <em>except</em> specified columns). Assign the result to a new object called <code>trial_act_anon</code></li>
+<li>Imagine that a colleague of yours wants an anonymised dataframe called <code>trial_act_anon_</code> that does <em>not</em> contain the columns <code>pidnum</code> and <code>age_y</code>. Create this dataframe by selecting all columns in <code>trial_act</code> <em>except</em> <code>pidnum</code> and <code>age_y</code> (hint: use the notation <code>select(-XXX, -XXX))</code> to select everything <em>except</em> specified columns). Assign the result to a new object called <code>trial_act_anon</code></li>
 </ol>
 <pre class="r"><code>XX &lt;- XX %&gt;%
   select(-XX, -XX)</code></pre>
@@ -470,8 +470,8 @@ CD4_long</code></pre>
   spread(XX,   # Grouping column
          XX)   # Value columnn</code></pre>
 </div>
-<div id="practice" class="section level3">
-<h3>Practice!</h3>
+<div id="i---practice" class="section level3">
+<h3>I - Practice</h3>
 <ol style="list-style-type: decimal">
 <li>Create a new dataframe called <code>trial_A</code> from <code>trial_act</code> with the following restrictions:</li>
 </ol>
@@ -488,6 +488,19 @@ CD4_long</code></pre>
 <li>Only patients whose CD4 T cell counts increase <em>more</em> than 200 between baseline (<code>cd40</code>) and after 96 weeks (<code>cd496</code>)</li>
 <li>Only drug users</li>
 </ul>
+</div>
+<div id="x---advanced-stupid-summaries" class="section level3">
+<h3>X - Advanced: Stupid summaries</h3>
+<ol style="list-style-type: decimal">
+<li><p>Read the <code>appointments.csv</code> and the <code>weather.csv</code> files into two objects called <code>appointments</code> and <code>weather</code>, respectively, using the code below. The <code>appointments</code> dataset contains data on medical appointment no shows in Brazil including a set of other variables. The <code>weather</code> dataset contains data on the wheather of the location (same for all cases) of the appointment.</p></li>
+<li><p>Your goal is to combine the data two datasets and then explore using a combination of <code>filter</code> and then <code>mean</code> (see code below), whether the patients are more likely to not show up for their appointment during bad versus good wheather conditions.</p></li>
+</ol>
+<pre class="r"><code># filter
+data_subset &lt;- combined_data %&gt;%
+  filter(variable &gt; value)
+
+# mean
+mean(data_subset$NoShow)</code></pre>
 </div>
 </div>
 <div id="examples" class="section level2">
@@ -702,6 +715,131 @@ baselers &lt;- baselers %&gt;%
 </tr>
 </tbody>
 </table>
+<div id="additional-datasets" class="section level3">
+<h3>Additional Datasets</h3>
+<div id="appointments.csv" class="section level4">
+<h4>appointments.csv</h4>
+<table style="width:57%;">
+<colgroup>
+<col width="13%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">PatientId</td>
+<td align="left">ID of a patient</td>
+</tr>
+<tr class="even">
+<td align="left">AppointmentID</td>
+<td align="left">ID for each appointment</td>
+</tr>
+<tr class="odd">
+<td align="left">Gender</td>
+<td align="left">Male or Female</td>
+</tr>
+<tr class="even">
+<td align="left">ScheduledDay</td>
+<td align="left">The day of the actual appointment, when patients have to visit the doctor</td>
+</tr>
+<tr class="odd">
+<td align="left">AppointmentDay</td>
+<td align="left">The day someone called or registered the appointment, this should be before the appointment</td>
+</tr>
+<tr class="even">
+<td align="left">Age</td>
+<td align="left">How old is the patient</td>
+</tr>
+<tr class="odd">
+<td align="left">Neighbourhood</td>
+<td align="left">Where the patient was born</td>
+</tr>
+<tr class="even">
+<td align="left">Hipertension</td>
+<td align="left">True or False</td>
+</tr>
+<tr class="odd">
+<td align="left">Diabetes</td>
+<td align="left">True or False</td>
+</tr>
+<tr class="even">
+<td align="left">Alcoholism</td>
+<td align="left">True or False</td>
+</tr>
+<tr class="odd">
+<td align="left">Handcap</td>
+<td align="left">Hanicapped - level 1:4, 1 lowest level</td>
+</tr>
+<tr class="even">
+<td align="left">SMS_received</td>
+<td align="left">True: 1 or more messages sent to the patient</td>
+</tr>
+<tr class="odd">
+<td align="left">No-show</td>
+<td align="left">1: No, 2: Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="wheather.csv" class="section level4">
+<h4>wheather.csv</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">LON</td>
+<td align="left">Longitude</td>
+</tr>
+<tr class="even">
+<td align="left">LAT</td>
+<td align="left">Latitude</td>
+</tr>
+<tr class="odd">
+<td align="left">YEAR</td>
+<td align="left">Year</td>
+</tr>
+<tr class="even">
+<td align="left">MM</td>
+<td align="left">Month</td>
+</tr>
+<tr class="odd">
+<td align="left">DD</td>
+<td align="left">Day</td>
+</tr>
+<tr class="even">
+<td align="left">DOY</td>
+<td align="left">Day of Year</td>
+</tr>
+<tr class="odd">
+<td align="left">YYYYMMDD</td>
+<td align="left">Date</td>
+</tr>
+<tr class="even">
+<td align="left">RH2M</td>
+<td align="left">Relative Humidity at 2 Meters</td>
+</tr>
+<tr class="odd">
+<td align="left">T2M</td>
+<td align="left">Temperature at 2 Meters</td>
+</tr>
+<tr class="even">
+<td align="left">PRECTOT</td>
+<td align="left">Precipitation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
