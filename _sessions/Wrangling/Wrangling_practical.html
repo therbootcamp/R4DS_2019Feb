@@ -361,16 +361,16 @@ trial_act &lt;- trial_act %&gt;%
 </tbody>
 </table>
 <ol start="5" style="list-style-type: decimal">
-<li>If you haven’t already, try putting all the code for your previous questions in one call to <code>mutate()</code>. That is, in one block of code, create <code>age_m</code>, <code>weight_lb</code>, <code>cd_change_20</code>, <code>cd_change_960</code>, <code>gender_char</code> and <code>over50</code> using the <code>mutate()</code> function only once. Here’s how your code should look:</li>
+<li>If you haven’t already, try putting all the code for your previous questions in one call to <code>mutate()</code>. That is, in one block of code, create <code>age_m</code>, <code>weight_lb</code>, <code>cd_change_20</code>, <code>cd_change_960</code> and <code>gender_char</code> and <code>arms_char</code> using the <code>mutate()</code> function only once. Here’s how your code should look:</li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;%
   mutate(
     age_m = XXX,
     weight_lb = XXX,
     cd_change_20 = XXX,
-    XXX = XXX,
-    XXX = case_when(XXX),
-    XXX = case_when(XXX)
+    cd_change_960 = XXX,
+    gender_char = XXX,
+    arms_char = XXX
   )</code></pre>
 </div>
 <div id="e---arrange-rows-with-arrange" class="section level3">
@@ -492,8 +492,14 @@ CD4_long</code></pre>
 <div id="x---advanced-stupid-summaries" class="section level3">
 <h3>X - Advanced: Stupid summaries</h3>
 <ol style="list-style-type: decimal">
-<li><p>Read the <code>appointments.csv</code> and the <code>weather.csv</code> files into two objects called <code>appointments</code> and <code>weather</code>, respectively, using the code below. The <code>appointments</code> dataset contains data on medical appointment no shows in Brazil including a set of other variables. The <code>weather</code> dataset contains data on the wheather of the location (same for all cases) of the appointment.</p></li>
-<li><p>Your goal is to combine the data two datasets and then explore using a combination of <code>filter</code> and then <code>mean</code> (see code below), whether the patients are more likely to not show up for their appointment during bad versus good wheather conditions.</p></li>
+<li>Read the <code>appointments.csv</code> and the <code>weather.csv</code> files into two objects called <code>appointments</code> and <code>weather</code>, respectively, using the code below. The <code>appointments</code> dataset contains data on medical appointment no shows in Brazil including a set of other variables. The <code>weather</code> dataset contains data on the weather of the location (same for all cases) of the appointment.</li>
+</ol>
+<pre class="r"><code># read new data sets
+appointments &lt;- read_csv(&#39;https://therbootcamp.github.io/R4DS_2019Feb/1_Data/appointments.csv&#39;)
+
+weather &lt;- read_csv(&#39;https://therbootcamp.github.io/R4DS_2019Feb/1_Data/weather.csv&#39;)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Your goal is to combine the data two datasets and then explore using a combination of <code>filter</code> and then <code>mean</code> (see code below), whether the patients are more likely to not show up for their appointment during bad versus good weather conditions.</li>
 </ol>
 <pre class="r"><code># filter
 data_subset &lt;- combined_data %&gt;%
@@ -593,10 +599,10 @@ baselers &lt;- baselers %&gt;%
 </tbody>
 </table>
 <p>The <code>trial_act</code> data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter.</p>
-<table style="width:75%;">
+<table>
 <colgroup>
-<col width="20%" />
-<col width="54%" />
+<col width="26%" />
+<col width="73%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -715,14 +721,14 @@ baselers &lt;- baselers %&gt;%
 </tr>
 </tbody>
 </table>
-<div id="additional-datasets" class="section level3">
-<h3>Additional Datasets</h3>
-<div id="appointments.csv" class="section level4">
-<h4>appointments.csv</h4>
-<table style="width:57%;">
+<div id="additional-datasets" class="section level4">
+<h4>Additional Datasets</h4>
+<div id="appointments.csv" class="section level5">
+<h5>appointments.csv</h5>
+<table>
 <colgroup>
-<col width="13%" />
-<col width="43%" />
+<col width="23%" />
+<col width="76%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -786,8 +792,8 @@ baselers &lt;- baselers %&gt;%
 </tbody>
 </table>
 </div>
-<div id="wheather.csv" class="section level4">
-<h4>wheather.csv</h4>
+<div id="weather.csv" class="section level5">
+<h5>weather.csv</h5>
 <table>
 <thead>
 <tr class="header">
@@ -862,11 +868,11 @@ baselers &lt;- baselers %&gt;%
 </div>
 <div id="functions-1" class="section level3">
 <h3>Functions</h3>
-<table style="width:83%;">
+<table>
 <colgroup>
-<col width="6%" />
-<col width="11%" />
-<col width="65%" />
+<col width="7%" />
+<col width="12%" />
+<col width="80%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -934,7 +940,7 @@ baselers &lt;- baselers %&gt;%
 <h2>Resources</h2>
 <div id="dplyr-vignette" class="section level3">
 <h3><code>dplyr</code> vignette</h3>
-<p>See <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html" class="uri">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a> for the full dplyr vignette with lots of wrangling tips and tricks.</p>
+<p>See <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a> for the full dplyr vignette with lots of wrangling tips and tricks.</p>
 </div>
 <div id="cheatsheets" class="section level3">
 <h3>Cheatsheets</h3>
