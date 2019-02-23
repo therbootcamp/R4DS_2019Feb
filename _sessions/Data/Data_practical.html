@@ -223,9 +223,14 @@ $(document).ready(function () {
 <div id="a---getting-setup" class="section level3">
 <h3>A - Getting setup</h3>
 <ol style="list-style-type: decimal">
-<li><p>Open your <code>BaselRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>.</p></li>
-<li><p>Open a new R script and save it as a new file called <code>data_practical.R</code> in the <code>2_Code</code> folder. At the top of the script, using comments, write your name and the date. Then, load all package(s) listed in the Packages section above with <code>library()</code>. Make sure that each of the datasets listed above lie in your <code>1_Data</code> folder.</p></li>
+<li><p>Open your <code>BaselRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that each of the datasets listed in the Datasets section above lie in your <code>1_Data</code> folder.</p></li>
+<li><p>Open a new R script and save it as a new file called <code>data_practical.R</code> in the <code>2_Code</code> folder. At the top of the script, using comments, write your name and the date.</p></li>
+<li><p>Load the following package(s) with <code>library()</code>. If you don’t have any installed on your computer, look at the Functions section above for installation instructions.</p></li>
 </ol>
+<pre class="r"><code># Load packages
+library(tidyverse)
+library(haven)
+library(readxl)</code></pre>
 </div>
 <div id="b---creating-vectors" class="section level3">
 <h3>B - Creating vectors</h3>
@@ -245,71 +250,71 @@ $(document).ready(function () {
 <td align="left">1</td>
 <td align="left">male</td>
 <td align="left">44</td>
-<td align="left">174.3</td>
-<td align="left">113.4</td>
+<td align="left">174</td>
+<td align="left">113</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">male</td>
 <td align="left">65</td>
-<td align="left">180.3</td>
-<td align="left">75.2</td>
+<td align="left">180</td>
+<td align="left">75</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">female</td>
 <td align="left">31</td>
-<td align="left">168.3</td>
-<td align="left">55.5</td>
+<td align="left">168</td>
+<td align="left">56</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">male</td>
 <td align="left">27</td>
 <td align="left">209</td>
-<td align="left">93.8</td>
+<td align="left">94</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">male</td>
 <td align="left">24</td>
-<td align="left">176.7</td>
+<td align="left">177</td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">male</td>
 <td align="left">63</td>
-<td align="left">186.6</td>
-<td align="left">67.4</td>
+<td align="left">187</td>
+<td align="left">67</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">male</td>
 <td align="left">71</td>
-<td align="left">151.6</td>
-<td align="left">83.3</td>
+<td align="left">152</td>
+<td align="left">83</td>
 </tr>
 <tr class="even">
 <td align="left">8</td>
 <td align="left">female</td>
 <td align="left">41</td>
-<td align="left">155.7</td>
-<td align="left">67.8</td>
+<td align="left">156</td>
+<td align="left">68</td>
 </tr>
 <tr class="odd">
 <td align="left">9</td>
 <td align="left">male</td>
 <td align="left">43</td>
-<td align="left">176.1</td>
-<td align="left">69.3</td>
+<td align="left">176</td>
+<td align="left">69</td>
 </tr>
 <tr class="even">
 <td align="left">10</td>
 <td align="left">female</td>
 <td align="left">31</td>
-<td align="left">166.1</td>
-<td align="left">66.3</td>
+<td align="left">166</td>
+<td align="left">66</td>
 </tr>
 </tbody>
 </table>
@@ -351,7 +356,7 @@ XX &lt;- c(&quot;XX&quot;, &quot;XX&quot;, &quot;...&quot;)</code></pre>
 <li><p>Try calculating the mean value of <code>sex</code>. What happens? Why?</p></li>
 <li><p>Try calculating the mean <code>weight</code>. You should get an <code>NA</code> value. Why?</p></li>
 <li><p>Look at the help menu for the <code>mean()</code> function (using <code>?mean</code>) to look for an argument that will help you with your problem.</p></li>
-<li><p>Using the correct argument for the mean function, calculate the mean weight ignoring <code>NA</code> values. It should be 76.89!</p></li>
+<li><p>Using the correct argument for the mean function, calculate the mean weight ignoring <code>NA</code> values. It should be 76.78!</p></li>
 </ol>
 </div>
 <div id="d---read-write-delim-separated-text-files" class="section level3">
@@ -509,7 +514,6 @@ XX$XX[young_30]</code></pre>
 <div id="examples" class="section level2">
 <h2>Examples</h2>
 <pre class="r"><code>library(tidyverse)
-library(readr)
 library(readxl)
 library(haven)
 
@@ -650,14 +654,10 @@ chickens &lt;- read_sas(&quot;1_Data/chickens.sas7bdat&quot;)</code></pre>
 <td align="left"><code>install.packages(&quot;tidyverse&quot;)</code></td>
 </tr>
 <tr class="even">
-<td align="left"><code>readr</code></td>
-<td align="left"><code>install.packages(&quot;readr&quot;)</code></td>
-</tr>
-<tr class="odd">
 <td align="left"><code>haven</code></td>
 <td align="left"><code>install.packages(&quot;haven&quot;)</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>readxl</code></td>
 <td align="left"><code>install.packages(&quot;readxl&quot;)</code></td>
 </tr>

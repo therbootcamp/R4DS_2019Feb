@@ -71,17 +71,27 @@ In this practical you'll learn how to work with basic data objects and functions
 
 ### A - Getting setup
 
-1. Open your `BaselRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`.
+1. Open your `BaselRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that each of the datasets listed in the Datasets section above lie in your `1_Data` folder.
 
 2. Open a new R script and save it as a new file called `data_practical.R` in the `2_Code` folder. At the top of the script, using comments, write your name and the date. 
-Then, load all package(s) listed in the Packages section above with `library()`. Make sure that each of the datasets listed above lie in your `1_Data` folder.
+
+3. Load the following package(s) with `library()`. If you don't have any installed on your computer, look at the Functions section above for installation instructions.
+
+```{r, eval = FALSE, echo = TRUE}
+# Load packages
+library(tidyverse)
+library(haven)
+library(readxl)
+```
+
 
 ### B - Creating vectors
 
 The table below shows results from a (fictional) survey of 10 Baselers. In the first part of this practical, you will convert this table to R objects and then analyse them!
 
 ```{r, echo = FALSE, eval = TRUE}
-data <- baselers[1:10, c("id", "sex", "age", "height", "weight")]
+data <- baselers[1:10, c("id", "sex", "age", "height", "weight")] %>%
+  mutate_if(is.numeric, round, 0)
 
 data %>% mutate_all(replace_na, " ") %>% 
   knitr::kable(format = "markdown", caption = "Data from 10 baselers")
@@ -677,7 +687,6 @@ ten_tibble$id[ten_tibble$sex == "male" & ten_tibble$height < 165]
 
 ```{r, eval = FALSE, echo = TRUE}
 library(tidyverse)
-library(readr)
 library(readxl)
 library(haven)
 
@@ -763,6 +772,7 @@ chickens <- read_sas("1_Data/chickens.sas7bdat")
 
 ```{r, eval = TRUE, message = FALSE}
 library(tidyverse)
+library(readxl)
 library(haven)
 ```
 
@@ -780,7 +790,6 @@ library(haven)
 |Package| Installation|
 |:------|:------|
 |`tidyverse`|`install.packages("tidyverse")`|
-|`readr`|`install.packages("readr")`|
 |`haven`|`install.packages("haven")`|
 |`readxl`|`install.packages("readxl")`|
 
