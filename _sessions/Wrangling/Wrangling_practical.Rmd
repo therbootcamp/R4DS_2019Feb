@@ -37,7 +37,8 @@ knitr::opts_chunk$set(comment = NA,
                       fig.align = 'center',
                       echo = FALSE, 
                       eval = FALSE, 
-                      warning = FALSE)
+                      warning = FALSE, 
+                      message = FALSE)
 
 options(digits = 3)
 ```
@@ -577,17 +578,16 @@ trial_B
 
 ### X - Advanced: Stupid summaries
 
-1. Read the `appointments.csv` and the `weather.csv` files into two objects called `appointments` and `weather`, respectively, using the code below. The `appointments` dataset contains data on medical appointment no shows in Brazil including a set of other variables. The `weather` dataset contains data on the wheather of the location (same for all cases) of the appointment.
+1. Read the `appointments.csv` and the `weather.csv` files into two objects called `appointments` and `weather`, respectively, using the code below. The `appointments` dataset contains data on medical appointment no shows in Brazil including a set of other variables. The `weather` dataset contains data on the weather of the location (same for all cases) of the appointment.
 
-```{r}
-
+```{r, echo = TRUE, eval = TRUE, message = FALSE}
 # read new data sets
-appointments <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/medical_noshows.csv')
-weather <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/weather.csv')
+appointments <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/appointments.csv')
 
+weather <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/weather.csv')
 ```
 
-2. Your goal is to combine the data two datasets and then explore using a combination of `filter` and then `mean` (see code below), whether the patients are more likely to not show up for their appointment during bad versus good wheather conditions.
+2. Your goal is to combine the data two datasets and then explore using a combination of `filter` and then `mean` (see code below), whether the patients are more likely to not show up for their appointment during bad versus good weather conditions.
 
 ```{r, eval = FALSE, echo = TRUE}
 
@@ -739,7 +739,7 @@ infected with the human immunodeficiency virus type I whose CD4 T cell counts we
 |SMS_received | True: 1 or more messages sent to the patient|
 |No-show | 1: No, 2: Yes|
 
-##### wheather.csv
+##### weather.csv
 
 |Variable | Description |
 |:--------|:-----------------------------|

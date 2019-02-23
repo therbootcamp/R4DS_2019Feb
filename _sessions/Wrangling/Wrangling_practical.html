@@ -492,8 +492,14 @@ CD4_long</code></pre>
 <div id="x---advanced-stupid-summaries" class="section level3">
 <h3>X - Advanced: Stupid summaries</h3>
 <ol style="list-style-type: decimal">
-<li><p>Read the <code>appointments.csv</code> and the <code>weather.csv</code> files into two objects called <code>appointments</code> and <code>weather</code>, respectively, using the code below. The <code>appointments</code> dataset contains data on medical appointment no shows in Brazil including a set of other variables. The <code>weather</code> dataset contains data on the wheather of the location (same for all cases) of the appointment.</p></li>
-<li><p>Your goal is to combine the data two datasets and then explore using a combination of <code>filter</code> and then <code>mean</code> (see code below), whether the patients are more likely to not show up for their appointment during bad versus good wheather conditions.</p></li>
+<li>Read the <code>appointments.csv</code> and the <code>weather.csv</code> files into two objects called <code>appointments</code> and <code>weather</code>, respectively, using the code below. The <code>appointments</code> dataset contains data on medical appointment no shows in Brazil including a set of other variables. The <code>weather</code> dataset contains data on the weather of the location (same for all cases) of the appointment.</li>
+</ol>
+<pre class="r"><code># read new data sets
+appointments &lt;- read_csv(&#39;https://therbootcamp.github.io/R4DS_2019Feb/1_Data/appointments.csv&#39;)
+
+weather &lt;- read_csv(&#39;https://therbootcamp.github.io/R4DS_2019Feb/1_Data/weather.csv&#39;)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Your goal is to combine the data two datasets and then explore using a combination of <code>filter</code> and then <code>mean</code> (see code below), whether the patients are more likely to not show up for their appointment during bad versus good weather conditions.</li>
 </ol>
 <pre class="r"><code># filter
 data_subset &lt;- combined_data %&gt;%
@@ -715,14 +721,14 @@ baselers &lt;- baselers %&gt;%
 </tr>
 </tbody>
 </table>
-<div id="additional-datasets" class="section level3">
-<h3>Additional Datasets</h3>
-<div id="appointments.csv" class="section level4">
-<h4>appointments.csv</h4>
-<table style="width:57%;">
+<div id="additional-datasets" class="section level4">
+<h4>Additional Datasets</h4>
+<div id="appointments.csv" class="section level5">
+<h5>appointments.csv</h5>
+<table>
 <colgroup>
-<col width="13%" />
-<col width="43%" />
+<col width="23%" />
+<col width="76%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -786,8 +792,8 @@ baselers &lt;- baselers %&gt;%
 </tbody>
 </table>
 </div>
-<div id="wheather.csv" class="section level4">
-<h4>wheather.csv</h4>
+<div id="weather.csv" class="section level5">
+<h5>weather.csv</h5>
 <table>
 <thead>
 <tr class="header">
