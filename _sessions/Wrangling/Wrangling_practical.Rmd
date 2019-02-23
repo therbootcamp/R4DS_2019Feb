@@ -531,7 +531,7 @@ CD4_long %>%
   spread(time, value)
 ```
 
-### Practice!
+### I - Practice
 
 1. Create a new dataframe called `trial_A` from `trial_act` with the following restrictions:
 
@@ -574,6 +574,32 @@ trial_B <- trial_act %>%
 
 trial_B
 ```
+
+### X - Advanced: Stupid summaries
+
+1. Read the `appointments.csv` and the `weather.csv` files into two objects called `appointments` and `weather`, respectively, using the code below. The `appointments` dataset contains data on medical appointment no shows in Brazil including a set of other variables. The `weather` dataset contains data on the wheather of the location (same for all cases) of the appointment.
+
+```{r}
+
+# read new data sets
+appointments <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/medical_noshows.csv')
+weather <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/weather.csv')
+
+```
+
+2. Your goal is to combine the data two datasets and then explore using a combination of `filter` and then `mean` (see code below), whether the patients are more likely to not show up for their appointment during bad versus good wheather conditions.
+
+```{r, eval = FALSE, echo = TRUE}
+
+# filter
+data_subset <- combined_data %>%
+  filter(variable > value)
+
+# mean
+mean(data_subset$NoShow)
+
+```
+
 
 ## Examples
 
@@ -692,6 +718,43 @@ infected with the human immunodeficiency virus type I whose CD4 T cell counts we
 |cens| indicator of observing the event in days|
 |days| number of days until the first occurrence of: (i) a decline in CD4 T cell count of at least 50 (ii) an event indicating progression to AIDS, or (iii) death.|
 |arms| treatment arm (0=zidovudine, 1=zidovudine and didanosine, 2=zidovudine and zalcitabine, 3=didanosine).|
+
+### Additional Datasets 
+
+#### appointments.csv
+
+|Variable | Description |
+|:--------|:-----------------------------|
+|PatientId | ID of a patient |
+|AppointmentID | ID for each appointment |
+|Gender | Male or Female|
+|ScheduledDay | The day of the actual appointment, when patients have to visit the doctor |
+|AppointmentDay | The day someone called or registered the appointment, this should be before the appointment|
+|Age | How old is the patient|
+|Neighbourhood | Where the patient was born|
+|Hipertension | True or False |
+|Diabetes | True or False |
+|Alcoholism | True or False |
+|Handcap | Hanicapped - level 1:4, 1 lowest level |
+|SMS_received | True: 1 or more messages sent to the patient|
+|No-show | 1: No, 2: Yes|
+
+#### wheather.csv
+
+|Variable | Description |
+|:--------|:-----------------------------|
+|LON  |Longitude|
+|LAT  |Latitude|
+|YEAR  |Year| 
+|MM    |Month|
+|DD   |Day|
+|DOY |Day of Year|
+|YYYYMMDD|Date|    
+|RH2M   |Relative Humidity at 2 Meters|
+|T2M |Temperature at 2 Meters|
+|PRECTOT|Precipitation|
+
+
 
 ## Functions
 
