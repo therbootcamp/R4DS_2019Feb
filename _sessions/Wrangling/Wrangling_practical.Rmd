@@ -317,7 +317,7 @@ trial_act <- trial_act %>%
     arms == 3 ~ "didanosine"))
 ```
 
-5. If you haven't already, try putting all the code for your previous questions in one call to `mutate()`. That is, in one block of code, create `age_m`, `weight_lb`, `cd_change_20`, `cd_change_960`, `gender_char` and `over50` using the `mutate()` function only once. Here's how your code should look:
+5. If you haven't already, try putting all the code for your previous questions in one call to `mutate()`. That is, in one block of code, create `age_m`, `weight_lb`, `cd_change_20`, `cd_change_960` and `gender_char` and `arms_char` using the `mutate()` function only once. Here's how your code should look:
 
 ```{r, echo = TRUE, eval = FALSE}
 trial_act <- trial_act %>%
@@ -325,9 +325,9 @@ trial_act <- trial_act %>%
     age_m = XXX,
     weight_lb = XXX,
     cd_change_20 = XXX,
-    XXX = XXX,
-    XXX = case_when(XXX),
-    XXX = case_when(XXX)
+    cd_change_960 = XXX,
+    gender_char = XXX,
+    arms_char = XXX
   )
 ```
 
