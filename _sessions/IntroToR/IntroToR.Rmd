@@ -892,7 +892,7 @@ See also <a href="http://style.tidyverse.org/">style.tidyverse.org/</a>
 
 class: middle, center
 
-<h1><a href="https://therbootcamp.github.io/Intro2R_Unibe/1_Data/BaselRBootcamp.zip">Downloads</a></h1>
+<h1><a href="https://therbootcamp.github.io/R4DS_2019Feb/1_Data/BaselRBootcamp.zip">Downloads</a></h1>
 
 ---
 
