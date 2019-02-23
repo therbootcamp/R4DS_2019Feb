@@ -337,7 +337,7 @@ some_name
 
 ```r
 # an object called some_name
-class(some_name)
+class(x = some_name)
 ```
 
 ```
@@ -345,7 +345,7 @@ class(some_name)
 ```
 
 ```r
-typeof(some_name)
+typeof(x = some_name)
 ```
 
 ```
@@ -354,7 +354,7 @@ typeof(some_name)
 
 ```r
 # an object called some_name
-class(list())
+class(x = list())
 ```
 
 ```
@@ -363,7 +363,7 @@ class(list())
 
 ```r
 # an object called some_name
-class(tibble())
+class(x = tibble())
 ```
 
 ```
@@ -417,7 +417,7 @@ some_name
 
 ```r
 # function class()
-class(some_name)
+class(x = some_name)
 ```
 
 ```
@@ -458,7 +458,7 @@ mean()
 
 ```r
 # required argument
-mean(c(1, 2, 3))
+mean(x = c(1, 2, 3))
 ```
 
 ```
@@ -467,7 +467,7 @@ mean(c(1, 2, 3))
 
 ```r
 # introducing NA
-mean(c(1, 2, 3, NA))
+mean(x = c(1, 2, 3, NA))
 ```
 
 ```
@@ -476,7 +476,7 @@ mean(c(1, 2, 3, NA))
 
 ```r
 # changing default to handle NA
-mean(c(1, 2, 3, NA), na.rm = TRUE)
+mean(x = c(1, 2, 3, NA), na.rm = TRUE)
 ```
 
 ```
@@ -508,7 +508,7 @@ mean(c(1, 2, 3, NA), na.rm = TRUE)
 
 ```r
 # mean works also for logical
-mean(c(TRUE, FALSE, TRUE))
+mean(x = c(TRUE, FALSE, TRUE))
 ```
 
 ```
@@ -517,7 +517,7 @@ mean(c(TRUE, FALSE, TRUE))
 
 ```r
 # but not for character
-mean(c("a", "b", "c"))
+mean(x = c("a", "b", "c"))
 ```
 
 ```
@@ -526,7 +526,7 @@ mean(c("a", "b", "c"))
 
 ```r
 # classes relevant for all arg's
-mean(c(1, 2, 3), na.rm = "test")
+mean(x = c(1, 2, 3), na.rm = "test")
 ```
 
 ```
@@ -613,7 +613,7 @@ mean(c(1, 2, 3), na.rm = "test")
 
 ```r
 # message - attend
-basel &lt;- type_convert(baselers)
+basel &lt;- type_convert(df = baselers)
 ```
 
 
@@ -627,20 +627,20 @@ basel &lt;- type_convert(baselers)
 
 ```r
 # warning - attend closely
-result &lt;- mean('NA')
+result &lt;- mean(x = 'NA')
 ```
 
 ```
-## Warning in mean.default("NA"): argument is not numeric or logical: returning NA
+## Warning in mean.default(x = "NA"): argument is not numeric or logical: returning NA
 ```
 
 ```r
 # error - fix
-lenth(1)
+lenth(x = 1)
 ```
 
 ```
-## Error in lenth(1): could not find function "lenth"
+## Error in lenth(x = 1): could not find function "lenth"
 ```
 
 
@@ -670,11 +670,11 @@ lenth(1)
 
 
 ```r
-lenth(1)
+lenth(x = 1)
 ```
 
 ```
-## Error in lenth(1): could not find function "lenth"
+## Error in lenth(x = 1): could not find function "lenth"
 ```
 
 | Error | Description|
@@ -798,7 +798,7 @@ library(yarrr)
 library(lme4)
 
 # import data
-baselers &lt;- read_delim("baselers.txt",
+baselers &lt;- read_delim(file = "baselers.txt",
                        delim = '\t')
 ```
 &lt;br&gt;
@@ -1001,23 +1001,12 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   d.head.appendChild(s);
 })();</script>
 
-<script>
-(function() {
-  var i, text, code, codes = document.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
-          /^\$\$(.|\s)+\$\$$/.test(text) ||
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
-    }
-    i++;
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
   }
-})();
+});
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

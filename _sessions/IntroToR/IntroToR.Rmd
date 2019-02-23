@@ -353,16 +353,14 @@ require(tibble)
 
 ```{r}
 # an object called some_name
-class(some_name)
-typeof(some_name)
+class(x = some_name)
+typeof(x = some_name)
 
 # an object called some_name
-class(list())
+class(x = list())
 
 # an object called some_name
-class(tibble())
-
-
+class(x = tibble())
 ```
 ]
 
@@ -399,7 +397,7 @@ some_name + 2
 some_name
 
 # function class()
-class(some_name)
+class(x = some_name)
 
 ```
 ]
@@ -430,13 +428,13 @@ class(some_name)
 mean()
 
 # required argument
-mean(c(1, 2, 3))
+mean(x = c(1, 2, 3))
 
 # introducing NA
-mean(c(1, 2, 3, NA))
+mean(x = c(1, 2, 3, NA))
 
 # changing default to handle NA
-mean(c(1, 2, 3, NA), na.rm = TRUE)
+mean(x = c(1, 2, 3, NA), na.rm = TRUE)
 
 ```
 ]
@@ -464,14 +462,13 @@ mean(c(1, 2, 3, NA), na.rm = TRUE)
 .pull-right5[
 ```{r, error=TRUE,warning=F}
 # mean works also for logical
-mean(c(TRUE, FALSE, TRUE))
+mean(x = c(TRUE, FALSE, TRUE))
 
 # but not for character
-mean(c("a", "b", "c"))
+mean(x = c("a", "b", "c"))
 
 # classes relevant for all arg's
-mean(c(1, 2, 3), na.rm = "test")
-
+mean(x = c(1, 2, 3), na.rm = "test")
 ```
 ]
 
@@ -551,20 +548,20 @@ mean(c(1, 2, 3), na.rm = "test")
 
 ```{r, eval=F}
 # message - attend
-basel <- type_convert(baselers)
+basel <- type_convert(df = baselers)
 ```
 
 ```{r, echo=F, error=T}
 # message - attend
-basel <- type_convert(baselers[1:6])
+basel <- type_convert(df = baselers[1:6])
 ```
 
 ```{r, error=T}
 # warning - attend closely
-result <- mean('NA')
+result <- mean(x = 'NA')
 
 # error - fix
-lenth(1)
+lenth(x = 1)
 
 ```
 
@@ -594,7 +591,7 @@ lenth(1)
 .pull-right5[
 
 ```{r, error=T}
-lenth(1)
+lenth(x = 1)
 ```
 
 | Error | Description|
@@ -717,7 +714,7 @@ library(yarrr)
 library(lme4)
 
 # import data
-baselers <- read_delim("baselers.txt",
+baselers <- read_delim(file = "baselers.txt",
                        delim = '\t')
 
 ```
