@@ -453,7 +453,7 @@ patients %>%
 Use `left_join()` to <high>combine two data frames</high> based on one or more key variables.
 
 ```{r, eval = FALSE}
-# Join tibble_1 to tibble_2
+# Join tibble_2 to tibble_1
 #   matched by KEY
 tibble_1 %>%
   left_join(tibble_2, 
