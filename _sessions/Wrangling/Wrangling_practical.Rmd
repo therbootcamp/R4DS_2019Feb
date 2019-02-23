@@ -663,7 +663,7 @@ The `trial_act` data set contains a randomized clinical trial to compare monothe
 infected with the human immunodeficiency virus type I whose CD4 T cell counts were between
 200 and 500 per cubic millimeter.
 
-|File | Rows |
+|Name | Description |
 |:-------------|:-------------------------------------|
 |pidnum| patient’s ID number|
 |age| age in years at baseline|
