@@ -489,8 +489,8 @@ CD4_long</code></pre>
 <li>Only drug users</li>
 </ul>
 </div>
-<div id="x---advanced-stupid-summaries" class="section level3">
-<h3>X - Advanced: Stupid summaries</h3>
+<div id="x---advanced" class="section level3">
+<h3>X - Advanced</h3>
 <ol style="list-style-type: decimal">
 <li>Read the <code>appointments.csv</code> and the <code>weather.csv</code> files into two objects called <code>appointments</code> and <code>weather</code>, respectively, using the code below. The <code>appointments</code> dataset contains data on medical appointment no shows in Brazil including a set of other variables. The <code>weather</code> dataset contains data on the weather of the location (same for all cases) of the appointment.</li>
 </ol>
@@ -499,14 +499,19 @@ appointments &lt;- read_csv(&#39;https://therbootcamp.github.io/R4DS_2019Feb/1_D
 
 weather &lt;- read_csv(&#39;https://therbootcamp.github.io/R4DS_2019Feb/1_Data/weather.csv&#39;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Your goal is to combine the data two datasets and then explore using a combination of <code>filter</code> and then <code>mean</code> (see code below), whether the patients are more likely to not show up for their appointment during bad versus good weather conditions.</li>
+<li>Your goal is to use these datasets to answer the question: “Are patients more likely to not show up for their appointments during bad versus good weather conditions?” To do this, consider the following steps</li>
 </ol>
-<pre class="r"><code># filter
-data_subset &lt;- combined_data %&gt;%
-  filter(variable &gt; value)
-
-# mean
-mean(data_subset$NoShow)</code></pre>
+<ul>
+<li>Explore each dataset visually by printing it and/or using <code>View()</code></li>
+<li>Look at the variable descriptions in the Datasets tab above to understand what the variables mean.</li>
+<li>Think about which columns in each dataset are necessary to answer your question (e.g.; how do you define bad versus good weather? Which variable(s) indicate whether a patient showed up for their appointment or not?).</li>
+<li>Using <code>mutate()</code> and <code>case_when()</code>, add a new column to the <code>weather</code> data called <code>daytype</code> which indicates whether or not a day has <code>&quot;good&quot;</code>, <code>&quot;bad&quot;</code> or <code>&quot;ok&quot;</code> weather.</li>
+<li>Combine (aka, join) the two datasets into a dataset called <code>combined</code> based on a key column using <code>left_join()</code></li>
+<li>Using <code>filter()</code>, create a dataset called <code>bad_days</code> containing only data for bad days.</li>
+<li>Using <code>filter()</code>, create a dataset called <code>good_days</code> containing only data for good days.</li>
+<li>For the <code>good_days</code> data, calculate the perentage of patients who did not show up for their appointment.</li>
+<li>For the <code>bad_days</code> data, calculate the same percentage.</li>
+</ul>
 </div>
 </div>
 <div id="examples" class="section level2">

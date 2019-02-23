@@ -576,7 +576,7 @@ trial_B <- trial_act %>%
 trial_B
 ```
 
-### X - Advanced: Stupid summaries
+### X - Advanced
 
 1. Read the `appointments.csv` and the `weather.csv` files into two objects called `appointments` and `weather`, respectively, using the code below. The `appointments` dataset contains data on medical appointment no shows in Brazil including a set of other variables. The `weather` dataset contains data on the weather of the location (same for all cases) of the appointment.
 
@@ -587,19 +587,17 @@ appointments <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/app
 weather <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/weather.csv')
 ```
 
-2. Your goal is to combine the data two datasets and then explore using a combination of `filter` and then `mean` (see code below), whether the patients are more likely to not show up for their appointment during bad versus good weather conditions.
+2. Your goal is to use these datasets to answer the question: "Are patients more likely to not show up for their appointments during bad versus good weather conditions?" To do this, consider the following steps
 
-```{r, eval = FALSE, echo = TRUE}
-
-# filter
-data_subset <- combined_data %>%
-  filter(variable > value)
-
-# mean
-mean(data_subset$NoShow)
-
-```
-
+- Explore each dataset visually by printing it and/or using `View()`
+- Look at the variable descriptions in the Datasets tab above to understand what the variables mean.
+- Think about which columns in each dataset are necessary to answer your question (e.g.; how do you define bad versus good weather? Which variable(s) indicate whether a patient showed up for their appointment or not?).
+- Using `mutate()` and `case_when()`, add a new column to the `weather` data called `daytype` which indicates whether or not a day has `"good"`, `"bad"` or `"ok"` weather.
+- Combine (aka, join) the two datasets into a dataset called `combined` based on a key column using `left_join()`
+- Using `filter()`, create a dataset called `bad_days` containing only data for bad days.
+- Using `filter()`, create a dataset called `good_days` containing only data for good days.
+- For the `good_days` data, calculate the perentage of patients who did not show up for their appointment.
+- For the `bad_days` data, calculate the same percentage.
 
 ## Examples
 
