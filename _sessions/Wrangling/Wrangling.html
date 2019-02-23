@@ -266,7 +266,7 @@ score %&gt;%     # AND THEN
 &lt;b&gt;4&lt;/b&gt; &lt;i&gt;Sort&lt;/i&gt; - &lt;high&gt;Sort&lt;/high&gt; tibble by age. &lt;br&gt;&lt;br&gt;
 &lt;b&gt;5&lt;/b&gt; &lt;i&gt;Filter&lt;/i&gt; - Select relevant &lt;high&gt;cases&lt;/high&gt;. &lt;br&gt;&lt;br&gt;
 &lt;b&gt;6&lt;/b&gt; &lt;i&gt;Select&lt;/i&gt; - Select relevant &lt;high&gt;variables&lt;/high&gt;.&lt;br&gt;&lt;br&gt;
-&lt;b&gt;7&lt;/b&gt; &lt;i&gt;Spread&lt;/i&gt; - Change to &lt;high&gt;wide format&lt;/high&gt;.&lt;br&gt;&lt;br&gt;
+&lt;b&gt;7&lt;/b&gt; &lt;i&gt;Gather&lt;/i&gt; - Change to &lt;high&gt;long format&lt;/high&gt;.&lt;br&gt;&lt;br&gt;
 
 
 ]
@@ -813,7 +813,7 @@ Select rows `1` through `4`.
 
 
 ```r
-# First 5 rows
+# First 4 rows
 combined %&gt;%
   slice(1:4)
 ```
@@ -885,7 +885,7 @@ Use `filter()` to &lt;high&gt;select rows&lt;/high&gt; (or remove) based on logi
 
 &lt;high&gt;`==`&lt;/high&gt; - is equal to&lt;br&gt;
 &lt;high&gt;`&lt;`&lt;/high&gt;, &lt;high&gt;`&gt;`&lt;/high&gt; - smaller/greater than&lt;br&gt;
-&lt;high&gt;`≤`&lt;/high&gt;, &lt;high&gt;`≥`&lt;/high&gt; - smaller/greater than or equal&lt;br&gt;
+&lt;high&gt;`&lt;=`&lt;/high&gt;, &lt;high&gt;`&gt;=`&lt;/high&gt; - smaller/greater than or equal&lt;br&gt;
 &lt;high&gt;`&amp;`&lt;/high&gt;, &lt;high&gt;`&amp;&amp;`&lt;/high&gt; - logical AND&lt;br&gt;
 &lt;high&gt;`|`&lt;/high&gt;, &lt;high&gt;`||`&lt;/high&gt; - logical OR&lt;br&gt;
 
@@ -1091,7 +1091,7 @@ combined %&gt;%
 ##  8     3 arm   2    
 ##  9     4 arm   1    
 ## 10     5 arm   2    
-## # ... with 15 more rows
+## # … with 15 more rows
 ```
 
 ]
@@ -1261,7 +1261,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);
