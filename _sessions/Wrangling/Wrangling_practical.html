@@ -97,6 +97,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -104,14 +107,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -225,7 +288,7 @@ trial_act &lt;- trial_act %&gt;%
 <pre class="r"><code>XX %&gt;%
   select(XX, XX, XX, XX)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Imagine that a colleague of yours wants an anonymised dataframe called <code>trial_act_anon_</code> that does <em>not</em> contain the columns <code>pidnum</code> and <code>age</code>. Create this dataframe by selecting all columns in <code>trial_act</code> <em>except</em> <code>pidnum</code> and <code>age</code> (hint: use the notation <code>select(-XXX, -XXX))</code> to select everything <em>except</em> specified columns). Assign the result to a new object called <code>trial_act_anon</code></li>
+<li>Imagine that a colleague of yours wants an anonymised dataframe called <code>trial_act_anon_</code> that does <em>not</em> contain the columns <code>pidnum</code> and <code>age_y</code>. Create this dataframe by selecting all columns in <code>trial_act</code> <em>except</em> <code>pidnum</code> and <code>age_y</code> (hint: use the notation <code>select(-XXX, -XXX))</code> to select everything <em>except</em> specified columns). Assign the result to a new object called <code>trial_act_anon</code></li>
 </ol>
 <pre class="r"><code>XX &lt;- XX %&gt;%
   select(-XX, -XX)</code></pre>
@@ -363,7 +426,7 @@ trial_act &lt;- trial_act %&gt;%
 CD4_wide</code></pre>
 <pre><code># A tibble: 2,139 x 5
    pidnum  arms  cd40 cd420 cd496
-    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
  1  10056     2   422   477   660
  2  10059     3   162   218    NA
  3  10089     3   326   274   122
@@ -374,13 +437,13 @@ CD4_wide</code></pre>
  8  10190     0   401   366   453
  9  10198     3   214   107     8
 10  10229     0   221   132    NA
-# ... with 2,129 more rows</code></pre>
+# … with 2,129 more rows</code></pre>
 <p>Our goal is to convert this data to a ‘long’ format, where each row represents a single CD4 T cell count for a specific patient, like this:</p>
 <pre class="r"><code># This is the same data in &#39;long&#39; format
 CD4_long</code></pre>
 <pre><code># A tibble: 6,417 x 4
    pidnum  arms time  value
-    &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt;
+    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
  1  10056     2 cd40    422
  2  10059     3 cd40    162
  3  10089     3 cd40    326
@@ -391,7 +454,7 @@ CD4_long</code></pre>
  8  10190     0 cd40    401
  9  10198     3 cd40    214
 10  10229     0 cd40    221
-# ... with 6,407 more rows</code></pre>
+# … with 6,407 more rows</code></pre>
 <ol style="list-style-type: decimal">
 <li>Using the <code>gather()</code> function, create a new dataframe called <code>CD4_long</code> that shows the <code>CD4_wide</code> data in the ‘long’ format. To do this, use the following template. Set the grouping column to <code>time</code> and the new data column to <code>value</code>.</li>
 </ol>

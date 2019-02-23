@@ -214,7 +214,7 @@ trial_act %>%
   select(pidnum, age_y, gender, weight_kg)
 ```
 
-3. Imagine that a colleague of yours wants an anonymised dataframe called `trial_act_anon_` that does *not* contain the columns `pidnum` and `age`. Create this dataframe by selecting all columns in `trial_act` *except* `pidnum` and `age` (hint: use the notation `select(-XXX, -XXX))` to select everything *except* specified columns). Assign the result to a new object called `trial_act_anon`
+3. Imagine that a colleague of yours wants an anonymised dataframe called `trial_act_anon_` that does *not* contain the columns `pidnum` and `age_y`. Create this dataframe by selecting all columns in `trial_act` *except* `pidnum` and `age_y` (hint: use the notation `select(-XXX, -XXX))` to select everything *except* specified columns). Assign the result to a new object called `trial_act_anon`
 
 ```{r, echo = TRUE, eval = FALSE}
 XX <- XX %>%
