@@ -126,7 +126,7 @@ There are many good reasons to prefer R over superficially more user friendly so
 2. Relatively **easy**
 3. **Extensibility** ([CRAN](https://cran.r-project.org/), packages)
 4. **User base** (e.g., [stackoverflow](https://stackoverflow.com/))
-5. [**Tidyverse**](https://www.tidyverse.org/) (`dplyr`, `ggplot`, etc.)
+5. [**Tidyverse**](https://www.tidyverse.org/) (`dplyr`, `ggplot2`, etc.)
 6. [**RStudio**](https://www.rstudio.com/)
 7. **Productivity** options: [Latex](https://www.latex-project.org/), [Markdown](https://daringfireball.net/projects/markdown/), [GitHub](https://github.com/)
 ]
@@ -453,7 +453,7 @@ mean()
 ```
 
 ```
-## Error in mean.default(): argument "x" is missing, with no default
+## Error in mean.default(): Argument "x" fehlt (ohne Standardwert)
 ```
 
 ```r
@@ -530,7 +530,7 @@ mean(c(1, 2, 3), na.rm = "test")
 ```
 
 ```
-## Error in if (na.rm) x &lt;- x[!is.na(x)]: argument is not interpretable as logical
+## Error in if (na.rm) x &lt;- x[!is.na(x)]: Argument kann nicht als logischer Wert interpretiert werden
 ```
 ]
 
@@ -640,7 +640,7 @@ lenth(1)
 ```
 
 ```
-## Error in lenth(1): could not find function "lenth"
+## Error in lenth(1): konnte Funktion "lenth" nicht finden
 ```
 
 
@@ -674,7 +674,7 @@ lenth(1)
 ```
 
 ```
-## Error in lenth(1): could not find function "lenth"
+## Error in lenth(1): konnte Funktion "lenth" nicht finden
 ```
 
 | Error | Description|
@@ -1024,7 +1024,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);

@@ -152,7 +152,7 @@ There are many good reasons to prefer R over superficially more user friendly so
 2. Relatively **easy**
 3. **Extensibility** ([CRAN](https://cran.r-project.org/), packages)
 4. **User base** (e.g., [stackoverflow](https://stackoverflow.com/))
-5. [**Tidyverse**](https://www.tidyverse.org/) (`dplyr`, `ggplot`, etc.)
+5. [**Tidyverse**](https://www.tidyverse.org/) (`dplyr`, `ggplot2`, etc.)
 6. [**RStudio**](https://www.rstudio.com/)
 7. **Productivity** options: [Latex](https://www.latex-project.org/), [Markdown](https://daringfireball.net/projects/markdown/), [GitHub](https://github.com/)
 ]
