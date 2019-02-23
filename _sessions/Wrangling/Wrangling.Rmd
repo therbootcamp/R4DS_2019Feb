@@ -641,7 +641,7 @@ c(2, 6, 10)
 Select rows `1` through `4`.
 
 ```{r}
-# First 5 rows
+# First 4 rows
 combined %>%
   slice(1:4)
 ```
