@@ -332,12 +332,20 @@ At any time, you can <high>request a 15 minute 1-1 intensive</high> coaching ses
 
 # Photography
 
-```{r, fig.align="center", echo = FALSE, out.width = "90%"}
-knitr::include_graphics("https://amp.businessinsider.com/images/5af9eea4965f4c30008b4acb-750-375.jpg")
-```
+.pull-left7[
+<p align="center"><img src="https://amp.businessinsider.com/images/5af9eea4965f4c30008b4acb-750-375.jpg" width="700"><br>
+<font style="font-size:10px">from <a href="https://amp.businessinsider.com/images/5af9eea4965f4c30008b4acb-750-375.jpg">businessinsider.com</a></font>
+</p>
 
+]
 
+.pull-right25[
 
+<br><br><br>
+
+<font style="font-size:32px"> <high>Let us know, personally or via mail, if you don't want be published.</high></font>
+
+]
 
 ---
 

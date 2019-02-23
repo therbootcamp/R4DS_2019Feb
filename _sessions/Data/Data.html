@@ -207,20 +207,20 @@ baselers
 ```
 ## # A tibble: 10,000 x 20
 ##      id sex     age height weight income
-##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##   &lt;int&gt; &lt;chr&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     1 male     44   174.  113.    6300
 ## 2     2 male     65   180.   75.2  10900
 ## 3     3 fema…    31   168.   55.5   5100
 ## 4     4 male     27   209    93.8   4200
 ## 5     5 male     24   177.   NA     4000
 ##   education confession children
-##   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;
+##   &lt;chr&gt;     &lt;chr&gt;         &lt;int&gt;
 ## 1 SEK_III   catholic          2
 ## 2 obligato… confessio…        2
 ## 3 SEK_III   &lt;NA&gt;              2
 ## 4 SEK_III   catholic          2
 ## 5 SEK_III   catholic          1
-## # … with 9,995 more rows, and 11 more
+## # ... with 9,995 more rows, and 11 more
 ## #   variables
 ```
 ]
@@ -313,20 +313,20 @@ baselers
 ```
 ## # A tibble: 10,000 x 20
 ##      id sex     age height weight income
-##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##   &lt;int&gt; &lt;chr&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     1 male     44   174.  113.     6.3
 ## 2     2 male     65   180.   75.2   10.9
 ## 3     3 fema…    31   168.   55.5    5.1
 ## 4     4 male     27   209    93.8    4.2
 ## 5     5 male     24   177.   NA      4  
 ##   education confession children
-##   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;
+##   &lt;chr&gt;     &lt;chr&gt;         &lt;int&gt;
 ## 1 SEK_III   catholic          2
 ## 2 obligato… confessio…        2
 ## 3 SEK_III   &lt;NA&gt;              2
 ## 4 SEK_III   catholic          2
 ## 5 SEK_III   catholic          1
-## # … with 9,995 more rows, and 11 more
+## # ... with 9,995 more rows, and 11 more
 ## #   variables
 ```
 
@@ -437,7 +437,7 @@ class(baselers$age)
 ```
 
 ```
-## [1] "numeric"
+## [1] "integer"
 ```
 
 ```r
@@ -487,11 +487,7 @@ baselers$education
 ## [1] "SEK_III"          
 ## [2] "obligatory_school"
 ## [3] "SEK_III"          
-## [4] "SEK_III"          
-## [5] "SEK_III"          
-## [6] "SEK_III"          
-## [7] "SEK_III"          
-## [8] "SEK_III"
+## [4] "SEK_III"
 ```
 
 
@@ -683,8 +679,8 @@ data &lt;- read_delim(file, ...) # arbitrary-delimited
 
 # Writing a data frame to a file
 
-write_csv(data_object, file, ...)    # comma-delimited
-write_delim(data_object, file, ...)  # arbitrary-delimited
+write_csv(data_object, path, ...)    # comma-delimited
+write_delim(data_object, path, ...)  # arbitrary-delimited
 ```
 ]
 
@@ -808,10 +804,14 @@ read_csv(file = "1_Data/baselers.csv")
 ```
 ## Parsed with column specification:
 ## cols(
-##   .default = col_double(),
+##   .default = col_integer(),
 ##   sex = col_character(),
+##   height = col_double(),
+##   weight = col_double(),
+##   income = col_double(),
 ##   education = col_character(),
 ##   confession = col_character(),
+##   food = col_double(),
 ##   fasnacht = col_character(),
 ##   eyecor = col_character()
 ## )
@@ -824,20 +824,20 @@ read_csv(file = "1_Data/baselers.csv")
 ```
 ## # A tibble: 10,000 x 20
 ##      id sex     age height weight income
-##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##   &lt;int&gt; &lt;chr&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1     1 male     44   174.  113.    6300
 ## 2     2 male     65   180.   75.2  10900
 ## 3     3 fema…    31   168.   55.5   5100
 ## 4     4 male     27   209    93.8   4200
 ## 5     5 male     24   177.   NA     4000
 ##   education confession children
-##   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;
+##   &lt;chr&gt;     &lt;chr&gt;         &lt;int&gt;
 ## 1 SEK_III   catholic          2
 ## 2 obligato… confessio…        2
 ## 3 SEK_III   &lt;NA&gt;              2
 ## 4 SEK_III   catholic          2
 ## 5 SEK_III   catholic          1
-## # … with 9,995 more rows, and 11 more
+## # ... with 9,995 more rows, and 11 more
 ## #   variables
 ```
 
@@ -959,12 +959,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   d.head.appendChild(s);
 })();</script>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
   }
-});
+})();
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

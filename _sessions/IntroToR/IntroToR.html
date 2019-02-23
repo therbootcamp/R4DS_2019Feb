@@ -260,8 +260,8 @@ require(package_name)
 
 .pull-left4[
 1. &lt;high&gt;Everything is an object&lt;/high&gt;
-2. &lt;high&gt;Use `&lt;-` to create/change objects&lt;/high&gt;
-3. &lt;high&gt;Name objects using `_`&lt;/high&gt;
+2. &lt;high&gt;Use &lt;mono&gt; &lt;- &lt;/mono&gt; to create/change objects&lt;/high&gt;
+3. &lt;high&gt;Name objects using &lt;mono&gt;_&lt;/mono&gt;&lt;/high&gt;
 4. Objects have classes
 5. Everything happens through functions
 6. Functions have (default) arguments
@@ -337,7 +337,7 @@ some_name
 
 ```r
 # What is the class of some_name
-class(x = some_name)
+class(some_name)
 ```
 
 ```
@@ -346,7 +346,7 @@ class(x = some_name)
 
 ```r
 # an object called some_name
-class(x = list())
+class(list())
 ```
 
 ```
@@ -355,11 +355,11 @@ class(x = list())
 
 ```r
 # an object called some_name
-class(x = baselers)
+class(baselers)
 ```
 
 ```
-## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
+## [1] "tbl_df"     "tbl"        "data.frame"
 ```
 ]
 
@@ -450,7 +450,7 @@ mean()
 
 ```r
 # required argument
-mean(x = c(1, 2, 3))
+mean(c(1, 2, 3))
 ```
 
 ```
@@ -459,7 +459,7 @@ mean(x = c(1, 2, 3))
 
 ```r
 # introducing NA
-mean(x = c(1, 2, 3, NA))
+mean(c(1, 2, 3, NA))
 ```
 
 ```
@@ -468,7 +468,7 @@ mean(x = c(1, 2, 3, NA))
 
 ```r
 # changing default to handle NA
-mean(x = c(1, 2, 3, NA), na.rm = TRUE)
+mean(c(1, 2, 3, NA), na.rm = TRUE)
 ```
 
 ```
@@ -500,7 +500,7 @@ mean(x = c(1, 2, 3, NA), na.rm = TRUE)
 
 ```r
 # mean works also for logical
-mean(x = c(TRUE, FALSE, TRUE))
+mean(c(TRUE, FALSE, TRUE))
 ```
 
 ```
@@ -509,7 +509,7 @@ mean(x = c(TRUE, FALSE, TRUE))
 
 ```r
 # but not for character
-mean(x = c("a", "b", "c"))
+mean(c("a", "b", "c"))
 ```
 
 ```
@@ -518,13 +518,15 @@ mean(x = c("a", "b", "c"))
 
 ```r
 # classes relevant for all arg's
-mean(x = c(1, 2, 3), na.rm = "test")
+mean(c(1, 2, 3), na.rm = "test")
 ```
 
 ```
 ## Error in if (na.rm) x &lt;- x[!is.na(x)]: argument is not interpretable as logical
 ```
 ]
+
+
 
 ---
 
@@ -605,7 +607,7 @@ mean(x = c(1, 2, 3), na.rm = "test")
 
 ```r
 # message - attend
-basel &lt;- type_convert(df = baselers)
+basel &lt;- type_convert(baselers)
 ```
 
 
@@ -619,11 +621,11 @@ basel &lt;- type_convert(df = baselers)
 
 ```r
 # warning - attend closely
-result &lt;- mean(x = 'NA')
+result &lt;- mean('NA')
 ```
 
 ```
-## Warning in mean.default(x = "NA"): argument is not numeric or logical: returning NA
+## Warning in mean.default("NA"): argument is not numeric or logical: returning NA
 ```
 
 ```r
@@ -992,12 +994,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   d.head.appendChild(s);
 })();</script>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
   }
-});
+})();
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

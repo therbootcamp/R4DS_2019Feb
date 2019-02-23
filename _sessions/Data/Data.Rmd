@@ -436,7 +436,7 @@ baselers$education
 
 ```{r, echo = F}
 # extract a numeric vectors
-baselers$education[1:8]
+baselers$education[1:4]
 ```
 
 
@@ -620,8 +620,8 @@ data <- read_delim(file, ...) # arbitrary-delimited
 
 # Writing a data frame to a file
 
-write_csv(data_object, file, ...)    # comma-delimited
-write_delim(data_object, file, ...)  # arbitrary-delimited
+write_csv(data_object, path, ...)    # comma-delimited
+write_delim(data_object, path, ...)  # arbitrary-delimited
 ```
 ]
 

@@ -291,8 +291,8 @@ require(package_name)
 
 .pull-left4[
 1. <high>Everything is an object</high>
-2. <high>Use `<-` to create/change objects</high>
-3. <high>Name objects using `_`</high>
+2. <high>Use <mono> <- </mono> to create/change objects</high>
+3. <high>Name objects using <mono>_</mono></high>
 4. Objects have classes
 5. Everything happens through functions
 6. Functions have (default) arguments
@@ -354,13 +354,13 @@ library(baselers)
 
 ```{r}
 # What is the class of some_name
-class(x = some_name)
+class(some_name)
 
 # an object called some_name
-class(x = list())
+class(list())
 
 # an object called some_name
-class(x = baselers)
+class(baselers)
 ```
 ]
 
@@ -428,13 +428,13 @@ class(x = some_name)
 mean()
 
 # required argument
-mean(x = c(1, 2, 3))
+mean(c(1, 2, 3))
 
 # introducing NA
-mean(x = c(1, 2, 3, NA))
+mean(c(1, 2, 3, NA))
 
 # changing default to handle NA
-mean(x = c(1, 2, 3, NA), na.rm = TRUE)
+mean(c(1, 2, 3, NA), na.rm = TRUE)
 
 ```
 ]
@@ -462,15 +462,17 @@ mean(x = c(1, 2, 3, NA), na.rm = TRUE)
 .pull-right5[
 ```{r, error=TRUE,warning=F}
 # mean works also for logical
-mean(x = c(TRUE, FALSE, TRUE))
+mean(c(TRUE, FALSE, TRUE))
 
 # but not for character
-mean(x = c("a", "b", "c"))
+mean(c("a", "b", "c"))
 
 # classes relevant for all arg's
-mean(x = c(1, 2, 3), na.rm = "test")
+mean(c(1, 2, 3), na.rm = "test")
 ```
 ]
+
+
 
 ---
 
@@ -548,17 +550,17 @@ mean(x = c(1, 2, 3), na.rm = "test")
 
 ```{r, eval=F}
 # message - attend
-basel <- type_convert(df = baselers)
+basel <- type_convert(baselers)
 ```
 
 ```{r, echo=F, error=T}
 # message - attend
-basel <- type_convert(df = baselers[1:6])
+basel <- type_convert(baselers[1:6])
 ```
 
 ```{r, error=T}
 # warning - attend closely
-result <- mean(x = 'NA')
+result <- mean('NA')
 
 # error - fix
 lenth(x = 1)
