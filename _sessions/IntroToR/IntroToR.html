@@ -975,7 +975,7 @@ See also &lt;a href="http://style.tidyverse.org/"&gt;style.tidyverse.org/&lt;/a&
 
 class: middle, center
 
-&lt;h1&gt;&lt;a href="https://github.com/therbootcamp/R4DS_2019Feb/raw/master/_sessions/_data/baselrbootcamp_data.zip"&gt;Downloads&lt;/a&gt;&lt;/h1&gt;
+&lt;h1&gt;&lt;a href="https://therbootcamp.github.io/R4DS_2019Feb/1_Data/BaselRBootcamp.zip"&gt;Downloads&lt;/a&gt;&lt;/h1&gt;
 
 ---
 
@@ -1001,12 +1001,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   d.head.appendChild(s);
 })();</script>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
   }
-});
+})();
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
