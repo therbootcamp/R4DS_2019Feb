@@ -111,7 +111,7 @@ XX <- read_csv("XX/XX")
 mcdonalds <- read_csv("../../1_Data/mcdonalds.csv")
 ```
 
-6. Using `print()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly, the first few rows should look like this:
+6. Using `print()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly.
 
 ```{r}
 mcdonalds
@@ -119,11 +119,6 @@ summary(mcdonalds)
 head(mcdonalds)
 # View(kc_house)
 ```
-
-```{r, eval = TRUE, echo = FALSE}
-knitr::kable(mcdonalds[1:5, 1:5])
-```
-
 
 
 ### B - Building a plot step-by-step
@@ -672,13 +667,21 @@ ggplot(data = mpg,
 library(tidyverse)
 library(plotly)
 library(ggthemes)
-mcdonalds <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/mcdonalds.csv")
+mcdonalds <- read_csv("https://raw.githubusercontent.com/therbootcamp/R4DS_2019Feb/master/1_Data/mcdonalds.csv")
 kc_house <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/kc_house.csv")
 ```
 
 |File  |Rows | Columns |
 |:----|:-----|:------|
-|[mcdonalds.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/complete/mcdonalds.csv)| 260 | 24 |
+|[mcdonalds.csv](https://raw.githubusercontent.com/therbootcamp/R4DS_2019Feb/master/1_Data/mcdonalds.csv)| 260 | 24 |
+
+*First 5 rows and columns of mcdonalds.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(mcdonalds[1:5, 1:5])
+```
+
+
 
 ## Functions
 

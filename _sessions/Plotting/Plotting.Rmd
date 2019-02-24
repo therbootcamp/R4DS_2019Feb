@@ -1351,7 +1351,7 @@ To create an <high>image file</high> of a plot (e.g., `.jpg`, `.pdf`, `.png`), u
   </tr>
   <tr>
     <td> <mono>filename</mono> </td>
-    <td> Name of the to-be-created file </td>
+    <td> Name of the to-be-created file (including extension) </td>
   </tr>
   <tr>
     <td> <mono>device</mono> </td>
@@ -1379,7 +1379,7 @@ myplot <- myplot +
   facet_wrap(~ class)
 
 # Create "myplot.pdf", from myplot
-ggsave(filename = "myplot",
+ggsave(filename = "myplot.pdf",
        plot = myplot,
        device = "pdf",
        path = "figures",
@@ -1406,7 +1406,7 @@ To create an <high>image file</high> of a plot (e.g., `.jpg`, `.pdf`, `.png`), u
   </tr>
   <tr>
     <td> <mono>filename</mono> </td>
-    <td> Name of the to-be-created file </td>
+    <td> Name of the to-be-created file (including extension) </td>
   </tr>
   <tr>
     <td> <mono>device</mono> </td>
@@ -1434,7 +1434,7 @@ myplot <- myplot +
   facet_wrap(~ class)
 
 # Create "myplot.png", from myplot
-ggsave(filename = "myplot",
+ggsave(filename = "myplot.png",
        plot = myplot,
        device = "png",
        path = "figures",

@@ -489,13 +489,13 @@ ggplot(data = mpg,
 
 &lt;p align="center"&gt; `mpg`&lt;/p&gt;
 
-| displ| hwy|class      | year|
-|-----:|---:|:----------|----:|
-|   5.3|  20|suv        | 2008|
-|   3.3|  17|suv        | 1999|
-|   5.4|  18|suv        | 2008|
-|   2.5|  29|compact    | 2008|
-|   2.5|  26|subcompact | 1999|
+| displ| hwy|class   | year|
+|-----:|---:|:-------|----:|
+|   2.8|  24|compact | 1999|
+|   4.6|  17|pickup  | 2008|
+|   3.0|  24|minivan | 1999|
+|   2.5|  27|compact | 2008|
+|   3.8|  26|midsize | 1999|
 
 
 ]
@@ -1106,7 +1106,7 @@ To create an &lt;high&gt;image file&lt;/high&gt; of a plot (e.g., `.jpg`, `.pdf`
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt; &lt;mono&gt;filename&lt;/mono&gt; &lt;/td&gt;
-    &lt;td&gt; Name of the to-be-created file &lt;/td&gt;
+    &lt;td&gt; Name of the to-be-created file (including extension) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt; &lt;mono&gt;device&lt;/mono&gt; &lt;/td&gt;
@@ -1135,7 +1135,7 @@ myplot &lt;- myplot +
   facet_wrap(~ class)
 
 # Create "myplot.pdf", from myplot
-ggsave(filename = "myplot",
+ggsave(filename = "myplot.pdf",
        plot = myplot,
        device = "pdf",
        path = "figures",
@@ -1162,7 +1162,7 @@ To create an &lt;high&gt;image file&lt;/high&gt; of a plot (e.g., `.jpg`, `.pdf`
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt; &lt;mono&gt;filename&lt;/mono&gt; &lt;/td&gt;
-    &lt;td&gt; Name of the to-be-created file &lt;/td&gt;
+    &lt;td&gt; Name of the to-be-created file (including extension) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt; &lt;mono&gt;device&lt;/mono&gt; &lt;/td&gt;
@@ -1191,7 +1191,7 @@ myplot &lt;- myplot +
   facet_wrap(~ class)
 
 # Create "myplot.png", from myplot
-ggsave(filename = "myplot",
+ggsave(filename = "myplot.png",
        plot = myplot,
        device = "png",
        path = "figures",

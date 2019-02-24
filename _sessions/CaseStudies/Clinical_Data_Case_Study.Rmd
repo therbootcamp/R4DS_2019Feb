@@ -175,7 +175,7 @@ demographics_df <- read_csv("1_Data/dimarta_demographics.csv")
 biomarker_df <- read_csv("1_Data/dimarta_biomarker.csv")
 ```
 
-2. Get a first impression of the objects you just created by exploring them with a mixture of the `View()`, `head()`, `names()`, and `summary()` functions. Were they all loaded correctly?
+2. Get a first impression of the objects you just created by exploring them with a mixture of the `View()`, `head()`, `names()`, and `summary()` functions.
 
 ```{r}
 trial_df
@@ -672,9 +672,18 @@ ggplot(data = dimarta_df %>%
 |[dimarta_biomarker.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/dimarta_biomarker.csv) | 900 | 3 | Biomarker status' for 3 different biomarkers for each patient. |
 |[dimarta_demographics.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/dimarta_demographics.csv) | 300 | 5 | Demographic information for each patient |
 
+
+
 Column Descriptions
 
-**dimarta_trial.csv**
+### dimarta_trial.csv
+
+*First 5 rows and 5 columns of dimarta_trial.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(trial_df[1:5, 1:5])
+```
+
 
 | Variable| Description|
 |:------------------------------|:----------------------------------------------------------------|
@@ -687,7 +696,14 @@ Column Descriptions
 
 Table: Table1. `dimarta_trial.csv` variable description:
 
-**dimarta_demographics.csv**
+### dimarta_demographics.csv
+
+*First 5 rows and 5 columns of dimarta_demographics.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(demographics_df[1:5, 1:5])
+```
+
 
 | Variable| Description|
 |:------------------------------|:----------------------------------------------------------------|
@@ -699,7 +715,13 @@ Table: Table1. `dimarta_trial.csv` variable description:
 
 Table: Table2. `dimarta_demographics.csv` variable description:
 
-**dimarta_biomarker.csv**
+### dimarta_biomarker.csv
+
+*First 5 rows and columns of dimarta_biomarker.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(biomarker_df[1:5,])
+```
 
 | Variable| Description|
 |:------------------------------|:----------------------------------------------------------------|

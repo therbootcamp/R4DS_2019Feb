@@ -238,57 +238,8 @@ library(broom)</code></pre>
 </ol>
 <pre class="r"><code>kc_house &lt;- read_csv(file = &quot;XX/XX&quot;)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Using <code>print()</code>, <code>dim()</code>, <code>summary()</code>, <code>head()</code>, and <code>View()</code>, explore the data to make sure it was loaded correctly. The first few rows and columns should look like this:</li>
+<li>Using <code>print()</code>, <code>dim()</code>, <code>summary()</code>, <code>head()</code>, and <code>View()</code>, explore the data to make sure it was loaded correctly.</li>
 </ol>
-<p><em>First 5 rows and 5 columns of kc_house</em></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">id</th>
-<th align="left">date</th>
-<th align="right">price</th>
-<th align="right">bedrooms</th>
-<th align="right">bathrooms</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">7129300520</td>
-<td align="left">2014-10-13</td>
-<td align="right">221900</td>
-<td align="right">3</td>
-<td align="right">1.00</td>
-</tr>
-<tr class="even">
-<td align="left">6414100192</td>
-<td align="left">2014-12-09</td>
-<td align="right">538000</td>
-<td align="right">3</td>
-<td align="right">2.25</td>
-</tr>
-<tr class="odd">
-<td align="left">5631500400</td>
-<td align="left">2015-02-25</td>
-<td align="right">180000</td>
-<td align="right">2</td>
-<td align="right">1.00</td>
-</tr>
-<tr class="even">
-<td align="left">2487200875</td>
-<td align="left">2014-12-09</td>
-<td align="right">604000</td>
-<td align="right">4</td>
-<td align="right">3.00</td>
-</tr>
-<tr class="odd">
-<td align="left">1954400510</td>
-<td align="left">2015-02-18</td>
-<td align="right">510000</td>
-<td align="right">3</td>
-<td align="right">2.00</td>
-</tr>
-</tbody>
-</table>
 </div>
 <div id="b---recap" class="section level3">
 <h3>B - Recap</h3>
@@ -683,6 +634,55 @@ rsq(price_glm)</code></pre>
 <td align="left">21613</td>
 <td align="left">21</td>
 <td align="left">House sale prices for King County between May 2014 and May 2015.</td>
+</tr>
+</tbody>
+</table>
+<p><em>First 5 rows and 5 columns of kc_house.csv</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">id</th>
+<th align="left">date</th>
+<th align="right">price</th>
+<th align="right">bedrooms</th>
+<th align="right">bathrooms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">7129300520</td>
+<td align="left">2014-10-13</td>
+<td align="right">221900</td>
+<td align="right">3</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="even">
+<td align="left">6414100192</td>
+<td align="left">2014-12-09</td>
+<td align="right">538000</td>
+<td align="right">3</td>
+<td align="right">2.25</td>
+</tr>
+<tr class="odd">
+<td align="left">5631500400</td>
+<td align="left">2015-02-25</td>
+<td align="right">180000</td>
+<td align="right">2</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="even">
+<td align="left">2487200875</td>
+<td align="left">2014-12-09</td>
+<td align="right">604000</td>
+<td align="right">4</td>
+<td align="right">3.00</td>
+</tr>
+<tr class="odd">
+<td align="left">1954400510</td>
+<td align="left">2015-02-18</td>
+<td align="right">510000</td>
+<td align="right">3</td>
+<td align="right">2.00</td>
 </tr>
 </tbody>
 </table>

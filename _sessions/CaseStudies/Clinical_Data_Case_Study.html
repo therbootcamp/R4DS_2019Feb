@@ -243,7 +243,7 @@ library(broom)</code></pre>
 <h3>B - Data I/O</h3>
 <ol style="list-style-type: decimal">
 <li><p>Using <code>read_csv()</code>, load the <code>dimarta_trial.csv</code>, <code>dimarta_demographics.csv</code>, and <code>dimarta_biomarker.csv</code> datasets as <em>three</em> new objects called <code>trial_df</code>, <code>demographics_df</code>, and <code>biomarker_df</code>.</p></li>
-<li><p>Get a first impression of the objects you just created by exploring them with a mixture of the <code>View()</code>, <code>head()</code>, <code>names()</code>, and <code>summary()</code> functions. Were they all loaded correctly?</p></li>
+<li><p>Get a first impression of the objects you just created by exploring them with a mixture of the <code>View()</code>, <code>head()</code>, <code>names()</code>, and <code>summary()</code> functions.</p></li>
 <li><p>Look at the variable descriptions in the <em>Datasets</em> tab above to understand what each of the variables mean.</p></li>
 </ol>
 </div>
@@ -349,7 +349,57 @@ library(broom)</code></pre>
 </tbody>
 </table>
 <p>Column Descriptions</p>
-<p><strong>dimarta_trial.csv</strong></p>
+<div id="dimarta_trial.csv" class="section level3">
+<h3>dimarta_trial.csv</h3>
+<p><em>First 5 rows and 5 columns of dimarta_trial.csv</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">PatientID</th>
+<th align="left">StudyArm</th>
+<th align="right">histamine_start</th>
+<th align="right">histamine_end</th>
+<th align="right">qol_start</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">txdjezeo</td>
+<td align="left">placebo</td>
+<td align="right">58.6</td>
+<td align="right">67.0</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">htxfjlxk</td>
+<td align="left">dimarta</td>
+<td align="right">36.1</td>
+<td align="right">27.9</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">vkdqhyez</td>
+<td align="left">placebo</td>
+<td align="right">57.7</td>
+<td align="right">57.3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">dbuvrwfq</td>
+<td align="left">dimarta</td>
+<td align="right">56.6</td>
+<td align="right">57.4</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">ydaitaah</td>
+<td align="left">adiclax</td>
+<td align="right">64.7</td>
+<td align="right">67.9</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
 <table>
 <caption>Table1. <code>dimarta_trial.csv</code> variable description:</caption>
 <colgroup>
@@ -389,7 +439,58 @@ library(broom)</code></pre>
 </tr>
 </tbody>
 </table>
-<p><strong>dimarta_demographics.csv</strong></p>
+</div>
+<div id="dimarta_demographics.csv" class="section level3">
+<h3>dimarta_demographics.csv</h3>
+<p><em>First 5 rows and 5 columns of dimarta_demographics.csv</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">PatientID</th>
+<th align="right">age</th>
+<th align="right">gender</th>
+<th align="left">site</th>
+<th align="left">diseasestatus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">pkyivajv</td>
+<td align="right">36</td>
+<td align="right">0</td>
+<td align="left">Tokyo</td>
+<td align="left">Mid</td>
+</tr>
+<tr class="even">
+<td align="left">dbuvrwfq</td>
+<td align="right">39</td>
+<td align="right">0</td>
+<td align="left">Paris</td>
+<td align="left">Late</td>
+</tr>
+<tr class="odd">
+<td align="left">jhuztppp</td>
+<td align="right">30</td>
+<td align="right">0</td>
+<td align="left">Tokyo</td>
+<td align="left">Mid</td>
+</tr>
+<tr class="even">
+<td align="left">qejexgza</td>
+<td align="right">34</td>
+<td align="right">1</td>
+<td align="left">Tokyo</td>
+<td align="left">Late</td>
+</tr>
+<tr class="odd">
+<td align="left">cszrjxju</td>
+<td align="right">41</td>
+<td align="right">1</td>
+<td align="left">Tokyo</td>
+<td align="left">Late</td>
+</tr>
+</tbody>
+</table>
 <table>
 <caption>Table2. <code>dimarta_demographics.csv</code> variable description:</caption>
 <thead>
@@ -421,7 +522,46 @@ library(broom)</code></pre>
 </tr>
 </tbody>
 </table>
-<p><strong>dimarta_biomarker.csv</strong></p>
+</div>
+<div id="dimarta_biomarker.csv" class="section level3">
+<h3>dimarta_biomarker.csv</h3>
+<p><em>First 5 rows and columns of dimarta_biomarker.csv</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">PatientID</th>
+<th align="left">Biomarker</th>
+<th align="left">BiomarkerStatus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ygazqssv</td>
+<td align="left">dw</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">qosueuyw</td>
+<td align="left">ms</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td align="left">bhhykjvw</td>
+<td align="left">ms</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">ifajorty</td>
+<td align="left">np</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">gxnsybdt</td>
+<td align="left">ms</td>
+<td align="left">FALSE</td>
+</tr>
+</tbody>
+</table>
 <table>
 <caption>Table3. <code>dimarta_biomarker.csv</code> variable description:</caption>
 <thead>
@@ -445,6 +585,7 @@ library(broom)</code></pre>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div id="functions" class="section level2">
 <h2>Functions</h2>

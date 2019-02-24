@@ -253,93 +253,6 @@ trial_act
 
 # Print trial_act_demo object
 trial_act_demo</code></pre>
-<p>The first few rows and columns of the dataset(s) should look as follows:</p>
-<p><em>First 5 rows and 5 columns of trial_act</em></p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">pidnum</th>
-<th align="right">age</th>
-<th align="right">wtkg</th>
-<th align="right">hemo</th>
-<th align="right">homo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">10056</td>
-<td align="right">48</td>
-<td align="right">89.8</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="right">10059</td>
-<td align="right">61</td>
-<td align="right">49.4</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="right">10089</td>
-<td align="right">45</td>
-<td align="right">88.5</td>
-<td align="right">0</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="right">10093</td>
-<td align="right">47</td>
-<td align="right">85.3</td>
-<td align="right">0</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="right">10124</td>
-<td align="right">43</td>
-<td align="right">66.7</td>
-<td align="right">0</td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
-<p><em>First 5 rows of trial_act_demo</em></p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">pidnum</th>
-<th align="right">exercise</th>
-<th align="left">education</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">10931</td>
-<td align="right">4</td>
-<td align="left">HS</td>
-</tr>
-<tr class="even">
-<td align="right">11971</td>
-<td align="right">1</td>
-<td align="left">&lt;HS</td>
-</tr>
-<tr class="odd">
-<td align="right">330244</td>
-<td align="right">1</td>
-<td align="left">HS</td>
-</tr>
-<tr class="even">
-<td align="right">270879</td>
-<td align="right">1</td>
-<td align="left">BA</td>
-</tr>
-<tr class="odd">
-<td align="right">11435</td>
-<td align="right">0</td>
-<td align="left">&lt;HS</td>
-</tr>
-</tbody>
-</table>
 <ol start="7" style="list-style-type: decimal">
 <li><p>Use the the <code>summary()</code> function to print more details on the columns of the datasets.</p></li>
 <li><p>Use the <code>View()</code> function to view the entire dataframes in new windows</p></li>
@@ -691,9 +604,202 @@ baselers &lt;- baselers %&gt;%
 <td align="left">2139</td>
 <td align="left">3</td>
 </tr>
+<tr class="odd">
+<td align="left"><a href="https://github.com/therbootcamp/R4DS_2019Feb/blob/master/1_Data/appointments.csv?raw=true">appointments.csv</a></td>
+<td align="left">110526</td>
+<td align="left">13</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/therbootcamp/R4DS_2019Feb/blob/master/1_Data/weather.csv?raw=true">weather.csv</a></td>
+<td align="left">41</td>
+<td align="left">10</td>
+</tr>
 </tbody>
 </table>
-<p>The <code>trial_act</code> data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter.</p>
+<div id="trial_act.csv" class="section level4">
+<h4>trial_act.csv</h4>
+<p><em>First 5 rows of trial_act.csv</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">pidnum</th>
+<th align="right">age</th>
+<th align="right">wtkg</th>
+<th align="right">hemo</th>
+<th align="right">homo</th>
+<th align="right">drugs</th>
+<th align="right">karnof</th>
+<th align="right">oprior</th>
+<th align="right">z30</th>
+<th align="right">zprior</th>
+<th align="right">preanti</th>
+<th align="right">race</th>
+<th align="right">gender</th>
+<th align="right">str2</th>
+<th align="right">strat</th>
+<th align="right">symptom</th>
+<th align="right">treat</th>
+<th align="right">offtrt</th>
+<th align="right">cd40</th>
+<th align="right">cd420</th>
+<th align="right">cd496</th>
+<th align="right">r</th>
+<th align="right">cd80</th>
+<th align="right">cd820</th>
+<th align="right">cens</th>
+<th align="right">days</th>
+<th align="right">arms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10056</td>
+<td align="right">48</td>
+<td align="right">89.8</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">100</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">422</td>
+<td align="right">477</td>
+<td align="right">660</td>
+<td align="right">1</td>
+<td align="right">566</td>
+<td align="right">324</td>
+<td align="right">0</td>
+<td align="right">948</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">10059</td>
+<td align="right">61</td>
+<td align="right">49.4</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">90</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">895</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">162</td>
+<td align="right">218</td>
+<td align="right">NA</td>
+<td align="right">0</td>
+<td align="right">392</td>
+<td align="right">564</td>
+<td align="right">1</td>
+<td align="right">1002</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">10089</td>
+<td align="right">45</td>
+<td align="right">88.5</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">90</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">707</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">326</td>
+<td align="right">274</td>
+<td align="right">122</td>
+<td align="right">1</td>
+<td align="right">2063</td>
+<td align="right">1893</td>
+<td align="right">0</td>
+<td align="right">961</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">10093</td>
+<td align="right">47</td>
+<td align="right">85.3</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">100</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1399</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">287</td>
+<td align="right">394</td>
+<td align="right">NA</td>
+<td align="right">0</td>
+<td align="right">1590</td>
+<td align="right">966</td>
+<td align="right">0</td>
+<td align="right">1166</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">10124</td>
+<td align="right">43</td>
+<td align="right">66.7</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">100</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1352</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">504</td>
+<td align="right">353</td>
+<td align="right">660</td>
+<td align="right">1</td>
+<td align="right">870</td>
+<td align="right">782</td>
+<td align="right">0</td>
+<td align="right">1090</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>trial_act.csv</code> data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter.</p>
 <table>
 <colgroup>
 <col width="26%" />
@@ -816,10 +922,169 @@ baselers &lt;- baselers %&gt;%
 </tr>
 </tbody>
 </table>
-<div id="additional-datasets" class="section level4">
-<h4>Additional Datasets</h4>
-<div id="appointments.csv" class="section level5">
-<h5>appointments.csv</h5>
+</div>
+<div id="trial_act_demo_fake.csv" class="section level4">
+<h4>trial_act_demo_fake.csv</h4>
+<p><em>First 5 rows of trial_act_demo_fake.csv</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">pidnum</th>
+<th align="right">exercise</th>
+<th align="left">education</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10931</td>
+<td align="right">4</td>
+<td align="left">HS</td>
+</tr>
+<tr class="even">
+<td align="right">11971</td>
+<td align="right">1</td>
+<td align="left">&lt;HS</td>
+</tr>
+<tr class="odd">
+<td align="right">330244</td>
+<td align="right">1</td>
+<td align="left">HS</td>
+</tr>
+<tr class="even">
+<td align="right">270879</td>
+<td align="right">1</td>
+<td align="left">BA</td>
+</tr>
+<tr class="odd">
+<td align="right">11435</td>
+<td align="right">0</td>
+<td align="left">&lt;HS</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>trial_act_demo_fake.csv</code> data set contains <strong>fake</strong> demogrpahic information corresponding to the patients in <code>trial_act.csv</code></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">pidnum</td>
+<td align="left">patient’s ID number</td>
+</tr>
+<tr class="even">
+<td align="left">exercise</td>
+<td align="left">the number of days per week that the patient exercises</td>
+</tr>
+<tr class="odd">
+<td align="left">education</td>
+<td align="left">the patient’s education level</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="appointments.csv" class="section level4">
+<h4>appointments.csv</h4>
+<p><em>First 5 rows of appointments.csv</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">PatientId</th>
+<th align="right">AppointmentID</th>
+<th align="left">Gender</th>
+<th align="left">ScheduledDay</th>
+<th align="left">AppointmentDay</th>
+<th align="right">Age</th>
+<th align="left">Neighbourhood</th>
+<th align="left">Hypertension</th>
+<th align="left">Diabetes</th>
+<th align="left">Alcoholism</th>
+<th align="right">Handicap</th>
+<th align="left">SMS_received</th>
+<th align="left">NoShow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2.99e+13</td>
+<td align="right">5642903</td>
+<td align="left">F</td>
+<td align="left">2016-04-29 18:38:08</td>
+<td align="left">2016-04-29</td>
+<td align="right">62</td>
+<td align="left">JARDIM DA PENHA</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td align="right">5.59e+14</td>
+<td align="right">5642503</td>
+<td align="left">M</td>
+<td align="left">2016-04-29 16:08:27</td>
+<td align="left">2016-04-29</td>
+<td align="right">56</td>
+<td align="left">JARDIM DA PENHA</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td align="right">4.26e+12</td>
+<td align="right">5642549</td>
+<td align="left">F</td>
+<td align="left">2016-04-29 16:19:04</td>
+<td align="left">2016-04-29</td>
+<td align="right">62</td>
+<td align="left">MATA DA PRAIA</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td align="right">8.68e+11</td>
+<td align="right">5642828</td>
+<td align="left">F</td>
+<td align="left">2016-04-29 17:29:31</td>
+<td align="left">2016-04-29</td>
+<td align="right">8</td>
+<td align="left">PONTAL DE CAMBURI</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td align="right">8.84e+12</td>
+<td align="right">5642494</td>
+<td align="left">F</td>
+<td align="left">2016-04-29 16:07:23</td>
+<td align="left">2016-04-29</td>
+<td align="right">56</td>
+<td align="left">JARDIM DA PENHA</td>
+<td align="left">TRUE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="right">0</td>
+<td align="left">FALSE</td>
+<td align="left">No</td>
+</tr>
+</tbody>
+</table>
 <table>
 <colgroup>
 <col width="23%" />
@@ -887,8 +1152,87 @@ baselers &lt;- baselers %&gt;%
 </tbody>
 </table>
 </div>
-<div id="weather.csv" class="section level5">
-<h5>weather.csv</h5>
+<div id="weather.csv" class="section level4">
+<h4>weather.csv</h4>
+<p><em>First 5 rows of weather.csv</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">LON</th>
+<th align="right">LAT</th>
+<th align="right">YEAR</th>
+<th align="right">MM</th>
+<th align="right">DD</th>
+<th align="right">DOY</th>
+<th align="left">YYYYMMDD</th>
+<th align="right">RH2M</th>
+<th align="right">T2M</th>
+<th align="right">PRECTOT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">20.3</td>
+<td align="right">40.3</td>
+<td align="right">2016</td>
+<td align="right">4</td>
+<td align="right">29</td>
+<td align="right">120</td>
+<td align="left">2016-04-29</td>
+<td align="right">86.6</td>
+<td align="right">11.57</td>
+<td align="right">6.18</td>
+</tr>
+<tr class="even">
+<td align="right">20.3</td>
+<td align="right">40.3</td>
+<td align="right">2016</td>
+<td align="right">4</td>
+<td align="right">30</td>
+<td align="right">121</td>
+<td align="left">2016-04-30</td>
+<td align="right">73.5</td>
+<td align="right">14.02</td>
+<td align="right">0.04</td>
+</tr>
+<tr class="odd">
+<td align="right">20.3</td>
+<td align="right">40.3</td>
+<td align="right">2016</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">122</td>
+<td align="left">2016-05-01</td>
+<td align="right">75.9</td>
+<td align="right">12.98</td>
+<td align="right">4.48</td>
+</tr>
+<tr class="even">
+<td align="right">20.3</td>
+<td align="right">40.3</td>
+<td align="right">2016</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">123</td>
+<td align="left">2016-05-02</td>
+<td align="right">84.7</td>
+<td align="right">11.41</td>
+<td align="right">22.99</td>
+</tr>
+<tr class="odd">
+<td align="right">20.3</td>
+<td align="right">40.3</td>
+<td align="right">2016</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">124</td>
+<td align="left">2016-05-03</td>
+<td align="right">84.6</td>
+<td align="right">8.69</td>
+<td align="right">5.81</td>
+</tr>
+</tbody>
+</table>
 <table>
 <thead>
 <tr class="header">
@@ -939,7 +1283,6 @@ baselers &lt;- baselers %&gt;%
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 <div id="functions" class="section level2">
