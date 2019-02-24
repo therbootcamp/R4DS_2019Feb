@@ -108,7 +108,7 @@ XX <- read_csv("XX/XX")
 ```
 
 ```{r, eval = TRUE}
-mcdonalds <- read_csv("1_Data/mcdonalds.csv")
+mcdonalds <- read_csv("../../1_Data/mcdonalds.csv")
 ```
 
 6. Using `print()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly.
@@ -118,28 +118,6 @@ mcdonalds
 summary(mcdonalds)
 head(mcdonalds)
 # View(kc_house)
-```
-
-7. You'll notice that the `mcdonalds` data frame has many column names with spaces and 'bad' characters like parentheses. Run the following dplyr code to fix that!
-
-```{r, echo = TRUE, eval = FALSE}
-# Clean up the names of mcdonalds
-mcdonalds <- mcdonalds %>%
-  select(-contains("% Daily Value")) %>%  # Remove all '% Daily Value' columns
-  rename_all(.funs = ~ gsub(" ", "", .))  # no more spaces!
-```
-
-```{r, echo = FALSE, eval = TRUE}
-# Clean up the names of mcdonalds
-mcdonalds <- mcdonalds %>%
-  select(-contains("% Daily Value")) %>%  # Remove all '% Daily Value' columns
-  rename_all(.funs = ~ gsub(" ", "", .))  # no more spaces!
-```
-
-8. Now print the dataset again, do the names look better?
-
-```{r}
-mcdonalds
 ```
 
 ### B - Building a plot step-by-step
