@@ -487,7 +487,7 @@ ggplot(data = dimarta_df,
        x = "Gender")
 ```
 
-5. Is there a correlation between patient's starting and ending histamine levels? Create a scatterplot with a regression line to find out!
+5. Is there a correlation between patient's starting and ending histamine levels? Create the following scatterplot with a regression line to find out!
 
 ```{r, echo = FALSE, eval = FALSE}
 ggplot(data = XXX,
@@ -498,14 +498,16 @@ ggplot(data = XXX,
        caption = "XXX")
 ```
 
-```{r}
+```{r, eval = TRUE, fig.width = 6, fig.height = 4}
 ggplot(data = dimarta_df,
        aes(x = histamine_start, 
            y = histamine_end)) +
   geom_point() + 
-  geom_smooth() +
+  geom_smooth(method = "lm") +
   labs(title = "Histamine start and end correlation",
-       caption = "Dimarta")
+       x = "Histamine Start", 
+       y = "Histamine End") +
+  theme_minimal()
 ```
 
 6. Now create the same plot as above, but have different colored points for different study arms (but only one regression line).
@@ -611,18 +613,57 @@ mean(abs(arm_glm$residuals))
 
 ### X - Challenges
 
-1. Was there a correlation between change in quality of life and histamine change? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.
+1. Was there a correlation between change in quality of life and histamine change? Answer this by creating the appropriate summary statistics, visualisation, and/or hypothesis test(s).
 
 ```{r}
 cor.test(formula = ~ histamine_change + qol_change,
          data = dimarta_df)
+
+# data:  histamine_change and qol_change
+# t = -2, df = 300, p-value = 0.05
+# alternative hypothesis: true correlation is not equal to 0
+# 95 percent confidence interval:
+#  -0.22161  0.00211
+# sample estimates:
+#    cor 
+# -0.111 
+
+# There appears to be a slight negative correlation between histamine change
+#  and quality of life change.
+
+ggplot(data = dimarta_df,
+       aes(x = histamine_change, y = qol_change)) +
+  geom_point() +
+  labs(x = "Histamine Change",
+       y = "Quality of Life Change",
+       title = "Quality of life and histamine change") +
+  theme_minimal() +
+  geom_smooth(method = "lm")
+
+```
+
+2. The variable `diseasestatus` indicates each patient's disease status at the beginning of the trial, which can be either "Early", "Mid" or "Late". Did patients in a Late disease state tend to respond better to dimarta compared to patients in Early disease state? Answer this by creating the appropriate summary statistics, visualisation, and/or hypothesis test(s).
+
+```{r}
+dimarta_df %>%
+  filter(diseasestatus %in% c("Early", "Late") & StudyArm == "dimarta") %>%
+  group_by(diseasestatus) %>%
+  summarise(histamine_change_mean = mean(histamine_change))
+
+ggplot(data = dimarta_df %>% 
+         filter(diseasestatus %in% c("Early", "Late") & StudyArm == "dimarta"), 
+       aes(x = diseasestatus, y = histamine_change)) +
+  geom_violin() +
+    stat_summary(geom = "point", 
+               fun.y = "mean", 
+               col = "red", size = 4) +
+  labs(title = "Histamine change and disease status",
+       subtitle = "Patients given Dimarta only",
+       y = "Histamine Change",
+       x = "Disease Status")
 ```
 
 
-
-2. Did older patients tend to have higher histamine changes than younger patients? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.
-
-3. The variable `diseasestatus` indicates each patient's disease status at the beginning of the trial, which can be either "Early", "Mid" or "Late". Did patients in a Late disease state tend to respond better to dimarta compared to patients in Early disease state? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.
 
 ## Datasets
 

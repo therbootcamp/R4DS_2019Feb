@@ -280,7 +280,10 @@ library(broom)</code></pre>
 <li><p>Try using <code>geom_jitter()</code> to add the raw points to the plot</p></li>
 <li><p>Create the same plot as above, but instead of analysing study arm, try analysing gender. (Tip! convert gender to a factor with <code>factor(gender)</code>) What do you find? Did one gender have better histamine improvements than the other?</p></li>
 <li><p>Now create the same plot but show both gender and study arm in the same plot. One way to do this would be to color the points by gender!</p></li>
-<li><p>Is there a correlation between patient’s starting and ending histamine levels? Create a scatterplot with a regression line to find out!</p></li>
+<li><p>Is there a correlation between patient’s starting and ending histamine levels? Create the following scatterplot with a regression line to find out!</p></li>
+</ol>
+<p><img src="Clinical_Data_Case_Study_files/figure-html/unnamed-chunk-36-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="6" style="list-style-type: decimal">
 <li><p>Now create the same plot as above, but have different colored points for different study arms (but only one regression line).</p></li>
 <li><p>Instead of having different study arms as different colored points, create another plot using <code>facet_wrap()</code> to have different study arms in different plotting panels.</p></li>
 </ol>
@@ -302,9 +305,8 @@ library(broom)</code></pre>
 <div id="x---challenges" class="section level3">
 <h3>X - Challenges</h3>
 <ol style="list-style-type: decimal">
-<li><p>Was there a correlation between change in quality of life and histamine change? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.</p></li>
-<li><p>Did older patients tend to have higher histamine changes than younger patients? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.</p></li>
-<li><p>The variable <code>diseasestatus</code> indicates each patient’s disease status at the beginning of the trial, which can be either “Early”, “Mid” or “Late”. Did patients in a Late disease state tend to respond better to dimarta compared to patients in Early disease state? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.</p></li>
+<li><p>Was there a correlation between change in quality of life and histamine change? Answer this by creating the appropriate summary statistics, visualisation, and/or hypothesis test(s).</p></li>
+<li><p>The variable <code>diseasestatus</code> indicates each patient’s disease status at the beginning of the trial, which can be either “Early”, “Mid” or “Late”. Did patients in a Late disease state tend to respond better to dimarta compared to patients in Early disease state? Answer this by creating the appropriate summary statistics, visualisation, and/or hypothesis test(s).</p></li>
 </ol>
 </div>
 </div>
