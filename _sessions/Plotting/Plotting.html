@@ -224,7 +224,7 @@ The &lt;high&gt;Grammar of graphics&lt;/high&gt; breaks down plots into several 
 
 ---
 
-# Our goal: Creating this plot
+# Our goal: Create this plot
 
 .pull-left45[
 
@@ -491,11 +491,11 @@ ggplot(data = mpg,
 
 | displ| hwy|class      | year|
 |-----:|---:|:----------|----:|
-|   3.8|  22|minivan    | 1999|
+|   5.3|  20|suv        | 2008|
+|   3.3|  17|suv        | 1999|
+|   5.4|  18|suv        | 2008|
+|   2.5|  29|compact    | 2008|
 |   2.5|  26|subcompact | 1999|
-|   2.0|  29|subcompact | 2008|
-|   4.0|  20|suv        | 2008|
-|   2.4|  31|compact    | 2008|
 
 
 ]
@@ -882,6 +882,44 @@ ggplot(...) +
 
 ]
 
+
+---
+
+# Themes with `theme_XX()`
+
+.pull-left45[
+
+A plotting &lt;high&gt;theme&lt;/high&gt; controls many aspects of its &lt;high&gt;overall look&lt;/high&gt;, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
+
+Themes built into `ggplot2`:
+
+`theme_bw()`&lt;br&gt;
+`theme_minimal()`&lt;br&gt;
+`theme_classic()`&lt;br&gt;
+`theme_light()`&lt;br&gt;
+`theme_void()`
+
+Themes from the `ggthemes` package
+
+`theme_excel()`&lt;br&gt;
+`theme_economist()`&lt;br&gt;
+etc.
+
+
+]
+
+.pull-right45[
+
+
+```r
+ggplot(...) + 
+  theme_bw()
+```
+
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
 ---
 
 # Final result!
@@ -911,7 +949,7 @@ ggplot(data = mpg,
 
 .pull-right45[
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -953,7 +991,7 @@ myplot &lt;- ggplot(data = mpg,
 myplot
 ```
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -993,7 +1031,7 @@ myplot + # add geom
   geom_smooth(col = "blue", method = "lm") 
 ```
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1019,7 +1057,7 @@ myplot +
 
 .pull-right45[
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1047,7 +1085,7 @@ myplot +
 
 .pull-right45[
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 

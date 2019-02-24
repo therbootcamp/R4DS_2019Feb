@@ -296,7 +296,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = class)) +
 
 ---
 
-# Our goal: Creating this plot
+# Our goal: Create this plot
 
 .pull-left45[
 
@@ -1087,6 +1087,54 @@ ggplot(data = mpg,
        title = "MPG data",
        subtitle = "Cars with ...",
        caption = "Source...") + theme_economist()
+```
+
+]
+
+
+---
+
+# Themes with `theme_XX()`
+
+.pull-left45[
+
+A plotting <high>theme</high> controls many aspects of its <high>overall look</high>, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
+
+Themes built into `ggplot2`:
+
+`theme_bw()`<br>
+`theme_minimal()`<br>
+`theme_classic()`<br>
+`theme_light()`<br>
+`theme_void()`
+
+Themes from the `ggthemes` package
+
+`theme_excel()`<br>
+`theme_economist()`<br>
+etc.
+
+
+]
+
+.pull-right45[
+
+```{r, eval = F}
+ggplot(...) + 
+  theme_bw()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy, 
+                     col = class)) +
+  geom_point() + 
+  geom_smooth(col = "blue", method = "lm") +
+  labs(x = "Engine Displ...",
+       y = "Highway miles...",
+       title = "MPG data",
+       subtitle = "Cars with ...",
+       caption = "Source...") + theme_bw()
 ```
 
 ]

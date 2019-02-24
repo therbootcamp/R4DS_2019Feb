@@ -294,7 +294,6 @@ dimarta_df %>%
   )
 ```
 
-
 ```{r}
 dimarta_df %>%
   group_by(gender_c) %>%
