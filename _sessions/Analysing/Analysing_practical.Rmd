@@ -283,7 +283,7 @@ kc_house %>%
 
 ### D - Simple grouped summaries
 
-1. How many mansions are there? To do this, use `group_by()` to group the dataset by the `mansions` column, then use the `n()` function to count the number of cases.
+1. How many mansions are there? To do this, use `group_by()` to group the dataset by the `mansion` column, then use the `n()` function to count the number of cases.
 
 ```{r, echo = TRUE, eval = FALSE}
 kc_house %>%
