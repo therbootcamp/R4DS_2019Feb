@@ -235,7 +235,7 @@ demographics_df <- demographics_df %>%
 ```
 
 
-```{r}
+```{r, eval = TRUE}
 demographics_df <- demographics_df %>%
   mutate(gender_c = case_when(
     gender == 0 ~ "male",
@@ -272,7 +272,7 @@ dimarta_df <- dimarta_df %>%
   left_join(biomarker_wide_df)
 ```
 
-7. View `dimarta_df` to make sure the data look correct! The data should have one row for each patient, and 13 separate columns, including  `dw`, `ms`, and `np` 
+7. View `dimarta_df` to make sure the data look correct! The data should have one row for each patient, and `r ncol(dimarta_df)` separate columns, including  `dw`, `ms`, and `np` 
 
 ```{r}
 dimarta_df
