@@ -55,7 +55,7 @@ kc_house <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootc
 
 ## Overview
 
-In this practical, you'll practice grouping and analysing data with the `dplyr` and `tidyr` packages (part of the `tidyverse collection of packages).
+In this practical, you'll practice grouping and analysing data with `dplyr`
 
 By the end of this practical you will know how to:
 
@@ -72,11 +72,25 @@ By the end of this practical you will know how to:
 # Done!
 ```
 
-2. Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called `analysing_practical.R` in the `2_Code` folder.  
+2. Open a new R script. At the top of the script, using comments, write your name and the date and "Analysing Practical". 
 
-3. Using `library()` load the packages `tidyverse` and `broom` which you'll use in this practical
+```{r, eval = FALSE, echo = TRUE}
+## NAME
+## DATE
+## Analysing Practical
+```
 
-```{r, message = FALSE, warning = FALSE, echo = TRUE, eval = TRUE}
+3. Save it as a new file called `analysing_practical.R` in the `2_Code` folder. 
+
+4. Using `library()` load the `tidyverse` and `broom` packages for this practical listed in the Functions section above. If you don't have them installed, you'll need to install them, see the Functions tab above for installation instructions.
+
+```{r, eval = FALSE, echo = TRUE}
+# Load packages
+library(tidyverse)     
+library(broom)
+```
+
+```{r}
 library(tidyverse)
 library(broom)
 ```
@@ -599,10 +613,11 @@ chisq.test(table(kc_house$waterfront, kc_house$grade))
 ## Examples
 
 ```{r, eval = FALSE, echo = TRUE}
+# Analysing with dplyr and tidyr ---------------------------
 
-# Wrangling with dplyr and tidyr ---------------------------
-
-library(tidyverse)    # Load tidyverse for dplyr and tidyr
+library(tidyverse)    # Load tidyverse for dplyr
+library(broom)        # For tidy results
+library(rsq)          # For r-squared values
 
 # Load baselers data
 baselers <- read_csv("1_Data/baselers.txt")
@@ -646,10 +661,6 @@ baselers %>%
 
 # Examples of hypothesis tests on the diamonds -------------
 
-library(tidyverse)
-library(broom)
-library(rsq)
-
 # First few rows of the diamonds data
 
 diamonds
@@ -666,9 +677,7 @@ htest_B <- t.test(formula = carat ~ color,     # DV ~ IV
 
 htest_B  # Print result
 
-
 # Regression ----------------------------
-
 
 # Q: Create regression equation predicting price by carat, depth, table, and x
 
@@ -683,17 +692,14 @@ tidy(price_glm)
 
 # Extract R-Squared
 rsq(price_glm)
-
-
 ```
-
 
 ## Datasets
 
 |File | Rows | Columns | Description |
 |:----|:-----|:------|:-----------------------------------------|
 |[kc_house.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data//baselrbootcamp_data/kc_house.csv) | 21613 | 21|House sale prices for King County between May 2014 and May 2015. |
-1
+
 
 ## Functions
 
@@ -703,6 +709,7 @@ rsq(price_glm)
 |:------|:------|:------|
 |`tidyverse`|`install.packages("tidyverse")`|A collection of packages for data science, including `dplyr`, `ggplot2` and others|
 |`broom`|`install.packages("broom")`|Provides 'tidy' outputs from statistical objects.
+|`rsq`|`install.packages("rsq")`|Returns r-squared statistics from `glm` objects.
 
 ### Functions
 
@@ -718,8 +725,6 @@ rsq(price_glm)
 |     `case_when()`|`dplyr`|    Recode values of a column| 
 |     `group_by(), summarise()`|`dplyr`|   Group data and then calculate summary statistics|
 |     `left_join()`|`dplyr`|   Combine multiple data sets using a key column|
-|     `spread()`|`tidyr`|    Convert long data to wide format - from rows to columns| 
-|     `gather()`|`tidyr`|    Convert wide data to long format - from columns to rows|
 
 *Statistical Tests*
 
@@ -736,7 +741,7 @@ rsq(price_glm)
 | Function| Package | Description|
 |:------|:-------|:-------------------|
 |     `tidy()`|`broom`| Converts statistical objects to 'tidy' dataframes of key results|
-
+|     `rsq()`|`rsq`| Returns r-squared statistics from glm objects|
 
 ## Resources
 
