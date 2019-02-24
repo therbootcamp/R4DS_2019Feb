@@ -208,7 +208,7 @@ $(document).ready(function () {
 <h1></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>In this practical, you’ll practice grouping and analysing data with the <code>dplyr</code> and <code>tidyr</code> packages (part of the `tidyverse collection of packages).</p>
+<p>In this practical, you’ll practice grouping and analysing data with the <code>dplyr</code> and <code>tidyr</code> packages, both part of the <code>tidyverse</code> collection of packages.</p>
 <p>By the end of this practical you will know how to:</p>
 <ol style="list-style-type: decimal">
 <li>Group data and calculate summary statistics</li>
@@ -221,10 +221,17 @@ $(document).ready(function () {
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
 <li><p>Open your <code>BaselRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder.</p></li>
-<li><p>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>analysing_practical.R</code> in the <code>2_Code</code> folder.</p></li>
-<li><p>Using <code>library()</code> load the packages <code>tidyverse</code> and <code>broom</code> which you’ll use in this practical</p></li>
+<li><p>Open a new R script. At the top of the script, using comments, write your name and the date and “Analysing Practical”.</p></li>
 </ol>
-<pre class="r"><code>library(tidyverse)
+<pre class="r"><code>## NAME
+## DATE
+## Analysing Practical</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Save it as a new file called <code>analysing_practical.R</code> in the <code>2_Code</code> folder.</p></li>
+<li><p>Using <code>library()</code> load the <code>tidyverse</code> and <code>broom</code> packages for this practical listed in the Functions section above. If you don’t have them installed, you’ll need to install them, see the Functions tab above for installation instructions.</p></li>
+</ol>
+<pre class="r"><code># Load packages
+library(tidyverse)     
 library(broom)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>For this practical, we’ll use the <code>kc_house.csv</code> data. This dataset contains house sale prices for King County, Washington. It includes homes sold between May 2014 and May 2015. Using the following template, load the data into R and store it as a new object called <code>kc_house</code>.</li>

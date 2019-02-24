@@ -55,7 +55,7 @@ kc_house <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootc
 
 ## Overview
 
-In this practical, you'll practice grouping and analysing data with the `dplyr` and `tidyr` packages (part of the `tidyverse collection of packages).
+In this practical, you'll practice grouping and analysing data with the `dplyr` and `tidyr` packages, both part of the `tidyverse` collection of packages.
 
 By the end of this practical you will know how to:
 
@@ -72,11 +72,26 @@ By the end of this practical you will know how to:
 # Done!
 ```
 
-2. Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called `analysing_practical.R` in the `2_Code` folder.  
+2. Open a new R script. At the top of the script, using comments, write your name and the date and "Analysing Practical". 
 
-3. Using `library()` load the packages `tidyverse` and `broom` which you'll use in this practical
+```{r, eval = FALSE, echo = TRUE}
+## NAME
+## DATE
+## Analysing Practical
+```
 
-```{r, message = FALSE, warning = FALSE, echo = TRUE, eval = TRUE}
+3. Save it as a new file called `analysing_practical.R` in the `2_Code` folder. 
+
+
+4. Using `library()` load the `tidyverse` and `broom` packages for this practical listed in the Functions section above. If you don't have them installed, you'll need to install them, see the Functions tab above for installation instructions.
+
+```{r, eval = FALSE, echo = TRUE}
+# Load packages
+library(tidyverse)     
+library(broom)
+```
+
+```{r}
 library(tidyverse)
 library(broom)
 ```

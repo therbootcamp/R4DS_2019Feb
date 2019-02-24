@@ -1,11 +1,10 @@
 ---
 title: "Plotting"
-author: "
-<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
+author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
       <font style='font-style:normal'>R for Data Science</font><br>
-      <a href='https://therbootcamp.github.io/R4DS_2019Feb'>
+      <a href='https://therbootcamp.github.io/R4DS_2019Feb/'>
         <i class='fas fa-clock' style='font-size:.9em;' ></i>
       </a>
       <a href='https://therbootcamp.github.io'>
@@ -24,8 +23,7 @@ author: "
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
       <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
     </td>
-  </tr>
-</table>"
+  </tr></table>"
 output:
   html_document:
     css: practical.css
@@ -79,37 +77,50 @@ In this practical you'll practice plotting data with the amazing `ggplot2` packa
 # Done!
 ```
 
-2. Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called `plotting_practicalI.R` in the `2_Code` folder.  
-
-3. Using `library()` load the set of packages for this practical listed in the packages section above.
+2. Open a new R script. At the top of the script, using comments, write your name and the date and "Plotting Practical". 
 
 ```{r, eval = FALSE, echo = TRUE}
 ## NAME
 ## DATE
 ## Plotting Practical
+```
 
-library(XX)     
-library(XX)
-#...
+3. Save the file under the name `plotting_practical.R` in the `2_Code` folder.  
+
+4. Using `library()` load the `tidyverse` and `ggthemes` packages for this practical listed in the Functions section above. If you don't have them installed, you'll need to install them, see the Functions tab above for installation instructions.
+
+```{r, eval = FALSE, echo = TRUE}
+# Load packages
+library(tidyverse)     
+library(ggthemes)
 ```
 
 ```{r}
 library(tidyverse)
+library(ggthemes)
 ```
 
-4. For this practical, we'll use the `mcondalds.csv` data set, which contains nutrition information about items from McDonalds. Using `read_csv()`, load the data into R and store it as a new object called `mcdonalds`.
+5. For this practical, we'll use the `mcdonalds.csv` data set, which contains nutrition information about items from McDonalds. Using `read_csv()`, load the data into R and store it as a new object called `mcdonalds`.
+
+```{r, eval = FALSE, echo = TRUE}
+# Load mcdonalds.csv as a new object called mcdonalds
+XX <- read_csv("XX/XX")
+```
 
 ```{r, eval = TRUE}
 mcdonalds <- read_csv("1_Data/mcdonalds.csv")
 ```
 
-5. Take a look at the first few rows of the dataset(s) by printing them to the console.
+6. Using `print()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly.
 
 ```{r}
 mcdonalds
+summary(mcdonalds)
+head(mcdonalds)
+# View(kc_house)
 ```
 
-6. You'll notice that the `mcdonalds` data frame has many column names with spaces and 'bad' characters like parentheses. Run the following code to fix that!
+7. You'll notice that the `mcdonalds` data frame has many column names with spaces and 'bad' characters like parentheses. Run the following dplyr code to fix that!
 
 ```{r, echo = TRUE, eval = FALSE}
 # Clean up the names of mcdonalds
@@ -125,7 +136,7 @@ mcdonalds <- mcdonalds %>%
   rename_all(.funs = ~ gsub(" ", "", .))  # no more spaces!
 ```
 
-7. Now print the dataset again, do the names look better?
+8. Now print the dataset again, do the names look better?
 
 ```{r}
 mcdonalds
