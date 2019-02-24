@@ -709,6 +709,7 @@ rsq(price_glm)
 |:------|:------|:------|
 |`tidyverse`|`install.packages("tidyverse")`|A collection of packages for data science, including `dplyr`, `ggplot2` and others|
 |`broom`|`install.packages("broom")`|Provides 'tidy' outputs from statistical objects.
+|`rsq`|`install.packages("rsq")`|Returns r-squared statistics from `glm` objects.
 
 ### Functions
 
@@ -724,8 +725,6 @@ rsq(price_glm)
 |     `case_when()`|`dplyr`|    Recode values of a column| 
 |     `group_by(), summarise()`|`dplyr`|   Group data and then calculate summary statistics|
 |     `left_join()`|`dplyr`|   Combine multiple data sets using a key column|
-|     `spread()`|`tidyr`|    Convert long data to wide format - from rows to columns| 
-|     `gather()`|`tidyr`|    Convert wide data to long format - from columns to rows|
 
 *Statistical Tests*
 
@@ -742,7 +741,7 @@ rsq(price_glm)
 | Function| Package | Description|
 |:------|:-------|:-------------------|
 |     `tidy()`|`broom`| Converts statistical objects to 'tidy' dataframes of key results|
-
+|     `rsq()`|`rsq`| Returns r-squared statistics from glm objects|
 
 ## Resources
 
