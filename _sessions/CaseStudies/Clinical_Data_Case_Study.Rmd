@@ -169,9 +169,9 @@ biomarker_df <- read_csv("XXX/XXX")
 
 ```{r, echo = FALSE, eval = TRUE, message = FALSE}
 ## read in datasets
-trial_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_trial.csv")
-demographics_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_demographics.csv")
-biomarker_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_biomarker.csv")
+trial_df <- read_csv("1_Data/dimarta_trial.csv")
+demographics_df <- read_csv("1_Data/dimarta_demographics.csv")
+biomarker_df <- read_csv("1_Data/dimarta_biomarker.csv")
 ```
 
 2. Get a first impression of the objects you just created by exploring them with a mixture of the `View()`, `head()`, `names()`, and `summary()` functions. Were they all loaded correctly?

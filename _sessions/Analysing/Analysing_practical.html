@@ -282,15 +282,21 @@ library(broom)</code></pre>
 </tbody>
 </table>
 <ol start="3" style="list-style-type: decimal">
-<li>Create new column(s) <code>living_sqm</code>, <code>lot_sqm</code>, <code>above_sqm</code> and <code>basement_sqm</code> which show the respective room sizes in square meters rather than square feet (Hint: Multiply each by 0.093).</li>
+<li>Add new column(s) <code>living_sqm</code>, <code>above_sqm</code> and <code>basement_sqm</code> which show the respective room sizes in square meters rather than square feet (Hint: Multiply each by 0.093).</li>
 </ol>
 <pre class="r"><code>kc_house &lt;- kc_house %&gt;%
-  mutate(living_sqm = XXX * XXX,
-         lot_sqm = XXX * XXX,
-         XXX = XXX,
-         XXX = XXX)</code></pre>
+  mutate(living_sqm = living_sqft * 0.093,
+         XXX = XXX * XXX,
+         XXX = XXX * XXX)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Add a new variable to the dataframe called <code>mansion</code> which is “Yes” when the <em>sum</em> of the house’s living, above, and basement space is above 750 square meters.</li>
+<li><p>Add a new column <code>total_sqm</code> which is the sum of <code>living_sqm</code>, <code>above_sqm</code> and <code>basement_sqm</code></p></li>
+<li><p>Add a new variable to the dataframe called <code>mansion</code> which is “Yes” when <code>total_sqm</code> is greater than 750, and “No” when <code>total_sqm</code> is less than or equal to 750.</p></li>
+</ol>
+<pre class="r"><code>kc_house &lt;- kc_house %&gt;%
+                mutate(XXX = case_when(XXX &gt; XXX ~ &quot;XXX&quot;,
+                                       XXX &lt;= XXX ~ &quot;XXX&quot;))</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>How many mansions are there in the data and how many non mansions are there? Answer this by running <code>table(kc_house$mansion)</code></li>
 </ol>
 </div>
 <div id="c---simple-summaries" class="section level3">

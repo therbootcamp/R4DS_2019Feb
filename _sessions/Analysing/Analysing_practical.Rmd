@@ -146,39 +146,45 @@ kc_house <- kc_house %>%
          renovated_yr = yr_renovated)
 ```
 
-3. Create new column(s) `living_sqm`, `lot_sqm`, `above_sqm` and `basement_sqm` which show  the respective room sizes in square meters rather than square feet (Hint: Multiply each by 0.093).
+3. Add new column(s) `living_sqm`, `above_sqm` and `basement_sqm` which show  the respective room sizes in square meters rather than square feet (Hint: Multiply each by 0.093).
 
 ```{r, echo = TRUE, eval = FALSE}
 kc_house <- kc_house %>%
-  mutate(living_sqm = XXX * XXX,
-         lot_sqm = XXX * XXX,
-         XXX = XXX,
-         XXX = XXX)
+  mutate(living_sqm = living_sqft * 0.093,
+         XXX = XXX * XXX,
+         XXX = XXX * XXX)
 ```
 
 ```{r, eval = TRUE}
 kc_house <- kc_house %>%
   mutate(living_sqm = living_sqft * 0.093,
-         lot_sqm = lot_sqft * 0.093,
          above_sqm = above_sqft * 0.093,
          basement_sqm  = basement_sqft * 0.093)
 ```
 
-4. Add a new variable to the dataframe called `mansion` which is "Yes" when the *sum* of the house's living, above, and basement space is above 750 square meters.
+4. Add a new column `total_sqm` which is the sum of `living_sqm`, `above_sqm` and `basement_sqm`
 
-```{r, echo = FALSE, eval = FALSE}
+```{r, eval = TRUE}
 kc_house <- kc_house %>%
-                mutate(XXX = case_when(
-                              XXX + XXX + XXX > XXX ~ "XXX",
-                              XXXX + XXX + XXX <= XXX ~ "XXX"))
+  mutate(total_sqm = living_sqm + above_sqm + basement_sqm)
+```
+
+5. Add a new variable to the dataframe called `mansion` which is "Yes" when `total_sqm` is greater than 750, and "No" when `total_sqm` is less than or equal to 750.
+
+```{r, echo = TRUE, eval = FALSE}
+kc_house <- kc_house %>%
+                mutate(XXX = case_when(XXX > XXX ~ "XXX",
+                                       XXX <= XXX ~ "XXX"))
 ```
 
 ```{r, eval = TRUE}
 kc_house <- kc_house %>%
                 mutate(mansion = case_when(
-                              living_sqm + above_sqm +  basement_sqm > 750 ~ "Yes",
-                              living_sqm + above_sqm + basement_sqm <= 750 ~ "No"))
+                              total_sqm > 750 ~ "Yes",
+                              total_sqm <= 750~ "No"))
 ```
+
+6. How many mansions are there in the data and how many non mansions are there? Answer this by running `table(kc_house$mansion)`
 
 ### C - Simple summaries
 
