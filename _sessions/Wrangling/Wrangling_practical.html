@@ -97,9 +97,6 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
-summary {
-  display: list-item;
-}
 </style>
 
 
@@ -107,74 +104,14 @@ summary {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
 </script>
 
 <!-- code folding -->
+
 
 
 
@@ -426,7 +363,7 @@ trial_act &lt;- trial_act %&gt;%
 CD4_wide</code></pre>
 <pre><code># A tibble: 2,139 x 5
    pidnum  arms  cd40 cd420 cd496
-    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
  1  10056     2   422   477   660
  2  10059     3   162   218    NA
  3  10089     3   326   274   122
@@ -437,13 +374,13 @@ CD4_wide</code></pre>
  8  10190     0   401   366   453
  9  10198     3   214   107     8
 10  10229     0   221   132    NA
-# … with 2,129 more rows</code></pre>
+# ... with 2,129 more rows</code></pre>
 <p>Our goal is to convert this data to a ‘long’ format, where each row represents a single CD4 T cell count for a specific patient, like this:</p>
 <pre class="r"><code># This is the same data in &#39;long&#39; format
 CD4_long</code></pre>
 <pre><code># A tibble: 6,417 x 4
    pidnum  arms time  value
-    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+    &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt;
  1  10056     2 cd40    422
  2  10059     3 cd40    162
  3  10089     3 cd40    326
@@ -454,7 +391,7 @@ CD4_long</code></pre>
  8  10190     0 cd40    401
  9  10198     3 cd40    214
 10  10229     0 cd40    221
-# … with 6,407 more rows</code></pre>
+# ... with 6,407 more rows</code></pre>
 <ol style="list-style-type: decimal">
 <li>Using the <code>gather()</code> function, create a new dataframe called <code>CD4_long</code> that shows the <code>CD4_wide</code> data in the ‘long’ format. To do this, use the following template. Set the grouping column to <code>time</code> and the new data column to <code>value</code>.</li>
 </ol>
@@ -604,10 +541,10 @@ baselers &lt;- baselers %&gt;%
 </tbody>
 </table>
 <p>The <code>trial_act</code> data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter.</p>
-<table>
+<table style="width:75%;">
 <colgroup>
-<col width="26%" />
-<col width="73%" />
+<col width="20%" />
+<col width="54%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -730,10 +667,10 @@ baselers &lt;- baselers %&gt;%
 <h4>Additional Datasets</h4>
 <div id="appointments.csv" class="section level5">
 <h5>appointments.csv</h5>
-<table>
+<table style="width:57%;">
 <colgroup>
-<col width="23%" />
-<col width="76%" />
+<col width="13%" />
+<col width="43%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -873,11 +810,11 @@ baselers &lt;- baselers %&gt;%
 </div>
 <div id="functions-1" class="section level3">
 <h3>Functions</h3>
-<table>
+<table style="width:83%;">
 <colgroup>
-<col width="7%" />
-<col width="12%" />
-<col width="80%" />
+<col width="6%" />
+<col width="11%" />
+<col width="65%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -945,7 +882,7 @@ baselers &lt;- baselers %&gt;%
 <h2>Resources</h2>
 <div id="dplyr-vignette" class="section level3">
 <h3><code>dplyr</code> vignette</h3>
-<p>See <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a> for the full dplyr vignette with lots of wrangling tips and tricks.</p>
+<p>See <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html" class="uri">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a> for the full dplyr vignette with lots of wrangling tips and tricks.</p>
 </div>
 <div id="cheatsheets" class="section level3">
 <h3>Cheatsheets</h3>
