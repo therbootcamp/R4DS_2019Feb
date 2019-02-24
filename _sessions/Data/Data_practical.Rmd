@@ -47,7 +47,6 @@ library(kableExtra)
 library(readxl)
 ```
 
-
 <p align="center" width="100%">
   <img src="https://www.methodspace.com/wp-content/uploads/2018/02/Big-data-slider_GEBI.jpg" alt="Trulli" style="width:100%;height:280px">
   <br>
@@ -271,7 +270,6 @@ In this section, you will read in a subset of the well known diamonds data set a
 diamonds_path <- ""
 ```
 
-
 ```{r}
 # place cursor in-between and hit tab
 diamonds_path <- "1_Data/diamonds.csv"
@@ -366,7 +364,7 @@ write_csv(x = diamonds, "1_Data/diamonds_clean.csv")
 
 12. Read `diamonds_clean.csv` back into R as a new object called `diamonds_clean`. Then, print the object and verify that this time the types have been correctly identified from the start.
 
-```{r}
+```{r, eval = FALSE}
 # read clean diamonds data from disc
 diamonds_clean <- read_csv(file = "1_Data/diamonds_clean.csv")
 ```
