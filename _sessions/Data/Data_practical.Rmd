@@ -32,8 +32,8 @@ output:
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE,
-                      eval = FALSE,
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = TRUE,
                       message = FALSE,
                       warning = FALSE,
                       error = FALSE)
@@ -77,7 +77,7 @@ In this practical you'll learn how to work with basic data objects and functions
 
 3. Load the following package(s) with `library()`. If you don't have any installed on your computer, look at the Functions section above for installation instructions.
 
-```{r, eval = FALSE, echo = TRUE}
+```{r, eval = TRUE, echo = TRUE}
 # Load packages
 library(tidyverse)
 library(haven)
@@ -359,7 +359,7 @@ diamonds
 write_csv(x = XX, path = "XX")
 ```
 
-```{r}
+```{r, eval = FALSE}
 # write clean diamonds data to disc
 write_csv(x = diamonds, "1_Data/diamonds_clean.csv")
 ```
@@ -482,7 +482,7 @@ table(titanic$pclass, titanic$survived)
 
 4. Using `write_csv()`, write the `titanic` dataframe as a new comma separated text file called `titanic.csv` in your `1_Data`  folder. Now you have the data saved as a text file any software can use!
 
-```{r}
+```{r, eval = FALSE}
 # write data to .csv
 write_csv(x = titanic, 
           path = "1_Data/titanic.csv")
@@ -522,7 +522,7 @@ mean(x = sleep, na.rm = TRUE)
 
 8. Using the `write_csv()` function, write the `sleep` data to a new file called `sleep.csv` in your `1_Data` folder. Now you have the `sleep` data stored as a text file any software can use!
 
-```{r}
+```{r, eval = FALSE}
 # write data to .csv
 write_csv(x = sleep, 
           path = "1_Data/sleep.csv")
@@ -564,7 +564,7 @@ table(airbnb_zuerich$room_type)
 
 12. Using `write_csv()` write your `airbnb_zuerich` data frame to as new comma-separated text file called `airbnb_zuerich.csv` in your `1_Data` folder.
 
-```{r}
+```{r, eval = FALSE}
 # write data to .csv
 write_csv(x = airbnb_zuerich, 
           path = "1_Data/airbnb_zuerich.csv")
