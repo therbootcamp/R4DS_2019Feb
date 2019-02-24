@@ -273,19 +273,14 @@ library(broom)</code></pre>
 <div id="d---plotting" class="section level3">
 <h3>D - Plotting</h3>
 <ol style="list-style-type: decimal">
-<li><p>Create boxplots showing the relationship between study arm and histamine change.</p></li>
+<li>Create the following visualisation showing the relationship between study arm and histamine change.</li>
+</ol>
+<p><img src="Clinical_Data_Case_Study_files/figure-html/unnamed-chunk-31-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: decimal">
 <li><p>Try using <code>geom_jitter()</code> to add the raw points to the plot</p></li>
 <li><p>Create the same plot as above, but instead of analysing study arm, try analysing gender. (Tip! convert gender to a factor with <code>factor(gender)</code>) What do you find? Did one gender have better histamine improvements than the other?</p></li>
 <li><p>Now create the same plot but show both gender and study arm in the same plot. One way to do this would be to color the points by gender!</p></li>
 <li><p>Is there a correlation between patient’s starting and ending histamine levels? Create a scatterplot with a regression line to find out!</p></li>
-</ol>
-<pre class="r"><code>ggplot(data = XXX,
-       aes(x = XXX, y = XXX)) +
-  geom_XXX() + 
-  geom_XXX() +
-  labs(title = &quot;XXX&quot;,
-       caption = &quot;XXX&quot;)</code></pre>
-<ol start="6" style="list-style-type: decimal">
 <li><p>Now create the same plot as above, but have different colored points for different study arms (but only one regression line).</p></li>
 <li><p>Instead of having different study arms as different colored points, create another plot using <code>facet_wrap()</code> to have different study arms in different plotting panels.</p></li>
 </ol>
@@ -302,6 +297,14 @@ library(broom)</code></pre>
 <li><p>What is the mean value of the absolute value of this residuals?</p></li>
 <li><p>Now create a regression model predicting histamine change based <em>only</em> on the study arm. Call it <code>arm_glm</code>. Then follow the steps above to add the residuals (original and absolute) from this model to your dataframe. Call them <code>residuals_arm</code> and <code>residuals_abs_arm</code>.</p></li>
 <li><p>Calculate the mean of the raw and absolute residuals from your <code>arm_glm</code> model. How do they compare to your <code>full_glm</code> model? What does this mean?</p></li>
+</ol>
+</div>
+<div id="x---challenges" class="section level3">
+<h3>X - Challenges</h3>
+<ol style="list-style-type: decimal">
+<li><p>Was there a correlation between change in quality of life and histamine change? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.</p></li>
+<li><p>Did older patients tend to have higher histamine changes than younger patients? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.</p></li>
+<li><p>The variable <code>diseasestatus</code> indicates each patient’s disease status at the beginning of the trial, which can be either “Early”, “Mid” or “Late”. Did patients in a Late disease state tend to respond better to dimarta compared to patients in Early disease state? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.</p></li>
 </ol>
 </div>
 </div>
@@ -508,7 +511,7 @@ library(broom)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left"><code>glm()</code>, <code>lm()</code></td>
-<td align="left"><code>base</code></td>
+<td align="left"><code>stats</code></td>
 <td align="left">Generalized linear model and linear model</td>
 </tr>
 </tbody>

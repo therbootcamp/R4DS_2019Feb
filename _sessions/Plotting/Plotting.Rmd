@@ -56,7 +56,7 @@ layout: true
 
 ```{r, eval = TRUE, echo = FALSE, warning=F,message=F}
 # Code to knit slides
-baselers <- readr::read_csv("../_data/baselers.csv")
+baselers <- readr::read_csv("../../1_Data/baselers.csv")
 ```
 
 
@@ -627,7 +627,7 @@ ggplot(data = mpg,
 
 `geom_smooth()` adds a <high>smoothed line</high>.
 
-Change how the line is created with `method` (e.g., `method = lm`).
+Change how the line is created with `method` (e.g., `method = "lm"`).
 
 Color the line with `col`.
 
@@ -663,9 +663,9 @@ ggplot(data = mpg,
 
 `geom_smooth()` adds a <high>smoothed line</high>.
 
-Change how the line is created with `method` (e.g., `method = lm`).
+Change how the line is created with `method` (e.g., `method = "lm"`).
 
-Color the line with `col`
+Color the line with `col`.
 
 <br>
 ```{r, fig.width = 7, fig.height = 5.5, eval = F}

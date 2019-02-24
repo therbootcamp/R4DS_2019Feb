@@ -37,7 +37,8 @@ knitr::opts_chunk$set(comment = NA,
                       fig.align = 'center',
                       echo = FALSE, 
                       eval = FALSE, 
-                      warning = FALSE)
+                      warning = FALSE, 
+                      message = FALSE)
 
 options(digits = 3)
 
@@ -250,7 +251,7 @@ dimarta_df <- trial_df %>%
   left_join(XXX)
 ```
 
-```{r}
+```{r, eval = TRUE}
 # Create a new dataframe called dimarta_df that contains both trial_df and demographics_df
 dimarta_df <- trial_df %>%
   left_join(demographics_df)
@@ -258,7 +259,7 @@ dimarta_df <- trial_df %>%
 
 5. You'll notice that the `biomarker_df` dataframe is in the 'long' format, where each row is a patient's biomarker result. Making use of the `spread()` function, create a new dataframe called `biomarker_wide_df` where each row is a patient, and the results from different biomarkers are in different columns. When you finish, look at `biomarker_wide_df` to see how it looks!
 
-```{r}
+```{r, eval = TRUE}
 # Convert biomarker_df to a wide format using spread()
 biomarker_wide_df <- biomarker_df %>%
   spread(Biomarker, BiomarkerStatus)
@@ -266,7 +267,7 @@ biomarker_wide_df <- biomarker_df %>%
 
 6. Now, using the `left_join` function, add the `biomarker_wide_df` data  to the `dimarta_df` data! Now you should have all of the data in a single dataframe called `dimarta_df`
 
-```{r}
+```{r, eval = TRUE}
 dimarta_df <- dimarta_df %>% 
   left_join(biomarker_wide_df)
 ```
@@ -322,7 +323,7 @@ dimarta_df %>%
 
 12. Add a new column to the `dimarta_df` data called `histamine_change` that shows the *change* in patient's histamine levels from the start to the end of the trial (Hint: use `mutate()` and just subtract `histamine_start` from `histamine_end`!)
 
-```{r}
+```{r, eval = TRUE}
 dimarta_df <- dimarta_df %>%
   mutate(
     histamine_change = histamine_end - histamine_start
@@ -415,7 +416,7 @@ dimarta_df %>%
 
 ### D - Plotting
 
-1. Create boxplots showing the relationship between study arm and histamine change.
+1. Create the following visualisation showing the relationship between study arm and histamine change.
 
 ```{r, echo = FALSE, eval = FALSE}
 ggplot(data = XXX,
@@ -424,17 +425,23 @@ ggplot(data = XXX,
   geom_boxplot() +
   labs(title = "XX",
        subtitle = "XX",
-       caption = "XX")
+       x = "XX",
+       y = "XX",
+       caption = "XX") +
+  theme_minmal()
 ```
 
-```{r}
+```{r, eval = TRUE, echo = FALSE, fig.width = 6, fig.height = 4}
 ggplot(data = dimarta_df,
        mapping = aes(x = StudyArm, 
                      y = histamine_change)) +
   geom_boxplot() +
   labs(title = "Histamine change",
        subtitle = "Dimarta",
-       caption = "I love R!")
+       x = "Study Arm",
+       y = "Histamine change",
+       caption = "I love R!") +
+  theme_minimal()
 ```
 
 2. Try using `geom_jitter()` to add the raw points to the plot
@@ -482,7 +489,7 @@ ggplot(data = dimarta_df,
 
 5. Is there a correlation between patient's starting and ending histamine levels? Create a scatterplot with a regression line to find out!
 
-```{r, echo = TRUE, eval = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 ggplot(data = XXX,
        aes(x = XXX, y = XXX)) +
   geom_XXX() + 
@@ -578,7 +585,6 @@ ggplot(dimarta_df,
   geom_histogram()
 ```
 
-
 7. What is the mean value of the absolute value of this residuals?
 
 ```{r}
@@ -601,6 +607,22 @@ mean(arm_glm$residuals)
 mean(abs(arm_glm$residuals))
 
 ```
+
+
+### X - Challenges
+
+1. Was there a correlation between change in quality of life and histamine change? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.
+
+```{r}
+cor.test(formula = ~ histamine_change + qol_change,
+         data = dimarta_df)
+```
+
+
+
+2. Did older patients tend to have higher histamine changes than younger patients? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.
+
+3. The variable `diseasestatus` indicates each patient's disease status at the beginning of the trial, which can be either "Early", "Mid" or "Late". Did patients in a Late disease state tend to respond better to dimarta compared to patients in Early disease state? Answer this by creating the appropriate summary statistics, visualisation, and hypothesis test.
 
 ## Datasets
 
@@ -670,7 +692,7 @@ Table: Table3. `dimarta_biomarker.csv` variable description:
 
 | Function| Package | Hypothesis Test|
 |:------|:-------|:-------------------|
-|     `glm()`, `lm()`|`base`|    Generalized linear model and linear model|
+|     `glm()`, `lm()`|`stats`|    Generalized linear model and linear model|
 
 *Other*
 
