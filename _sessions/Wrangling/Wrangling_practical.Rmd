@@ -677,13 +677,13 @@ baselers <- baselers %>%
 ```{r, eval = TRUE, message = FALSE, echo = FALSE}
 library(tidyverse)
 
-trial_act <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv")
+trial_act <- read_csv("1_Data/trial_act.csv")
 
-trial_act_demo <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act_demo_fake.csv")
+trial_act_demo <- read_csv("1_Data/trial_act_demo_fake.csv")
 
-appointments <- read_csv("https://github.com/therbootcamp/R4DS_2019Feb/blob/master/1_Data/appointments.csv?raw=true")
+appointments <- read_csv("1_Data/appointments.csv")
 
-weather <- read_csv("https://github.com/therbootcamp/R4DS_2019Feb/blob/master/1_Data/weather.csv?raw=true")
+weather <- read_csv("1_Data/weather.csv")
 
 ```
 
@@ -745,7 +745,6 @@ The `trial_act.csv` data set contains a randomized clinical trial to compare mon
 ```{r, eval = TRUE, echo = FALSE}
 knitr::kable(trial_act_demo[1:5,])
 ```
-
 
 The `trial_act_demo_fake.csv` data set contains **fake** demogrpahic information corresponding to the patients in `trial_act.csv`
 

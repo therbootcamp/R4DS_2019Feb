@@ -108,7 +108,7 @@ XX <- read_csv("XX/XX")
 ```
 
 ```{r, eval = TRUE}
-mcdonalds <- read_csv("../../1_Data/mcdonalds.csv")
+mcdonalds <- read_csv("1_Data/mcdonalds.csv")
 ```
 
 6. Using `print()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly.
@@ -667,8 +667,8 @@ ggplot(data = mpg,
 library(tidyverse)
 library(plotly)
 library(ggthemes)
-mcdonalds <- read_csv("https://raw.githubusercontent.com/therbootcamp/R4DS_2019Feb/master/1_Data/mcdonalds.csv")
-kc_house <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/kc_house.csv")
+mcdonalds <- read_csv("1_Data/mcdonalds.csv")
+kc_house <- read_csv("1_Data/kc_house.csv")
 ```
 
 |File  |Rows | Columns |

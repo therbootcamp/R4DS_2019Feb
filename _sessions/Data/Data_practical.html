@@ -234,8 +234,8 @@ library(readxl)</code></pre>
 </div>
 <div id="b---creating-vectors" class="section level3">
 <h3>B - Creating vectors</h3>
-<p>The table below shows results from a (fictional) survey of 10 Baselers. In the first part of this practical, you will convert this table to R objects and then analyse them!</p>
-<p><em>10 Baselers Table</em></p>
+<p>The table below shows results from a (fictional) survey of 5 Baselers. In the first part of this practical, you will convert this table to R objects and then analyse them!</p>
+<p><em>5 Baselers Table</em></p>
 <table>
 <thead>
 <tr class="header">
@@ -282,45 +282,10 @@ library(readxl)</code></pre>
 <td align="left">177</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="left">m</td>
-<td align="left">63</td>
-<td align="left">187</td>
-<td align="left">67</td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="left">m</td>
-<td align="left">71</td>
-<td align="left">152</td>
-<td align="left">83</td>
-</tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="left">f</td>
-<td align="left">41</td>
-<td align="left">156</td>
-<td align="left">68</td>
-</tr>
-<tr class="odd">
-<td align="left">9</td>
-<td align="left">m</td>
-<td align="left">43</td>
-<td align="left">176</td>
-<td align="left">69</td>
-</tr>
-<tr class="even">
-<td align="left">10</td>
-<td align="left">f</td>
-<td align="left">31</td>
-<td align="left">166</td>
-<td align="left">66</td>
-</tr>
 </tbody>
 </table>
 <ol style="list-style-type: decimal">
-<li>Create a numeric vector called <code>id</code> that shows the id values from the 10 Baselers table. When you finish, print the vector object to see it!</li>
+<li>Create a numeric vector called <code>id</code> that shows the id values from the 5 Baselers table. When you finish, print the vector object to see it!</li>
 </ol>
 <pre class="r"><code># Create a vector id
 XX &lt;- c(XX, XX, ...)
@@ -333,31 +298,31 @@ XX</code></pre>
 <pre class="r"><code># Show the class of an object XX
 class(XX)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Using the <code>length()</code> function, find out the length of your <code>id</code> vector. Does it have length 10? If not, make sure you defined it correctly!</li>
+<li>Using the <code>length()</code> function, find out the length of your <code>id</code> vector. Does it have length 5? If not, make sure you defined it correctly!</li>
 </ol>
 <pre class="r"><code># Show the length of the id vector
 length(XX)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Create a character vector called <code>sex</code> that shows the sex values from the 10 Baselers table. Make sure to use quotation marks &quot;&quot; to enclose each element to tell R that the data are of type <code>&quot;character&quot;</code>! When you finish, print the object to see it!</li>
+<li>Create a character vector called <code>sex</code> that shows the sex values from the 5 Baselers table. Make sure to use quotation marks &quot;&quot; to enclose each element to tell R that the data are of type <code>&quot;character&quot;</code>! When you finish, print the object to see it!</li>
 </ol>
 <pre class="r"><code># Create a character vector sex
 XX &lt;- c(&quot;XX&quot;, &quot;XX&quot;, &quot;...&quot;)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Using the <code>class()</code> function, check the class of your <code>sex</code> vector. Is it <code>&quot;character&quot;</code>?</p></li>
-<li><p>Using the <code>length()</code> function, find out the length of your <code>sex</code> object. Does it have length 10? If not, make sure you defined it correctly!</p></li>
-<li><p>Using the same steps as before, create <code>age</code> and <code>height</code> vectors from the 10 Baselers table.</p></li>
-<li><p>Look at the weight column in the 10 Baselers table, you’ll notice it contains an missing value. Create a vector called <code>weight</code> containing these data, following the same steps as before, making sure to specify the missing value as <code>NA</code> (no quotation marks).</p></li>
+<li><p>Using the <code>length()</code> function, find out the length of your <code>sex</code> object. Does it have length 5? If not, make sure you defined it correctly!</p></li>
+<li><p>Using the same steps as before, create <code>age</code> and <code>height</code> vectors from the 5 Baselers table.</p></li>
+<li><p>Look at the weight column in the 5 Baselers table, you’ll notice it contains an missing value. Create a vector called <code>weight</code> containing these data, following the same steps as before, making sure to specify the missing value as <code>NA</code> (no quotation marks).</p></li>
 </ol>
 </div>
 <div id="c---functions" class="section level3">
 <h3>C - Functions</h3>
 <ol style="list-style-type: decimal">
-<li><p>Using the <code>table()</code> function, find out how many males and females are in your <code>sex</code> object. You should find 7 males and 3 females!</p></li>
-<li><p>Using the <code>mean()</code> function, calculate the mean <code>age</code>. It should be 44!</p></li>
+<li><p>Using the <code>table()</code> function, find out how many males and females are in your <code>sex</code> object. You should find 4 males and 1 females!</p></li>
+<li><p>Using the <code>mean()</code> function, calculate the mean <code>age</code>. It should be 38.2!</p></li>
 <li><p>Try calculating the mean value of <code>sex</code>. What happens? Why?</p></li>
 <li><p>Try calculating the mean <code>weight</code>. You should get an <code>NA</code> value. Why?</p></li>
 <li><p>Look at the help menu for the <code>mean()</code> function (using <code>?mean</code>) to look for an argument that will help you with your problem.</p></li>
-<li><p>Using the correct argument for the mean function, calculate the mean weight ignoring <code>NA</code> values. It should be 76.78!</p></li>
+<li><p>Using the correct argument for the mean function, calculate the mean weight ignoring <code>NA</code> values. It should be 84.5!</p></li>
 </ol>
 </div>
 <div id="d---read-write-delim-separated-text-files" class="section level3">

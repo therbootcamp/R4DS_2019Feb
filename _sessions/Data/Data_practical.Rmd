@@ -87,21 +87,21 @@ library(readxl)
 
 ### B - Creating vectors
 
-The table below shows results from a (fictional) survey of 10 Baselers. In the first part of this practical, you will convert this table to R objects and then analyse them!
+The table below shows results from a (fictional) survey of 5 Baselers. In the first part of this practical, you will convert this table to R objects and then analyse them!
 
-*10 Baselers Table*
+*5 Baselers Table*
 
 ```{r, echo = FALSE, eval = TRUE}
-data <- baselers[1:10, c("id", "sex", "age", "height", "weight")] %>%
+data <- baselers[1:5, c("id", "sex", "age", "height", "weight")] %>%
   mutate_if(is.numeric, round, 0) %>%
   mutate(sex = case_when(sex == "male" ~'m',
                          sex == "female" ~ 'f'))
 
 data %>% mutate_all(replace_na, " ") %>% 
-  knitr::kable(format = "markdown", caption = "Data from 10 baselers")
+  knitr::kable(format = "markdown", caption = "Data from 5 baselers")
 ```
 
-1. Create a numeric vector called `id` that shows the id values from the 10 Baselers table. When you finish, print the vector object to see it!
+1. Create a numeric vector called `id` that shows the id values from the 5 Baselers table. When you finish, print the vector object to see it!
 
 ```{r, eval = FALSE, echo = TRUE}
 # Create a vector id
@@ -113,7 +113,7 @@ XX
 
 ```{r}
 # Create an id vector 
-id <- 1:10 # shortcut to creating the sequence from 1 to 10
+id <- 1:5 # shortcut to creating the sequence from 1 to 5
 
 # Print the vector
 id
@@ -131,7 +131,7 @@ class(XX)
 class(id)
 ```
 
-3. Using the `length()` function, find out the length of your `id` vector. Does it have length 10? If not, make sure you defined it correctly!
+3. Using the `length()` function, find out the length of your `id` vector. Does it have length 5? If not, make sure you defined it correctly!
 
 ```{r, eval = FALSE, echo = TRUE}
 # Show the length of the id vector
@@ -143,7 +143,7 @@ length(XX)
 length(id)
 ```
 
-4. Create a character vector called `sex` that shows the sex values from the 10 Baselers table. Make sure to use quotation marks "" to enclose each element to tell R that the data are of type `"character"`! When you finish, print the object to see it!
+4. Create a character vector called `sex` that shows the sex values from the 5 Baselers table. Make sure to use quotation marks "" to enclose each element to tell R that the data are of type `"character"`! When you finish, print the object to see it!
 
 ```{r, eval = FALSE, echo = TRUE}
 # Create a character vector sex
@@ -152,7 +152,7 @@ XX <- c("XX", "XX", "...")
 
 ```{r}
 # Create a sex vector 
-sex <- c("male", "male", "female", "male", "male", "male", "male", "female", "male", "female")
+sex <- c("m", "m", "f", "m", "m")
 
 # Print the vector
 sex
@@ -165,18 +165,18 @@ sex
 class(sex)
 ```
 
-6. Using the `length()` function, find out the length of your `sex` object. Does it have length 10? If not, make sure you defined it correctly!
+6. Using the `length()` function, find out the length of your `sex` object. Does it have length 5? If not, make sure you defined it correctly!
 
 ```{r}
 # Show the length of the sex vector
 length(sex)
 ```
 
-7. Using the same steps as before, create `age` and `height` vectors from the 10 Baselers table.
+7. Using the same steps as before, create `age` and `height` vectors from the 5 Baselers table.
 
 ```{r}
 # Create a age vector 
-age <- c(44, 65, 31, 27, 24, 63, 71, 41, 43, 31)
+age <- c(44, 65, 31, 27, 24)
 
 # Print the age vector
 age
@@ -188,7 +188,7 @@ class(age)
 length(age)
 
 # Create a height vector 
-height <- c(174.3, 180.3, 168.3, 209, 176.7, 186.6, 151.6, 155.7, 176.1, 166.1)
+height <- c(174, 180, 168, 209, 177)
 
 # Print the height vector
 height
@@ -200,11 +200,11 @@ class(height)
 length(height)
 ```
 
-8. Look at the weight column in the 10 Baselers table, you'll notice it contains an missing value. Create a vector called `weight` containing these data, following the same steps as before, making sure to specify the missing value as `NA` (no quotation marks). 
+8. Look at the weight column in the 5 Baselers table, you'll notice it contains an missing value. Create a vector called `weight` containing these data, following the same steps as before, making sure to specify the missing value as `NA` (no quotation marks). 
 
 ```{r}
 # Create a weight vector 
-weight <- c(113.4, 75.2, 55.5, 93.8, NA, 67.4, 83.3, 67.8, 69.3, 66.3)
+weight <- c(113, 75, 56, 934, NA)
 
 # Print the weight vector
 weight
@@ -786,6 +786,9 @@ library(haven)
 |[titanic.xls](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/titanic.xls) | 1309 | 14 | Information on the survival of titanic passengers. |
 |[sleep.sav](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/sleep.sav) | 271 | 55 | Survey on sleeping behavior completed by staff at the University of Melbourne. |
 |[airbnb_zuerich.sas7bdat](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/airbnb_zuerich.sas7bdat) | 2392 | 20 | Data on AirBnB listings in Zürich, Switzerland|
+
+
+
 
 ## Functions
 
