@@ -133,6 +133,23 @@ library(tidyverse)
 ```{r, echo = TRUE}
 # Print trial_act object
 trial_act
+
+# Print trial_act_demo object
+trial_act_demo
+```
+
+The first few rows and columns of the dataset(s) should look as follows:
+
+*First 5 rows and 5 columns of trial_act*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(trial_act[1:5, 1:5])
+```
+
+*First 5 rows of trial_act_demo*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(trial_act_demo[1:5,])
 ```
 
 7. Use the the `summary()` function to print more details on the columns of the datasets.

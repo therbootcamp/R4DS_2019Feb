@@ -32,7 +32,7 @@ output:
 ### Links
 
 ##### [Wifi](https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/wifi_instruct.png) 
-##### [Data sets](https://therbootcamp.github.io/R4DS_2019Feb/1_Data/BaselRBootcamp.zip)
+##### [Data sets](https://github.com/therbootcamp/R4DS_2019Feb/blob/master/BaselRBootcamp_data.zip?raw=true)
 #####  PDFs <font style="font-size:12px">(made available later)</font>
 
 

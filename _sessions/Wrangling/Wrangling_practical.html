@@ -97,6 +97,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -104,14 +107,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -186,7 +249,97 @@ XX &lt;- XX(XX = &quot;XX/XX&quot;)</code></pre>
 <li>Take a look at the first few rows of the datasets by printing them to the console.</li>
 </ol>
 <pre class="r"><code># Print trial_act object
-trial_act</code></pre>
+trial_act
+
+# Print trial_act_demo object
+trial_act_demo</code></pre>
+<p>The first few rows and columns of the dataset(s) should look as follows:</p>
+<p><em>First 5 rows and 5 columns of trial_act</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">pidnum</th>
+<th align="right">age</th>
+<th align="right">wtkg</th>
+<th align="right">hemo</th>
+<th align="right">homo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10056</td>
+<td align="right">48</td>
+<td align="right">89.8</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">10059</td>
+<td align="right">61</td>
+<td align="right">49.4</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">10089</td>
+<td align="right">45</td>
+<td align="right">88.5</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">10093</td>
+<td align="right">47</td>
+<td align="right">85.3</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">10124</td>
+<td align="right">43</td>
+<td align="right">66.7</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p><em>First 5 rows of trial_act_demo</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">pidnum</th>
+<th align="right">exercise</th>
+<th align="left">education</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10931</td>
+<td align="right">4</td>
+<td align="left">HS</td>
+</tr>
+<tr class="even">
+<td align="right">11971</td>
+<td align="right">1</td>
+<td align="left">&lt;HS</td>
+</tr>
+<tr class="odd">
+<td align="right">330244</td>
+<td align="right">1</td>
+<td align="left">HS</td>
+</tr>
+<tr class="even">
+<td align="right">270879</td>
+<td align="right">1</td>
+<td align="left">BA</td>
+</tr>
+<tr class="odd">
+<td align="right">11435</td>
+<td align="right">0</td>
+<td align="left">&lt;HS</td>
+</tr>
+</tbody>
+</table>
 <ol start="7" style="list-style-type: decimal">
 <li><p>Use the the <code>summary()</code> function to print more details on the columns of the datasets.</p></li>
 <li><p>Use the <code>View()</code> function to view the entire dataframes in new windows</p></li>
@@ -363,7 +516,7 @@ trial_act &lt;- trial_act %&gt;%
 CD4_wide</code></pre>
 <pre><code># A tibble: 2,139 x 5
    pidnum  arms  cd40 cd420 cd496
-    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
  1  10056     2   422   477   660
  2  10059     3   162   218    NA
  3  10089     3   326   274   122
@@ -374,13 +527,13 @@ CD4_wide</code></pre>
  8  10190     0   401   366   453
  9  10198     3   214   107     8
 10  10229     0   221   132    NA
-# ... with 2,129 more rows</code></pre>
+# … with 2,129 more rows</code></pre>
 <p>Our goal is to convert this data to a ‘long’ format, where each row represents a single CD4 T cell count for a specific patient, like this:</p>
 <pre class="r"><code># This is the same data in &#39;long&#39; format
 CD4_long</code></pre>
 <pre><code># A tibble: 6,417 x 4
    pidnum  arms time  value
-    &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt;
+    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
  1  10056     2 cd40    422
  2  10059     3 cd40    162
  3  10089     3 cd40    326
@@ -391,7 +544,7 @@ CD4_long</code></pre>
  8  10190     0 cd40    401
  9  10198     3 cd40    214
 10  10229     0 cd40    221
-# ... with 6,407 more rows</code></pre>
+# … with 6,407 more rows</code></pre>
 <ol style="list-style-type: decimal">
 <li>Using the <code>gather()</code> function, create a new dataframe called <code>CD4_long</code> that shows the <code>CD4_wide</code> data in the ‘long’ format. To do this, use the following template. Set the grouping column to <code>time</code> and the new data column to <code>value</code>.</li>
 </ol>
@@ -541,10 +694,10 @@ baselers &lt;- baselers %&gt;%
 </tbody>
 </table>
 <p>The <code>trial_act</code> data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter.</p>
-<table style="width:75%;">
+<table>
 <colgroup>
-<col width="20%" />
-<col width="54%" />
+<col width="26%" />
+<col width="73%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -667,10 +820,10 @@ baselers &lt;- baselers %&gt;%
 <h4>Additional Datasets</h4>
 <div id="appointments.csv" class="section level5">
 <h5>appointments.csv</h5>
-<table style="width:57%;">
+<table>
 <colgroup>
-<col width="13%" />
-<col width="43%" />
+<col width="23%" />
+<col width="76%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -810,11 +963,11 @@ baselers &lt;- baselers %&gt;%
 </div>
 <div id="functions-1" class="section level3">
 <h3>Functions</h3>
-<table style="width:83%;">
+<table>
 <colgroup>
-<col width="6%" />
-<col width="11%" />
-<col width="65%" />
+<col width="7%" />
+<col width="12%" />
+<col width="80%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -882,7 +1035,7 @@ baselers &lt;- baselers %&gt;%
 <h2>Resources</h2>
 <div id="dplyr-vignette" class="section level3">
 <h3><code>dplyr</code> vignette</h3>
-<p>See <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html" class="uri">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a> for the full dplyr vignette with lots of wrangling tips and tricks.</p>
+<p>See <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a> for the full dplyr vignette with lots of wrangling tips and tricks.</p>
 </div>
 <div id="cheatsheets" class="section level3">
 <h3>Cheatsheets</h3>

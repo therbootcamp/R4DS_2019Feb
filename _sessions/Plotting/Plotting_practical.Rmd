@@ -111,7 +111,7 @@ XX <- read_csv("XX/XX")
 mcdonalds <- read_csv("../../1_Data/mcdonalds.csv")
 ```
 
-6. Using `print()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly.
+6. Using `print()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly, the first few rows should look like this:
 
 ```{r}
 mcdonalds
@@ -119,6 +119,12 @@ summary(mcdonalds)
 head(mcdonalds)
 # View(kc_house)
 ```
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(mcdonalds[1:5, 1:5])
+```
+
+
 
 ### B - Building a plot step-by-step
 

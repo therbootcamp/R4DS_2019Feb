@@ -101,14 +101,23 @@ library(broom)
 kc_house <- read_csv(file = "XX/XX")
 ```
 
-4. Using `print()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly.
+4. Using `print()`, `dim()`, `summary()`, `head()`, and `View()`, explore the data to make sure it was loaded correctly. The first few rows and columns should look like this:
 
 ```{r}
 kc_house
+dim(kc_house)
 summary(kc_house)
 head(kc_house)
 # View(kc_house)
 ```
+
+*First 5 rows and 5 columns of kc_house*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(kc_house[1:5, 1:5])
+```
+
+
 
 ### B - Recap
 
