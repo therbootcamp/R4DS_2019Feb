@@ -208,7 +208,7 @@ $(document).ready(function () {
 <h1></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>In this practical, you’ll practice grouping and analysing data with the <code>dplyr</code> and <code>tidyr</code> packages, both part of the <code>tidyverse</code> collection of packages.</p>
+<p>In this practical, you’ll practice grouping and analysing data with <code>dplyr</code></p>
 <p>By the end of this practical you will know how to:</p>
 <ol style="list-style-type: decimal">
 <li>Group data and calculate summary statistics</li>
@@ -525,9 +525,11 @@ kc_house</code></pre>
 </div>
 <div id="examples" class="section level2">
 <h2>Examples</h2>
-<pre class="r"><code># Wrangling with dplyr and tidyr ---------------------------
+<pre class="r"><code># Analysing with dplyr and tidyr ---------------------------
 
-library(tidyverse)    # Load tidyverse for dplyr and tidyr
+library(tidyverse)    # Load tidyverse for dplyr
+library(broom)        # For tidy results
+library(rsq)          # For r-squared values
 
 # Load baselers data
 baselers &lt;- read_csv(&quot;1_Data/baselers.txt&quot;)
@@ -571,10 +573,6 @@ baselers %&gt;%
 
 # Examples of hypothesis tests on the diamonds -------------
 
-library(tidyverse)
-library(broom)
-library(rsq)
-
 # First few rows of the diamonds data
 
 diamonds
@@ -591,9 +589,7 @@ htest_B &lt;- t.test(formula = carat ~ color,     # DV ~ IV
 
 htest_B  # Print result
 
-
 # Regression ----------------------------
-
 
 # Q: Create regression equation predicting price by carat, depth, table, and x
 

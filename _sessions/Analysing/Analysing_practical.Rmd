@@ -55,7 +55,7 @@ kc_house <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootc
 
 ## Overview
 
-In this practical, you'll practice grouping and analysing data with the `dplyr` and `tidyr` packages, both part of the `tidyverse` collection of packages.
+In this practical, you'll practice grouping and analysing data with `dplyr`
 
 By the end of this practical you will know how to:
 
@@ -614,10 +614,11 @@ chisq.test(table(kc_house$waterfront, kc_house$grade))
 ## Examples
 
 ```{r, eval = FALSE, echo = TRUE}
+# Analysing with dplyr and tidyr ---------------------------
 
-# Wrangling with dplyr and tidyr ---------------------------
-
-library(tidyverse)    # Load tidyverse for dplyr and tidyr
+library(tidyverse)    # Load tidyverse for dplyr
+library(broom)        # For tidy results
+library(rsq)          # For r-squared values
 
 # Load baselers data
 baselers <- read_csv("1_Data/baselers.txt")
@@ -661,10 +662,6 @@ baselers %>%
 
 # Examples of hypothesis tests on the diamonds -------------
 
-library(tidyverse)
-library(broom)
-library(rsq)
-
 # First few rows of the diamonds data
 
 diamonds
@@ -681,9 +678,7 @@ htest_B <- t.test(formula = carat ~ color,     # DV ~ IV
 
 htest_B  # Print result
 
-
 # Regression ----------------------------
-
 
 # Q: Create regression equation predicting price by carat, depth, table, and x
 
@@ -698,8 +693,6 @@ tidy(price_glm)
 
 # Extract R-Squared
 rsq(price_glm)
-
-
 ```
 
 
