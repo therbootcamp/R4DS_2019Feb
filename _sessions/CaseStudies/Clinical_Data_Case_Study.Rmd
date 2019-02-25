@@ -35,9 +35,10 @@ knitr::opts_chunk$set(comment = NA,
                       fig.width = 6, 
                       fig.height = 6,
                       fig.align = 'center',
-                      echo = FALSE, 
-                      eval = FALSE, 
-                      warning = FALSE)
+                      echo = TRUE, 
+                      eval = TRUE, 
+                      warning = FALSE, 
+                      message = FALSE)
 
 options(digits = 3)
 
@@ -169,12 +170,12 @@ biomarker_df <- read_csv("XXX/XXX")
 
 ```{r, echo = FALSE, eval = TRUE, message = FALSE}
 ## read in datasets
-trial_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_trial.csv")
-demographics_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_demographics.csv")
-biomarker_df <- read_csv("_sessions/CaseStudies/1_Data/dimarta_biomarker.csv")
+trial_df <- read_csv("1_Data/dimarta_trial.csv")
+demographics_df <- read_csv("1_Data/dimarta_demographics.csv")
+biomarker_df <- read_csv("1_Data/dimarta_biomarker.csv")
 ```
 
-2. Get a first impression of the objects you just created by exploring them with a mixture of the `View()`, `head()`, `names()`, and `summary()` functions. Were they all loaded correctly?
+2. Get a first impression of the objects you just created by exploring them with a mixture of the `View()`, `head()`, `names()`, and `summary()` functions.
 
 ```{r}
 trial_df
@@ -234,7 +235,7 @@ demographics_df <- demographics_df %>%
 ```
 
 
-```{r}
+```{r, eval = TRUE}
 demographics_df <- demographics_df %>%
   mutate(gender_c = case_when(
     gender == 0 ~ "male",
@@ -250,7 +251,7 @@ dimarta_df <- trial_df %>%
   left_join(XXX)
 ```
 
-```{r}
+```{r, eval = TRUE}
 # Create a new dataframe called dimarta_df that contains both trial_df and demographics_df
 dimarta_df <- trial_df %>%
   left_join(demographics_df)
@@ -258,20 +259,20 @@ dimarta_df <- trial_df %>%
 
 5. You'll notice that the `biomarker_df` dataframe is in the 'long' format, where each row is a patient's biomarker result. Making use of the `spread()` function, create a new dataframe called `biomarker_wide_df` where each row is a patient, and the results from different biomarkers are in different columns. When you finish, look at `biomarker_wide_df` to see how it looks!
 
-```{r}
+```{r, eval = TRUE}
 # Convert biomarker_df to a wide format using spread()
 biomarker_wide_df <- biomarker_df %>%
   spread(Biomarker, BiomarkerStatus)
 ```
 
-6. Now, using the `left_join` function, add the `biomarker_wide_df` data  to the `dimarta_df` data! Now you should have all of the data in a single dataframe called `dimarta_df`
+6. Now, using the `left_join` function, add the `biomarker_wide_df` data to the `dimarta_df` data! Now you should have all of the data in a single dataframe called `dimarta_df`
 
-```{r}
+```{r, eval = TRUE}
 dimarta_df <- dimarta_df %>% 
   left_join(biomarker_wide_df)
 ```
 
-7. View `dimarta_df` to make sure the data look correct! The data should have one row for each patient, and 13 separate columns, including  `dw`, `ms`, and `np` 
+7. View `dimarta_df` to make sure the data look correct! The data should have one row for each patient, and `r ncol(dimarta_df)` separate columns, including  `dw`, `ms`, and `np` 
 
 ```{r}
 dimarta_df
@@ -292,7 +293,6 @@ dimarta_df %>%
     Counts = n()    
   )
 ```
-
 
 ```{r}
 dimarta_df %>%
@@ -322,7 +322,7 @@ dimarta_df %>%
 
 12. Add a new column to the `dimarta_df` data called `histamine_change` that shows the *change* in patient's histamine levels from the start to the end of the trial (Hint: use `mutate()` and just subtract `histamine_start` from `histamine_end`!)
 
-```{r}
+```{r, eval = TRUE}
 dimarta_df <- dimarta_df %>%
   mutate(
     histamine_change = histamine_end - histamine_start
@@ -415,7 +415,7 @@ dimarta_df %>%
 
 ### D - Plotting
 
-1. Create boxplots showing the relationship between study arm and histamine change.
+1. Create the following visualisation showing the relationship between study arm and histamine change.
 
 ```{r, echo = FALSE, eval = FALSE}
 ggplot(data = XXX,
@@ -424,17 +424,23 @@ ggplot(data = XXX,
   geom_boxplot() +
   labs(title = "XX",
        subtitle = "XX",
-       caption = "XX")
+       x = "XX",
+       y = "XX",
+       caption = "XX") +
+  theme_minmal()
 ```
 
-```{r}
+```{r, eval = TRUE, echo = FALSE, fig.width = 6, fig.height = 4}
 ggplot(data = dimarta_df,
        mapping = aes(x = StudyArm, 
                      y = histamine_change)) +
   geom_boxplot() +
   labs(title = "Histamine change",
        subtitle = "Dimarta",
-       caption = "I love R!")
+       x = "Study Arm",
+       y = "Histamine change",
+       caption = "I love R!") +
+  theme_minimal()
 ```
 
 2. Try using `geom_jitter()` to add the raw points to the plot
@@ -480,9 +486,9 @@ ggplot(data = dimarta_df,
        x = "Gender")
 ```
 
-5. Is there a correlation between patient's starting and ending histamine levels? Create a scatterplot with a regression line to find out!
+5. Is there a correlation between patient's starting and ending histamine levels? Create the following scatterplot with a regression line to find out!
 
-```{r, echo = TRUE, eval = FALSE}
+```{r, echo = FALSE, eval = FALSE}
 ggplot(data = XXX,
        aes(x = XXX, y = XXX)) +
   geom_XXX() + 
@@ -491,14 +497,16 @@ ggplot(data = XXX,
        caption = "XXX")
 ```
 
-```{r}
+```{r, eval = TRUE, fig.width = 6, fig.height = 4}
 ggplot(data = dimarta_df,
        aes(x = histamine_start, 
            y = histamine_end)) +
   geom_point() + 
-  geom_smooth() +
+  geom_smooth(method = "lm") +
   labs(title = "Histamine start and end correlation",
-       caption = "Dimarta")
+       x = "Histamine Start", 
+       y = "Histamine End") +
+  theme_minimal()
 ```
 
 6. Now create the same plot as above, but have different colored points for different study arms (but only one regression line).
@@ -578,7 +586,6 @@ ggplot(dimarta_df,
   geom_histogram()
 ```
 
-
 7. What is the mean value of the absolute value of this residuals?
 
 ```{r}
@@ -602,6 +609,61 @@ mean(abs(arm_glm$residuals))
 
 ```
 
+
+### X - Challenges
+
+1. Was there a correlation between change in quality of life and histamine change? Answer this by creating the appropriate summary statistics, visualisation, and/or hypothesis test(s).
+
+```{r}
+cor.test(formula = ~ histamine_change + qol_change,
+         data = dimarta_df)
+
+# data:  histamine_change and qol_change
+# t = -2, df = 300, p-value = 0.05
+# alternative hypothesis: true correlation is not equal to 0
+# 95 percent confidence interval:
+#  -0.22161  0.00211
+# sample estimates:
+#    cor 
+# -0.111 
+
+# There appears to be a slight negative correlation between histamine change
+#  and quality of life change.
+
+ggplot(data = dimarta_df,
+       aes(x = histamine_change, y = qol_change)) +
+  geom_point() +
+  labs(x = "Histamine Change",
+       y = "Quality of Life Change",
+       title = "Quality of life and histamine change") +
+  theme_minimal() +
+  geom_smooth(method = "lm")
+
+```
+
+2. The variable `diseasestatus` indicates each patient's disease status at the beginning of the trial, which can be either "Early", "Mid" or "Late". Did patients in a Late disease state tend to respond better to dimarta compared to patients in Early disease state? Answer this by creating the appropriate summary statistics, visualisation, and/or hypothesis test(s).
+
+```{r}
+dimarta_df %>%
+  filter(diseasestatus %in% c("Early", "Late") & StudyArm == "dimarta") %>%
+  group_by(diseasestatus) %>%
+  summarise(histamine_change_mean = mean(histamine_change))
+
+ggplot(data = dimarta_df %>% 
+         filter(diseasestatus %in% c("Early", "Late") & StudyArm == "dimarta"), 
+       aes(x = diseasestatus, y = histamine_change)) +
+  geom_violin() +
+    stat_summary(geom = "point", 
+               fun.y = "mean", 
+               col = "red", size = 4) +
+  labs(title = "Histamine change and disease status",
+       subtitle = "Patients given Dimarta only",
+       y = "Histamine Change",
+       x = "Disease Status")
+```
+
+
+
 ## Datasets
 
 |File | Rows | Columns | Description |
@@ -610,9 +672,18 @@ mean(abs(arm_glm$residuals))
 |[dimarta_biomarker.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/dimarta_biomarker.csv) | 900 | 3 | Biomarker status' for 3 different biomarkers for each patient. |
 |[dimarta_demographics.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/dimarta_demographics.csv) | 300 | 5 | Demographic information for each patient |
 
+
+
 Column Descriptions
 
-**dimarta_trial.csv**
+### dimarta_trial.csv
+
+*First 5 rows and 5 columns of dimarta_trial.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(trial_df[1:5, 1:5])
+```
+
 
 | Variable| Description|
 |:------------------------------|:----------------------------------------------------------------|
@@ -625,7 +696,14 @@ Column Descriptions
 
 Table: Table1. `dimarta_trial.csv` variable description:
 
-**dimarta_demographics.csv**
+### dimarta_demographics.csv
+
+*First 5 rows and 5 columns of dimarta_demographics.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(demographics_df[1:5, 1:5])
+```
+
 
 | Variable| Description|
 |:------------------------------|:----------------------------------------------------------------|
@@ -637,7 +715,13 @@ Table: Table1. `dimarta_trial.csv` variable description:
 
 Table: Table2. `dimarta_demographics.csv` variable description:
 
-**dimarta_biomarker.csv**
+### dimarta_biomarker.csv
+
+*First 5 rows and columns of dimarta_biomarker.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(biomarker_df[1:5,])
+```
 
 | Variable| Description|
 |:------------------------------|:----------------------------------------------------------------|
@@ -670,7 +754,7 @@ Table: Table3. `dimarta_biomarker.csv` variable description:
 
 | Function| Package | Hypothesis Test|
 |:------|:-------|:-------------------|
-|     `glm()`, `lm()`|`base`|    Generalized linear model and linear model|
+|     `glm()`, `lm()`|`stats`|    Generalized linear model and linear model|
 
 *Other*
 

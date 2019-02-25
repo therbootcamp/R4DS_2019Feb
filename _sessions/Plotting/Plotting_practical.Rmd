@@ -35,8 +35,8 @@ knitr::opts_chunk$set(comment = NA,
                       fig.width = 6, 
                       fig.height = 6,
                       fig.align = 'center',
-                      echo = FALSE, 
-                      eval = FALSE, 
+                      echo = TRUE, 
+                      eval = TRUE, 
                       warning = FALSE,
                       message = FALSE)
 
@@ -120,27 +120,6 @@ head(mcdonalds)
 # View(kc_house)
 ```
 
-7. You'll notice that the `mcdonalds` data frame has many column names with spaces and 'bad' characters like parentheses. Run the following dplyr code to fix that!
-
-```{r, echo = TRUE, eval = FALSE}
-# Clean up the names of mcdonalds
-mcdonalds <- mcdonalds %>%
-  select(-contains("% Daily Value")) %>%  # Remove all '% Daily Value' columns
-  rename_all(.funs = ~ gsub(" ", "", .))  # no more spaces!
-```
-
-```{r, echo = FALSE, eval = TRUE}
-# Clean up the names of mcdonalds
-mcdonalds <- mcdonalds %>%
-  select(-contains("% Daily Value")) %>%  # Remove all '% Daily Value' columns
-  rename_all(.funs = ~ gsub(" ", "", .))  # no more spaces!
-```
-
-8. Now print the dataset again, do the names look better?
-
-```{r}
-mcdonalds
-```
 
 ### B - Building a plot step-by-step
 
@@ -301,7 +280,7 @@ ggplot(data = mcdonalds, aes(x = XX, y = XX, fill = XX)) +
 ```
 
 
-```{r, eval = TRUE, echo = FALSE, fig.width = 8, fig.height = 3}
+```{r, fig.width = 8, fig.height = 3}
 ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
   geom_violin() +
   guides(fill = FALSE) +
@@ -341,6 +320,16 @@ ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
 - Instead of using `geom_violin()`, try `geom_boxplot()`.
 - Remove the `fill = Category` aesthetic entirely.
 
+```{r, fig.width = 8, fig.height = 3}
+ggplot(data = mcdonalds, aes(x = Category, y = Calories)) +
+  geom_boxplot() +
+  geom_jitter(width = 0, alpha = .5) +
+  guides(fill = FALSE) +
+  stat_summary(fun.y = "median", geom = "point", col = "white", size = 10) +
+  labs(title = "McDonalds",
+       subtitle = "Calorie distribution by menu category")
+```
+
 
 ### D - Using facets
 
@@ -355,7 +344,7 @@ ggplot(XX, aes(x = XX, y = XX)) +
   theme_minimal()
 ```
 
-```{r, }
+```{r}
 ggplot(mcdonalds, aes(x = Sodium, y = Calories)) +
   geom_point(alpha = .2) +
   facet_wrap(~Category) +
@@ -364,12 +353,20 @@ ggplot(mcdonalds, aes(x = Sodium, y = Calories)) +
   theme_minimal()
 ```
 
-
 2. Try the following ways to customise your plot:
 
 - Color the points by `Category`.
 - Add a smoothed line to each plot with `geom_smooth()`.
 
+```{r}
+ggplot(mcdonalds, aes(x = Sodium, y = Calories, fill = Category)) +
+  geom_point(alpha = .2) +
+  facet_wrap(~Category) +
+  labs(title = "McDonales",
+       subtitle = "Sodium vs. Calories") +
+  geom_smooth() +
+  theme_minimal()
+```
 
 ### E - Adjusting colors
 
@@ -390,6 +387,16 @@ ggplot(mcdonalds, aes(x = Cholesterol,
 3. Change the colors by including the additional argument ` + scale_colour_gradient(low = "blue", high = "red")`.
 
 4. Customize! Look at all of the named colors in R by running `colors()`. Then, use two new colors in your plot.
+ 
+```{r, fig.width=6, fig.height = 4}
+ggplot(mcdonalds, aes(x = Cholesterol,
+                      y = Protein, 
+                      col = Calories)) + 
+  geom_point() +
+  scale_colour_gradient(low = "tomato2", high = "steelblue1") +
+  labs(title = "Playing with colors in ggplot",
+       subtitle = "Using scale_colour_gradient()")
+```
  
 
 ### F - Summary statistics
@@ -412,12 +419,28 @@ ggplot(mcdonalds, aes(x = Category, y = Calories)) +
        subtitle = "Bars represent means")
 ```
 
+```{r, fig.width = 10, fig.height = 4}
+ggplot(mcdonalds, aes(x = Category, y = Calories)) +
+  stat_summary(geom = "bar", 
+               fun.y = "mean") +
+  labs(title = "Calories by McDonalds menu category",
+       subtitle = "Bars represent means")
+```
+
 2. Customize your plot!
 
 - Instead of showing the `"mean"`, show the `"median"`.
 - Give each bar a different color.
 - Add overlapping points showing the individual items using `geom_point()`, `geom_count()` or `geom_jitter()`.
 
+```{r, fig.width = 10, fig.height = 4}
+ggplot(mcdonalds, aes(x = Category, y = Calories, col = Category)) +
+  stat_summary(geom = "bar", 
+               fun.y = "median") +
+  geom_jitter() +
+  labs(title = "Calories by McDonalds menu category",
+       subtitle = "Bars represent means")
+```
 
 ### G - Saving plots
 
@@ -427,13 +450,38 @@ ggplot(mcdonalds, aes(x = Category, y = Calories)) +
 mcdonalds_gg <- ggplot(...) + ... # Include your plotting code here
 ```
 
+```{r}
+mcdonalds_gg <- ggplot(mcdonalds, aes(x = Category, y = Calories, col = Category)) +
+  stat_summary(geom = "bar", 
+               fun.y = "median") +
+  geom_jitter() +
+  labs(title = "Calories by McDonalds menu category",
+       subtitle = "Bars represent means")
+```
+
+
 2. Evaluate your `mcdonalds_gg` object to see that it does indeed contain your plot.
+
+```{r}
+mcdonalds_gg
+```
 
 3. Save your plot to a .pdf-file called `mcdonalds.pdf` using `ggsave()`. When you finish, find your plot in `3_Figures` and open it to see how it looks! 
 
 ```{r, echo = TRUE, eval = FALSE}
 # Save mcdonalds_gg to a pdf file
-ggsave(filename = "3_Figures/mcdonalds", 
+ggsave(filename = "3_Figures/mcdonalds.pdf", 
+       device = "pdf", 
+       plot = mcdonalds_gg,
+       width = 4, 
+       height = 4, 
+       units = "in")
+```
+
+
+```{r, eval = FALSE}
+# Save mcdonalds_gg to a pdf file
+ggsave(filename = "3_Figures/mcdonalds.pdf", 
        device = "pdf", 
        plot = mcdonalds_gg,
        width = 4, 
@@ -443,8 +491,27 @@ ggsave(filename = "3_Figures/mcdonalds",
 
 4. Play around with the `width` and `height` arguments to change the dimensions of the plot.
 
+```{r, eval = FALSE}
+# Save mcdonalds_gg to a pdf file
+ggsave(filename = "3_Figures/mcdonalds.pdf", 
+       device = "pdf", 
+       plot = mcdonalds_gg,
+       width = 8, 
+       height = 3, 
+       units = "in")
+```
+
 5. Customize your code to create a jpeg image called `mcdonalds.jpeg`
 
+```{r, eval = FALSE}
+# Save mcdonalds_gg to a pdf file
+ggsave(filename = "3_Figures/mcdonalds.jpeg", 
+       device = "jpeg", 
+       plot = mcdonalds_gg,
+       width = 4, 
+       height = 4, 
+       units = "in")
+```
 
 ### H - Adding labels
 
@@ -488,10 +555,29 @@ ggplot(mcdonalds, aes(x = XX,
 
 5. Using the `data` argument in `geom_text()`, specify that the labels should only apply to items over 1100 calories (hint: `geom_text(data = mcdonalds %>% filter(XX > XX))`)
 
+```{r, fig.width = 8, fig.height = 4}
+ggplot(mcdonalds, aes(x = Sugars, 
+                      y = Calories, 
+                      col = Category, 
+                      label = Item)) +
+  geom_point() +
+  geom_text(data = mcdonalds %>% 
+            filter(Calories > 1100),
+            col = "black", 
+            check_overlap = TRUE, 
+            hjust = "left") +
+  xlim(0, 150) +
+  ylim(0, 2000) +
+  theme_minimal() +
+  labs(title = "Adding labels to a plot with geom_text()")
+```
+
 6. Play around! 
 
 - Specify that the size of the points should correspond to their Calories. Do this with the `size` aesthetic.
+
 - Instead of mapping `Category` to the `color` aesthetic, try creating different facets for each `Category` with `facet_wrap(~ Category)`.
+
 - Try using a different plotting theme. For example, you can try `theme_excel()` included in the `ggthemes` package.
 
 
@@ -515,6 +601,20 @@ scale_color_gradient(low = "green", high = "red") +
   theme_bw()
 ```
 
+```{r, fig.width = 7, fig.height = 4}
+ggplot(data = kc_house,
+       aes(x = bedrooms, y = bathrooms, col = price)) +
+  geom_count() +
+  labs(title = "King County Housing Prices",
+       subtitle = "Lighter color = higher price",
+       x = "# of Bedrooms",
+       y = "# of Bathrooms") +
+scale_color_gradient(low = "green", high = "red") +
+  xlim(c(0, 12)) +
+  theme_bw()
+```
+
+
 2. Make this plot 
 - Hint: take the log of price with `log(price)`
 
@@ -534,10 +634,51 @@ ggplot(data = kc_house,
   theme_minimal()
 ```
 
+
+```{r, fig.width = 7, fig.height = 4}
+ggplot(data = kc_house,
+       aes(x = yr_built, y = log(price))) +
+  geom_count(alpha = .01) +
+  geom_smooth() +
+  stat_summary(size = .1) +
+  guides(size = FALSE) +
+  ylim(c(11, 15)) +
+  labs(x = "Year Built",
+       y = "Price (log-scale)",
+       title = "Selling Seattle price of houses by year",
+       subtitle = "Points indicate mean by year",
+       caption = 'Line created by gam()') +
+  theme_minimal()
+```
+
 3. Make this plot
 - Hint: Start by creating an aggregated dataset with median home prices of the top 20 zipcodes. Then, use this dataset in ggplot!
 
 ```{r, eval = TRUE, echo = FALSE, fig.height = 3, fig.width = 5.5}
+agg <- kc_house %>%
+  group_by(zipcode) %>%
+  summarise(price_median = median(price)) %>%
+  arrange(desc(price_median)) %>%
+  mutate(zipcode = factor(zipcode, levels = zipcode, ordered = TRUE)) %>%
+  slice(1:20) %>%
+  mutate(rank = 1:20)
+
+ggplot(agg,
+       aes(x = rank, y = price_median, label = zipcode, size = price_median, alpha = price_median)) +
+  geom_point(col = "skyblue") +
+  geom_text(aes(x = rank, y = price_median), nudge_x = .7, nudge_y = 200000, angle = 45, size = 3, col = "black") +
+  labs(y = "Median Home Price",
+       x = "Rank",
+       title = "Top 10 Most Expensive King County Zipcodes") +
+  scale_x_continuous(breaks = 1:20) +
+  ylim(c(0, 2300000)) +
+    guides(size = FALSE, alpha = FALSE) +
+  theme_minimal() +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
+```
+
+```{r, fig.height = 3, fig.width = 5.5}
 agg <- kc_house %>%
   group_by(zipcode) %>%
   summarise(price_median = median(price)) %>%
@@ -688,13 +829,21 @@ ggplot(data = mpg,
 library(tidyverse)
 library(plotly)
 library(ggthemes)
-mcdonalds <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/mcdonalds.csv")
-kc_house <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/kc_house.csv")
+mcdonalds <- read_csv("1_Data/mcdonalds.csv")
+kc_house <- read_csv("1_Data/kc_house.csv")
 ```
 
 |File  |Rows | Columns |
 |:----|:-----|:------|
-|[mcdonalds.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/complete/mcdonalds.csv)| 260 | 24 |
+|[mcdonalds.csv](https://raw.githubusercontent.com/therbootcamp/R4DS_2019Feb/master/1_Data/mcdonalds.csv)| 260 | 24 |
+
+*First 5 rows and columns of mcdonalds.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(mcdonalds[1:5, 1:5])
+```
+
+
 
 ## Functions
 

@@ -224,7 +224,7 @@ The &lt;high&gt;Grammar of graphics&lt;/high&gt; breaks down plots into several 
 
 ---
 
-# Our goal: Creating this plot
+# Our goal: Create this plot
 
 .pull-left45[
 
@@ -489,6 +489,7 @@ ggplot(data = mpg,
 
 &lt;p align="center"&gt; `mpg`&lt;/p&gt;
 
+<<<<<<< HEAD
 | displ| hwy|class      | year|
 |-----:|---:|:----------|----:|
 |   4.0|  26|subcompact | 2008|
@@ -496,6 +497,15 @@ ggplot(data = mpg,
 |   4.0|  18|pickup     | 2008|
 |   5.2|  16|suv        | 1999|
 |   1.8|  29|midsize    | 1999|
+=======
+| displ| hwy|class   | year|
+|-----:|---:|:-------|----:|
+|   2.8|  24|compact | 1999|
+|   4.6|  17|pickup  | 2008|
+|   3.0|  24|minivan | 1999|
+|   2.5|  27|compact | 2008|
+|   3.8|  26|midsize | 1999|
+>>>>>>> 3cc52a1dac335e7680d9f718c232a32e01b7cf2b
 
 
 ]
@@ -536,7 +546,7 @@ ggplot(data = mpg,
 
 `geom_smooth()` adds a &lt;high&gt;smoothed line&lt;/high&gt;.
 
-Change how the line is created with `method` (e.g., `method = lm`).
+Change how the line is created with `method` (e.g., `method = "lm"`).
 
 Color the line with `col`.
 
@@ -567,9 +577,9 @@ ggplot(data = mpg,
 
 `geom_smooth()` adds a &lt;high&gt;smoothed line&lt;/high&gt;.
 
-Change how the line is created with `method` (e.g., `method = lm`).
+Change how the line is created with `method` (e.g., `method = "lm"`).
 
-Color the line with `col`
+Color the line with `col`.
 
 &lt;br&gt;
 
@@ -882,6 +892,44 @@ ggplot(...) +
 
 ]
 
+
+---
+
+# Themes with `theme_XX()`
+
+.pull-left45[
+
+A plotting &lt;high&gt;theme&lt;/high&gt; controls many aspects of its &lt;high&gt;overall look&lt;/high&gt;, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
+
+Themes built into `ggplot2`:
+
+`theme_bw()`&lt;br&gt;
+`theme_minimal()`&lt;br&gt;
+`theme_classic()`&lt;br&gt;
+`theme_light()`&lt;br&gt;
+`theme_void()`
+
+Themes from the `ggthemes` package
+
+`theme_excel()`&lt;br&gt;
+`theme_economist()`&lt;br&gt;
+etc.
+
+
+]
+
+.pull-right45[
+
+
+```r
+ggplot(...) + 
+  theme_bw()
+```
+
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
 ---
 
 # Final result!
@@ -911,7 +959,7 @@ ggplot(data = mpg,
 
 .pull-right45[
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -953,7 +1001,7 @@ myplot &lt;- ggplot(data = mpg,
 myplot
 ```
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -993,7 +1041,7 @@ myplot + # add geom
   geom_smooth(col = "blue", method = "lm") 
 ```
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1019,7 +1067,7 @@ myplot +
 
 .pull-right45[
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1047,7 +1095,7 @@ myplot +
 
 .pull-right45[
 
-&lt;img src="Plotting_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Plotting_files/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1068,7 +1116,7 @@ To create an &lt;high&gt;image file&lt;/high&gt; of a plot (e.g., `.jpg`, `.pdf`
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt; &lt;mono&gt;filename&lt;/mono&gt; &lt;/td&gt;
-    &lt;td&gt; Name of the to-be-created file &lt;/td&gt;
+    &lt;td&gt; Name of the to-be-created file (including extension) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt; &lt;mono&gt;device&lt;/mono&gt; &lt;/td&gt;
@@ -1097,7 +1145,7 @@ myplot &lt;- myplot +
   facet_wrap(~ class)
 
 # Create "myplot.pdf", from myplot
-ggsave(filename = "myplot",
+ggsave(filename = "myplot.pdf",
        plot = myplot,
        device = "pdf",
        path = "figures",
@@ -1124,7 +1172,7 @@ To create an &lt;high&gt;image file&lt;/high&gt; of a plot (e.g., `.jpg`, `.pdf`
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt; &lt;mono&gt;filename&lt;/mono&gt; &lt;/td&gt;
-    &lt;td&gt; Name of the to-be-created file &lt;/td&gt;
+    &lt;td&gt; Name of the to-be-created file (including extension) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
     &lt;td&gt; &lt;mono&gt;device&lt;/mono&gt; &lt;/td&gt;
@@ -1153,7 +1201,7 @@ myplot &lt;- myplot +
   facet_wrap(~ class)
 
 # Create "myplot.png", from myplot
-ggsave(filename = "myplot",
+ggsave(filename = "myplot.png",
        plot = myplot,
        device = "png",
        path = "figures",

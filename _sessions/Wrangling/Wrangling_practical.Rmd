@@ -35,8 +35,8 @@ knitr::opts_chunk$set(comment = NA,
                       fig.width = 6, 
                       fig.height = 6,
                       fig.align = 'center',
-                      echo = FALSE, 
-                      eval = FALSE, 
+                      echo = TRUE, 
+                      eval = TRUE, 
                       warning = FALSE, 
                       message = FALSE)
 
@@ -133,6 +133,9 @@ library(tidyverse)
 ```{r, echo = TRUE}
 # Print trial_act object
 trial_act
+
+# Print trial_act_demo object
+trial_act_demo
 ```
 
 7. Use the the `summary()` function to print more details on the columns of the datasets.
@@ -148,7 +151,6 @@ summary(trial_act_demo)
 View(trial_act)
 View(trial_act_demo)
 ```
-
 
 ### B - Change column names with rename()
 
@@ -582,22 +584,65 @@ trial_B
 
 ```{r, echo = TRUE, eval = TRUE}
 # read new data sets
-appointments <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/appointments.csv')
 
-weather <- read_csv('https://therbootcamp.github.io/R4DS_2019Feb/1_Data/weather.csv')
+appointments <- read_csv('1_Data/appointments.csv')
+weather <- read_csv('1_Data/weather.csv')
 ```
 
-2. Your goal is to use these datasets to answer the question: "Are patients more likely to not show up for their appointments during bad versus good weather conditions?" To do this, consider the following steps
+2. Your goal is to use these datasets to answer the question: "Are patients less likely to show up for their appointments on rainy days than sunny days?" To do this, consider the following steps
 
 - Explore each dataset visually by printing it and/or using `View()`
 - Look at the variable descriptions in the Datasets tab above to understand what the variables mean.
-- Think about which columns in each dataset are necessary to answer your question (e.g.; how do you define bad versus good weather? Which variable(s) indicate whether a patient showed up for their appointment or not?).
-- Using `mutate()` and `case_when()`, add a new column to the `weather` data called `daytype` which indicates whether or not a day has `"good"`, `"bad"` or `"ok"` weather.
+- Think about which columns in each dataset are necessary to answer your question (e.g.; how do you define rainy versus non-rainy days? Which variable(s) indicate whether a patient showed up for their appointment or not?).
+- Using `mutate()` and `case_when()`, add a new column to the `weather` data called `Rainy` which is `TRUE` on a rainy day, and `FALSE` on a non-rainy day.
 - Combine (aka, join) the two datasets into a dataset called `combined` based on a key column using `left_join()`
-- Using `filter()`, create a dataset called `bad_days` containing only data for bad days.
-- Using `filter()`, create a dataset called `good_days` containing only data for good days.
-- For the `good_days` data, calculate the perentage of patients who did not show up for their appointment.
-- For the `bad_days` data, calculate the same percentage.
+- Using `filter()`, create a dataset called `rainy_appointments` containing only appointment data for rainy days.
+- Using `filter()`, create a dataset called `dry_appointments` containing only appointment data for dry days.
+- For the `rainy_appointments` data, calculate the perentage of patients who did not show up for their appointment.
+- For the `dry_appointments` data, calculate the same percentage.
+
+
+```{r}
+# read new data sets
+
+appointments <- read_csv('1_Data/appointments.csv')
+weather <- read_csv('1_Data/weather.csv')
+
+# Change name of weather YYYMMDD to DAY
+weather <- weather %>%
+  rename(DAY = YYYYMMDD)
+
+# Define badf days as PRECTOT > 1
+weather <- weather %>%
+  mutate(Rainy = case_when(PRECTOT > 1 ~ TRUE,
+                           PRECTOT <= 1 ~ FALSE))
+
+# Change name of appointments date
+appointments <- appointments %>%
+  rename(DAY = AppointmentDay)
+
+# Join weather to appointments
+
+appointments <- appointments %>%
+  left_join(weather, by = "DAY")
+
+# Define wet_day_appointments
+rainy_appointments <- appointments %>%
+  filter(Rainy == TRUE)
+
+# Define sunny days
+dry_appointments <- appointments %>%
+  filter(Rainy == FALSE)
+
+# What percent of people don't show up on rainy days?
+mean(rainy_appointments$NoShow == "Yes")
+
+# What percent of people don't show up on dry days?
+mean(dry_appointments$NoShow == "Yes")
+
+# Answer: I don't find much of a difference! What about you?
+```
+
 
 ## Examples
 
@@ -674,18 +719,35 @@ baselers <- baselers %>%
 
 ```{r, eval = TRUE, message = FALSE, echo = FALSE}
 library(tidyverse)
-trial_act <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv")
-trial_act_demo <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act_demo_fake.csv")
+
+trial_act <- read_csv("1_Data/trial_act.csv")
+
+trial_act_demo <- read_csv("1_Data/trial_act_demo_fake.csv")
+
+appointments <- read_csv("1_Data/appointments.csv")
+
+weather <- read_csv("1_Data/weather.csv")
+
 ```
 
 |File | Rows | Columns |
 |:----|:-----|:------|
 |[trial_act.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv) | 2139 | 27 |
 |[trial_act_demo_fake.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act_demo_fake.csv)| 2139 | 3|
+|[appointments.csv](https://github.com/therbootcamp/R4DS_2019Feb/blob/master/1_Data/appointments.csv?raw=true)| `r nrow(appointments)` | `r ncol(appointments)`|
+|[weather.csv](https://github.com/therbootcamp/R4DS_2019Feb/blob/master/1_Data/weather.csv?raw=true)| `r nrow(weather)` | `r ncol(weather)`|
 
-The `trial_act` data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults
-infected with the human immunodeficiency virus type I whose CD4 T cell counts were between
-200 and 500 per cubic millimeter.
+
+#### trial_act.csv
+
+
+*First 5 rows of trial_act.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(trial_act[1:5,])
+```
+
+The `trial_act.csv` data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter.
 
 |Name | Description |
 |:-------------|:-------------------------------------|
@@ -717,9 +779,31 @@ infected with the human immunodeficiency virus type I whose CD4 T cell counts we
 |days| number of days until the first occurrence of: (i) a decline in CD4 T cell count of at least 50 (ii) an event indicating progression to AIDS, or (iii) death.|
 |arms| treatment arm (0=zidovudine, 1=zidovudine and didanosine, 2=zidovudine and zalcitabine, 3=didanosine).|
 
-#### Additional Datasets 
 
-##### appointments.csv
+#### trial_act_demo_fake.csv
+
+
+*First 5 rows of trial_act_demo_fake.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(trial_act_demo[1:5,])
+```
+
+The `trial_act_demo_fake.csv` data set contains **fake** demogrpahic information corresponding to the patients in `trial_act.csv`
+
+|Name | Description |
+|:-------------|:-------------------------------------|
+|pidnum| patient’s ID number|
+|exercise|the number of days per week that the patient exercises|
+|education| the patient's education level|
+
+#### appointments.csv
+
+*First 5 rows of appointments.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(appointments[1:5,])
+```
 
 |Variable | Description |
 |:--------|:-----------------------------|
@@ -737,7 +821,13 @@ infected with the human immunodeficiency virus type I whose CD4 T cell counts we
 |SMS_received | True: 1 or more messages sent to the patient|
 |No-show | 1: No, 2: Yes|
 
-##### weather.csv
+#### weather.csv
+
+*First 5 rows of weather.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(weather[1:5,])
+```
 
 |Variable | Description |
 |:--------|:-----------------------------|
