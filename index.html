@@ -98,9 +98,6 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
-summary {
-  display: list-item;
-}
 </style>
 
 
@@ -108,74 +105,14 @@ summary {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
 </script>
 
 <!-- code folding -->
+
 
 
 
@@ -198,20 +135,21 @@ $(document).ready(function () {
 <h5><a href="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/wifi_instruct.png">Wifi</a></h5>
 </div>
 <div id="data-sets" class="section level5">
-<h5><a href="https://github.com/therbootcamp/R4DS_2019Feb/blob/master/BaselRBootcamp_data.zip?raw=true">Data sets</a></h5>
+<h5><a href="https://therbootcamp.github.io/R4DS_2019Feb/1_Data/BaselRBootcamp.zip">Data sets</a></h5>
 </div>
-<div id="pdfs-made-available-later" class="section level5">
-<h5>PDFs <font style="font-size:12px">(made available later)</font></h5>
+<div id="pdfs" class="section level5">
+<h5><a href="https://therbootcamp.github.io/R4DS_2019Feb/_sessions/_pdf/R4DS_2019Feb_pdfs.zip">PDFs</a></h5>
+<!--- <font style="font-size:12px">(made available later)</font>--->
 <p><br></p>
 </div>
 </div>
 <div id="materials" class="section level3">
 <h3>Materials</h3>
-<table>
+<table style="width:47%;">
 <colgroup>
-<col width="9%" />
-<col width="45%" />
-<col width="45%" />
+<col width="5%" />
+<col width="20%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
