@@ -10,15 +10,9 @@ htmls = c(
   'Welcome/Welcome.html',
   'IntroToR/IntroToR.html',
   'Data/Data.html',
-  'Data/Data_practical.html',
   'Wrangling/Wrangling.html',
-  'Wrangling/Wrangling_practical.html',
   'Analysing/Analysing.html',
-  'Analysing/Analysing_practical.html',
   'Plotting/Plotting.html',
-  'Plotting/Plotting_practical.html',
-  'CaseStudies/Financial_Data_Case_Study.html',
-  'CaseStudies/Clinical_Data_Case_Study.html',
   'NextSteps/NextSteps.html'
 )
 
@@ -39,7 +33,7 @@ for(i in 1:length(htmls)){
 }
 
 # zip files
-zip(paste0(to_path, 'Intro2DataScienceWithR_pdfs.zip'),
+zip(paste0(to_path, 'R4DS_2019Feb_pdfs.zip'),
     c(paste0(to_path, pdfs), paste0(to_path, 'README.rtf'))
     )
 
