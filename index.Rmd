@@ -32,8 +32,8 @@ output:
 ### Links
 
 ##### [Wifi](https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/wifi_instruct.png) 
-##### [Data sets](https://therbootcamp.github.io/R4DS_2019Feb/1_Data/BaselRBootcamp.zip)
-##### [PDFs](https://therbootcamp.github.io/R4DS_2019Feb/1_Data/R4DS_2019Feb_pdfs.zip)
+##### [Data sets](https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/R4DS_2019Feb/master/1_Data/BaselRBootcamp.zip)
+##### [PDFs](https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/R4DS_2019Feb/master/_sessions/_pdf/R4DS_2019Feb_pdfs.zip)
 <!--- <font style="font-size:12px">(made available later)</font>--->
 
 
